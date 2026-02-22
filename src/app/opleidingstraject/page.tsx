@@ -61,11 +61,11 @@ export default function OpleidingstrajectPage() {
       {/* ── Hero ── */}
       <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="badge badge-coral mb-4">START SEPTEMBER 2025</span>
-          <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
+          <span className="badge badge-coral mb-3 sm:mb-4">START SEPTEMBER 2025</span>
+          <h1 className="mb-3 text-3xl font-bold text-cobiz-dark sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Opleidingstraject Financi&euml;le Sturing
           </h1>
-          <p className="text-lg text-gray-600 md:text-xl">
+          <p className="text-base text-gray-600 md:text-lg lg:text-xl">
             4 dagen intensieve begeleiding voor KMO-zaakvoerders die &eacute;cht
             grip willen op hun cijfers
           </p>
@@ -75,30 +75,30 @@ export default function OpleidingstrajectPage() {
       {/* ── Practical Info ── */}
       <section className="bg-white section-padding">
         <div className="mx-auto max-w-5xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+          <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
             Praktische info
           </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {practicalDetails.map(({ Icon, label, value }) => (
               <div
                 key={label}
-                className="flex items-start gap-4 rounded-xl bg-cobiz-mint p-5"
+                className="flex items-start gap-3 rounded-xl bg-cobiz-mint p-4 sm:gap-4 sm:p-5"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cobiz-green/10">
-                  <Icon className="h-5 w-5 text-cobiz-green" />
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cobiz-green/10 sm:h-10 sm:w-10">
+                  <Icon className="h-4.5 w-4.5 text-cobiz-green sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-wide text-gray-400">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 sm:text-sm">
                     {label}
                   </p>
-                  <p className="font-semibold text-cobiz-dark">{value}</p>
+                  <p className="text-sm font-semibold text-cobiz-dark sm:text-base">{value}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="mt-8 text-center text-gray-600">
+          <p className="mt-6 text-center text-sm text-gray-600 sm:mt-8 sm:text-base">
             De prijs wordt niet op de website vermeld. Neem contact op voor meer
             informatie.
           </p>
@@ -108,20 +108,20 @@ export default function OpleidingstrajectPage() {
       {/* ── What You Learn ── */}
       <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-5xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+          <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
             Wat leer je?
           </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {learnings.map(({ Icon, text }) => (
               <div
                 key={text}
-                className="card-3d flex flex-col items-center rounded-xl bg-white p-6 text-center"
+                className="card-3d flex flex-col items-center rounded-xl bg-white p-5 text-center sm:p-6"
               >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-cobiz-green/10">
-                  <Icon className="h-7 w-7 text-cobiz-green" />
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-cobiz-green/10 sm:mb-4 sm:h-14 sm:w-14">
+                  <Icon className="h-6 w-6 text-cobiz-green sm:h-7 sm:w-7" />
                 </div>
-                <p className="font-semibold text-cobiz-dark">{text}</p>
+                <p className="text-sm font-semibold text-cobiz-dark sm:text-base">{text}</p>
               </div>
             ))}
           </div>
@@ -133,18 +133,18 @@ export default function OpleidingstrajectPage() {
         <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(92,201,80,0.4) 0%, transparent 70%)' }} />
         <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mb-6 text-2xl font-bold text-white sm:mb-8 sm:text-3xl md:text-4xl">
             Interesse in het opleidingstraject?
           </h2>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <Link
               href="/contact"
-              className="btn-white inline-flex items-center gap-2"
+              className="btn-white inline-flex w-full items-center justify-center gap-2 sm:w-auto"
             >
               NEEM CONTACT OP
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/gratis-gesprek" className="btn-outline-white">
+            <Link href="/gratis-gesprek" className="btn-outline-white w-full sm:w-auto">
               OF PLAN EEN GRATIS GESPREK
             </Link>
           </div>

@@ -42,10 +42,10 @@ export default function ContactPage() {
       {/* ── Hero ── */}
       <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
+          <h1 className="mb-3 text-3xl font-bold text-cobiz-dark sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Neem contact op
           </h1>
-          <p className="text-lg text-gray-600 md:text-xl">
+          <p className="text-base text-gray-600 md:text-lg lg:text-xl">
             We horen graag van je
           </p>
         </div>
@@ -54,10 +54,10 @@ export default function ContactPage() {
       {/* ── Content: Form + Contact Info ── */}
       <section className="bg-white section-padding">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             {/* Left column - Form */}
             <div>
-              <h2 className="mb-6 text-2xl font-bold text-cobiz-dark">
+              <h2 className="mb-5 text-xl font-bold text-cobiz-dark sm:mb-6 sm:text-2xl">
                 Stuur ons een bericht
               </h2>
               <ContactForm />
@@ -65,29 +65,29 @@ export default function ContactPage() {
 
             {/* Right column - Contact info */}
             <div>
-              <h2 className="mb-6 text-2xl font-bold text-cobiz-dark">
+              <h2 className="mb-5 text-xl font-bold text-cobiz-dark sm:mb-6 sm:text-2xl">
                 Contactgegevens
               </h2>
 
-              <div className="space-y-6">
+              <div className="space-y-5 sm:space-y-6">
                 {contactInfo.map(({ Icon, label, value, href }) => (
-                  <div key={label} className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cobiz-green/10">
-                      <Icon className="h-5 w-5 text-cobiz-green" />
+                  <div key={label} className="flex items-start gap-3 sm:gap-4">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cobiz-green/10 sm:h-10 sm:w-10">
+                      <Icon className="h-4.5 w-4.5 text-cobiz-green sm:h-5 sm:w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-wide text-gray-400">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 sm:text-sm">
                         {label}
                       </p>
                       {href ? (
                         <a
                           href={href}
-                          className="font-semibold text-cobiz-dark transition-colors hover:text-cobiz-green"
+                          className="text-sm font-semibold text-cobiz-dark transition-colors hover:text-cobiz-green sm:text-base"
                         >
                           {value}
                         </a>
                       ) : (
-                        <p className="font-semibold text-cobiz-dark">{value}</p>
+                        <p className="text-sm font-semibold text-cobiz-dark sm:text-base">{value}</p>
                       )}
                     </div>
                   </div>
@@ -101,8 +101,8 @@ export default function ContactPage() {
       {/* ── Map Placeholder ── */}
       <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-7xl">
-          <div className="flex items-center justify-center rounded-2xl bg-gray-200 px-8 py-24">
-            <p className="text-lg font-medium text-gray-500">
+          <div className="flex items-center justify-center rounded-2xl bg-gray-200 px-8 py-16 sm:py-24">
+            <p className="text-base font-medium text-gray-500 sm:text-lg">
               Google Maps - Binnenkort beschikbaar
             </p>
           </div>

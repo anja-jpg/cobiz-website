@@ -17,22 +17,22 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-cobiz-dark text-white">
+    <footer className="bg-cobiz-dark pb-20 text-white md:pb-0">
       {/* Main Footer Content */}
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+        <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-4">
           {/* Column 1: COBIZ Logo & Tagline */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block">
               <Image
                 src="/logo-full-white.svg"
                 alt="COBIZ.be"
-                width={160}
-                height={38}
-                className="h-10 w-auto"
+                width={140}
+                height={34}
+                className="h-8 w-auto sm:h-10"
               />
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
+            <p className="mt-3 text-sm leading-relaxed text-white/70 sm:mt-4">
               Wij helpen ondernemers groeien met heldere stuurcijfers en
               strategisch inzicht. Samen maken we jouw bedrijf toekomstbestendig.
             </p>
@@ -40,10 +40,10 @@ export default function Footer() {
 
           {/* Column 2: Diensten */}
           <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-white sm:mb-4 sm:text-sm">
               Diensten
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5 sm:space-y-3">
               {dienstenLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -59,10 +59,10 @@ export default function Footer() {
 
           {/* Column 3: Contact */}
           <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-white sm:mb-4 sm:text-sm">
               Contact
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5 sm:space-y-3">
               <li>
                 <a
                   href="mailto:info@cobiz.be"
@@ -83,11 +83,11 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Volg Ons */}
-          <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-white sm:mb-4 sm:text-sm">
               Volg Ons
             </h3>
-            <ul className="space-y-3">
+            <ul className="flex gap-4 sm:flex-col sm:gap-0 sm:space-y-3">
               {socialLinks.map((link) => (
                 <li key={link.label}>
                   <a
@@ -107,11 +107,11 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 sm:flex-row sm:gap-4 sm:px-6 sm:py-6 lg:px-8">
           <p className="text-xs text-white/50">
             &copy; 2025 COBIZ. Alle rechten voorbehouden.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             <Link
               href="/privacy-policy"
               className="text-xs text-white/50 transition-colors hover:text-white/80"

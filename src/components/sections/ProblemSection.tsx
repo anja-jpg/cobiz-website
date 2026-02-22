@@ -14,26 +14,26 @@ export default function ProblemSection() {
   return (
     <section className="bg-cobiz-mint section-padding">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+        <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
           Herken je dit?
         </h2>
 
-        <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 sm:gap-4">
           {problems.map((problem, index) => (
             <div
               key={index}
-              className="flex items-start gap-4 rounded-xl bg-white p-5 shadow-sm"
+              className="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm sm:gap-4 sm:p-5"
             >
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cobiz-green">
-                <Check className="h-4 w-4 text-white" strokeWidth={3} />
+              <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cobiz-green sm:h-7 sm:w-7">
+                <Check className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" strokeWidth={3} />
               </div>
-              <p className="text-gray-700">{problem}</p>
+              <p className="text-sm text-gray-700 sm:text-base">{problem}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="mb-6 text-lg text-gray-600">
+        <div className="mt-8 text-center sm:mt-12">
+          <p className="mb-5 text-base text-gray-600 sm:mb-6 sm:text-lg">
             Je bent niet alleen.{" "}
             <span className="font-semibold text-cobiz-dark">
               80% van de KMO-zaakvoerders
@@ -42,7 +42,7 @@ export default function ProblemSection() {
           </p>
           <Link
             href="/gezondheidscheck"
-            className="inline-block text-lg font-semibold text-cobiz-green transition-colors hover:text-cobiz-green-dark"
+            className="inline-block text-base font-semibold text-cobiz-green transition-colors hover:text-cobiz-green-dark sm:text-lg"
           >
             Doe de gratis gezondheidscheck &rarr;
           </Link>

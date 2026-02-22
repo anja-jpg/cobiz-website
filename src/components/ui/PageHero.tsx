@@ -28,7 +28,7 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section
-      className={`relative overflow-hidden ${compact ? 'px-4 py-16 md:py-20' : 'section-padding'}`}
+      className={`relative overflow-hidden ${compact ? 'px-4 py-10 md:py-14 lg:py-20' : 'section-padding'}`}
       style={{ backgroundColor: '#51B848' }}
     >
       {/* Subtle dot pattern */}
@@ -49,31 +49,31 @@ export default function PageHero({
 
       <div className="relative mx-auto max-w-4xl text-center">
         {badge && (
-          <span className="animate-float animate-pulse-glow mb-6 inline-block rounded-full bg-cobiz-yellow px-5 py-2 text-sm font-bold uppercase tracking-wider text-cobiz-dark shadow-lg">
+          <span className="animate-float animate-pulse-glow mb-4 inline-block rounded-full bg-cobiz-yellow px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cobiz-dark shadow-lg sm:mb-6 sm:px-5 sm:py-2 sm:text-sm">
             {badge}
           </span>
         )}
 
-        <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+        <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
           {title}
         </h1>
 
         {subtitle && (
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/70 md:text-xl">
+          <p className="mx-auto mb-6 max-w-2xl text-base text-white/70 sm:mb-8 md:text-lg lg:text-xl">
             {subtitle}
           </p>
         )}
 
-        {details && <div className="mb-10">{details}</div>}
+        {details && <div className="mb-8 sm:mb-10">{details}</div>}
 
         {ctas && ctas.length > 0 && (
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             {ctas.map((cta) =>
               cta.variant === 'outline' ? (
                 <Link
                   key={cta.href}
                   href={cta.href}
-                  className="btn-outline-white inline-flex items-center gap-2"
+                  className="btn-outline-white inline-flex w-full items-center justify-center gap-2 sm:w-auto"
                 >
                   {cta.label}
                   <ArrowRight className="h-4 w-4" />
@@ -82,7 +82,7 @@ export default function PageHero({
                 <Link
                   key={cta.href}
                   href={cta.href}
-                  className="btn-white inline-flex items-center gap-2"
+                  className="btn-white inline-flex w-full items-center justify-center gap-2 sm:w-auto"
                 >
                   {cta.label}
                   <ArrowRight className="h-4 w-4" />

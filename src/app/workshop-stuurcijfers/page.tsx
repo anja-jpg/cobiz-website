@@ -8,6 +8,7 @@ import {
   Euro,
   Briefcase,
   ArrowRight,
+  ArrowDown,
   TrendingUp,
   PieChart,
   BarChart3,
@@ -114,19 +115,19 @@ export default function WorkshopStuurcijfersPage() {
         title="Workshop Stuurcijfers"
         subtitle="In 4,5 uur van cijferchaos naar grip op je cijfers en rust in je hoofd"
         details={
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-semibold text-white/90 md:gap-6 md:text-base">
-            <span className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-cobiz-green" />
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-white/90 sm:gap-3 sm:text-sm md:gap-6 md:text-base">
+            <span className="flex items-center gap-1.5 sm:gap-2">
+              <Clock className="h-3.5 w-3.5 text-cobiz-green sm:h-4 sm:w-4" />
               17:00 - 21:30u
             </span>
-            <span className="hidden text-white/30 md:inline">|</span>
-            <span className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-cobiz-green" />
+            <span className="hidden text-white/30 sm:inline">|</span>
+            <span className="flex items-center gap-1.5 sm:gap-2">
+              <Users className="h-3.5 w-3.5 text-cobiz-green sm:h-4 sm:w-4" />
               Max 10 deelnemers
             </span>
-            <span className="hidden text-white/30 md:inline">|</span>
-            <span className="flex items-center gap-2">
-              <Euro className="h-4 w-4 text-cobiz-green" />
+            <span className="hidden text-white/30 sm:inline">|</span>
+            <span className="flex items-center gap-1.5 sm:gap-2">
+              <Euro className="h-3.5 w-3.5 text-cobiz-green sm:h-4 sm:w-4" />
               {'\u20AC'}125 incl. BTW
             </span>
           </div>
@@ -139,17 +140,17 @@ export default function WorkshopStuurcijfersPage() {
 
       {/* ── Wat leer je? ── */}
       <SectionBlock theme="mint" id="wat-leer-je">
-        <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+        <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
           Wat leer je?
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           {learnings.map(({ emoji, text }, i) => (
             <ScrollFadeIn key={text} delay={i * 100}>
-              <div className="card-3d group flex items-center gap-5 rounded-xl border-l-4 border-cobiz-green bg-white p-6">
-                <span className="text-4xl transition-transform duration-300 group-hover:scale-110">
+              <div className="card-3d group flex items-center gap-4 rounded-xl border-l-4 border-cobiz-green bg-white p-5 sm:gap-5 sm:p-6">
+                <span className="text-3xl transition-transform duration-300 group-hover:scale-110 sm:text-4xl">
                   {emoji}
                 </span>
-                <p className="text-lg font-semibold text-cobiz-dark">{text}</p>
+                <p className="text-base font-semibold text-cobiz-dark sm:text-lg">{text}</p>
               </div>
             </ScrollFadeIn>
           ))}
@@ -158,31 +159,32 @@ export default function WorkshopStuurcijfersPage() {
 
       {/* ── Van Cijferchaos naar Grip ── */}
       <SectionBlock theme="white" maxWidth="max-w-6xl">
-        <h2 className="mb-4 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+        <h2 className="mb-3 text-center text-2xl font-bold text-cobiz-dark sm:mb-4 sm:text-3xl md:text-4xl">
           Van cijferchaos naar grip op je cijfers
         </h2>
-        <p className="mx-auto mb-12 max-w-2xl text-center text-gray-600">
+        <p className="mx-auto mb-8 max-w-2xl text-center text-sm text-gray-600 sm:mb-12 sm:text-base">
           Dit is wat de workshop voor jou doet — in 4,5 uur.
         </p>
 
-        <div className="grid items-stretch gap-6 md:grid-cols-[1fr_auto_1fr]">
+        {/* Mobile: stacked, Desktop: 3-col */}
+        <div className="grid items-stretch gap-4 sm:gap-6 md:grid-cols-[1fr_auto_1fr]">
           {/* CHAOS */}
           <ScrollFadeIn delay={100}>
-            <div className="relative h-full overflow-hidden rounded-2xl border-2 border-cobiz-coral/20 bg-gradient-to-br from-red-50/80 to-orange-50/60 p-7">
-              <div className="mb-5">
-                <span className="rounded-full bg-cobiz-coral/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cobiz-coral">
+            <div className="relative h-full overflow-hidden rounded-2xl border-2 border-cobiz-coral/20 bg-gradient-to-br from-red-50/80 to-orange-50/60 p-5 sm:p-7">
+              <div className="mb-4 sm:mb-5">
+                <span className="rounded-full bg-cobiz-coral/15 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cobiz-coral sm:px-4 sm:py-1.5 sm:text-xs">
                   Cijferchaos
                 </span>
               </div>
-              <div className="mb-5 rounded-lg border border-gray-200 bg-white/90 p-4 font-mono text-xs">
+              <div className="mb-4 rounded-lg border border-gray-200 bg-white/90 p-3 font-mono text-xs sm:mb-5 sm:p-4">
                 <div className="mb-2 flex items-center gap-1.5 border-b border-gray-100 pb-2 text-[10px] text-gray-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-red-300" />
                   <span className="h-1.5 w-1.5 rounded-full bg-yellow-300" />
                   <span className="h-1.5 w-1.5 rounded-full bg-green-300" />
-                  <span className="ml-1.5">jaarrekening_v3_DEFINITIEF(2).xlsx</span>
+                  <span className="ml-1.5 truncate">jaarrekening_v3_DEFINITIEF(2).xlsx</span>
                 </div>
                 <div className="space-y-1.5 text-gray-500">
-                  <div className="flex justify-between"><span>Omzet Q3</span><span className="text-gray-400">&euro; 847.293,41</span></div>
+                  <div className="flex justify-between"><span>Omzet Q3</span><span className="text-gray-400">&euro; 847.293</span></div>
                   <div className="flex justify-between"><span>EBITDA (??)</span><span className="text-gray-400">&euro; ???.???</span></div>
                   <div className="flex justify-between"><span>Solvabiliteit</span><span className="text-gray-400">0,42 of 42%?</span></div>
                   <div className="mt-2 border-t border-dashed border-gray-200 pt-2 text-center text-[10px] italic text-gray-400">
@@ -190,7 +192,7 @@ export default function WorkshopStuurcijfersPage() {
                   </div>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-1.5 text-sm text-gray-600 sm:space-y-2">
                 <li className="flex items-start gap-2"><span className="mt-0.5 text-cobiz-coral">&times;</span>Spreadsheets zonder context</li>
                 <li className="flex items-start gap-2"><span className="mt-0.5 text-cobiz-coral">&times;</span>Boekhouder praat vakjargon</li>
                 <li className="flex items-start gap-2"><span className="mt-0.5 text-cobiz-coral">&times;</span>Beslissingen op buikgevoel</li>
@@ -199,24 +201,25 @@ export default function WorkshopStuurcijfersPage() {
             </div>
           </ScrollFadeIn>
 
-          {/* Pijl */}
+          {/* Arrow */}
           <ScrollFadeIn delay={300}>
-            <div className="flex h-full items-center justify-center py-4 md:py-0">
-              <div className="animate-pulse-green flex h-16 w-16 items-center justify-center rounded-full bg-cobiz-dark text-white md:h-20 md:w-20">
-                <ArrowRight className="h-7 w-7 md:h-8 md:w-8" />
+            <div className="flex h-full items-center justify-center py-2 md:py-0">
+              <div className="animate-pulse-green flex h-12 w-12 items-center justify-center rounded-full bg-cobiz-dark text-white sm:h-16 sm:w-16 md:h-20 md:w-20">
+                <ArrowDown className="h-5 w-5 sm:h-6 sm:w-6 md:hidden" />
+                <ArrowRight className="hidden h-7 w-7 md:block md:h-8 md:w-8" />
               </div>
             </div>
           </ScrollFadeIn>
 
           {/* GRIP */}
           <ScrollFadeIn delay={200}>
-            <div className="relative h-full overflow-hidden rounded-2xl border-2 border-cobiz-green/20 bg-gradient-to-br from-green-50/80 to-emerald-50/60 p-7">
-              <div className="mb-5">
-                <span className="rounded-full bg-cobiz-green/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cobiz-green">
+            <div className="relative h-full overflow-hidden rounded-2xl border-2 border-cobiz-green/20 bg-gradient-to-br from-green-50/80 to-emerald-50/60 p-5 sm:p-7">
+              <div className="mb-4 sm:mb-5">
+                <span className="rounded-full bg-cobiz-green/15 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cobiz-green sm:px-4 sm:py-1.5 sm:text-xs">
                   Grip &amp; Rust
                 </span>
               </div>
-              <div className="mb-5 rounded-lg border border-cobiz-green/15 bg-white/90 p-4">
+              <div className="mb-4 rounded-lg border border-cobiz-green/15 bg-white/90 p-3 sm:mb-5 sm:p-4">
                 <div className="mb-3 flex items-center gap-2 border-b border-gray-100 pb-2 text-xs font-semibold text-cobiz-dark">
                   <Gauge className="h-3.5 w-3.5 text-cobiz-green" />
                   Jouw Scoringskaart
@@ -245,7 +248,7 @@ export default function WorkshopStuurcijfersPage() {
                   </div>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-1.5 text-sm text-gray-600 sm:space-y-2">
                 <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />Persoonlijke scoringskaart</li>
                 <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />Direct zien waar actie nodig is</li>
                 <li className="flex items-start gap-2"><CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />Beslissingen op basis van feiten</li>
@@ -256,7 +259,7 @@ export default function WorkshopStuurcijfersPage() {
         </div>
 
         <ScrollFadeIn delay={400}>
-          <div className="mt-10 text-center">
+          <div className="mt-8 text-center sm:mt-10">
             <a href="#kies-je-datum" className="btn-primary inline-flex items-center gap-2">
               IK WIL GRIP OP MIJN CIJFERS
               <ArrowRight className="h-4 w-4" />
@@ -267,19 +270,19 @@ export default function WorkshopStuurcijfersPage() {
 
       {/* ── Praktische info ── */}
       <SectionBlock theme="mint">
-        <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+        <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
           Praktische info
         </h2>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {practicalInfo.map(({ Icon, label, value }, i) => (
             <ScrollFadeIn key={label} delay={i * 80}>
-              <div className="card-3d flex items-start gap-4 rounded-xl bg-white p-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cobiz-green/10">
-                  <Icon className="h-5 w-5 text-cobiz-green" />
+              <div className="card-3d flex items-start gap-3 rounded-xl bg-white p-4 sm:gap-4 sm:p-5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cobiz-green/10 sm:h-11 sm:w-11">
+                  <Icon className="h-4 w-4 text-cobiz-green sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">{label}</p>
-                  <p className="font-semibold text-cobiz-dark">{value}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400 sm:text-xs">{label}</p>
+                  <p className="text-sm font-semibold text-cobiz-dark sm:text-base">{value}</p>
                 </div>
               </div>
             </ScrollFadeIn>
@@ -290,12 +293,12 @@ export default function WorkshopStuurcijfersPage() {
       {/* ── Kies je datum ── */}
       <SectionBlock theme="white" id="kies-je-datum" noFade>
         <ScrollFadeIn>
-          <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+          <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
             Kies je datum
           </h2>
         </ScrollFadeIn>
 
-        <div className="mb-16 grid gap-6 sm:grid-cols-2">
+        <div className="mb-12 grid gap-4 sm:grid-cols-2 sm:gap-6 sm:mb-16">
           {workshopDates.map((wd, i) => (
             <ScrollFadeIn key={wd.id} delay={i * 150}>
               <WorkshopDateCard {...wd} />
@@ -303,14 +306,14 @@ export default function WorkshopStuurcijfersPage() {
           ))}
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-16">
           <ScrollFadeIn>
-            <div className="glass rounded-2xl p-8 shadow-xl">
+            <div className="glass rounded-2xl p-5 shadow-xl sm:p-8">
               <BookingForm dates={bookingDates} />
             </div>
           </ScrollFadeIn>
           <ScrollFadeIn>
-            <div className="glass rounded-2xl p-8 shadow-xl">
+            <div className="glass rounded-2xl p-5 shadow-xl sm:p-8">
               <WaitlistForm />
             </div>
           </ScrollFadeIn>
@@ -319,7 +322,7 @@ export default function WorkshopStuurcijfersPage() {
 
       {/* ── FAQ ── */}
       <SectionBlock theme="mint" maxWidth="max-w-3xl">
-        <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+        <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
           Veelgestelde vragen
         </h2>
         <FAQAccordion items={faqItems} />

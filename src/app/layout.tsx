@@ -43,7 +43,8 @@ export default function RootLayout({
     <html lang="nl-BE">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#133F3E" />
+        <meta name="theme-color" content="#51B848" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
       <body className="min-h-screen bg-white">
         {children}

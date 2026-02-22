@@ -55,42 +55,42 @@ export default function ProductSpotlight() {
   return (
     <section className="bg-white section-padding">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
-          <h2 className="mb-3 text-3xl font-bold text-cobiz-dark md:text-4xl">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2 className="mb-2 text-2xl font-bold text-cobiz-dark sm:mb-3 sm:text-3xl md:text-4xl">
             Onze Diensten
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-base text-gray-600 sm:text-lg">
             Van quick scan tot diepgaande begeleiding
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <div
               key={product.title}
-              className="card-hover flex flex-col rounded-2xl border border-gray-200 bg-white p-8"
+              className="card-hover flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8"
             >
               {/* Badge */}
-              <div className="mb-4 min-h-[1.5rem]">
+              <div className="mb-3 min-h-[1.5rem] sm:mb-4">
                 {product.badge && (
                   <span className={product.badgeClass}>{product.badge}</span>
                 )}
               </div>
 
               {/* Title */}
-              <h3 className="mb-3 text-xl font-bold text-cobiz-dark">
+              <h3 className="mb-2 text-lg font-bold text-cobiz-dark sm:mb-3 sm:text-xl">
                 {product.title}
               </h3>
 
               {/* Description */}
-              <p className="mb-6 flex-1 text-gray-600">{product.description}</p>
+              <p className="mb-5 flex-1 text-sm text-gray-600 sm:mb-6 sm:text-base">{product.description}</p>
 
               {/* Price */}
-              <div className="mb-6">
-                <p className="text-2xl font-bold text-cobiz-dark">
+              <div className="mb-5 sm:mb-6">
+                <p className="text-xl font-bold text-cobiz-dark sm:text-2xl">
                   {product.price}
                 </p>
-                <p className="text-sm text-gray-500">{product.details}</p>
+                <p className="text-xs text-gray-500 sm:text-sm">{product.details}</p>
               </div>
 
               {/* CTA */}

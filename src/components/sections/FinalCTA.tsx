@@ -20,18 +20,18 @@ export default function FinalCTA() {
         }}
       />
       <div className="relative mx-auto max-w-3xl text-center">
-        <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+        <h2 className="mb-3 text-2xl font-bold text-white sm:mb-4 sm:text-3xl md:text-4xl">
           Klaar om grip te krijgen op je cijfers?
         </h2>
-        <p className="mb-10 text-lg text-white/70">
+        <p className="mb-8 text-base text-white/70 sm:mb-10 sm:text-lg">
           Start met de gratis gezondheidscheck en ontdek waar jouw groeikansen
           liggen.
         </p>
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link href="/gezondheidscheck" className="btn-white">
+        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          <Link href="/gezondheidscheck" className="btn-white w-full sm:w-auto">
             DOE DE GRATIS CHECK
           </Link>
-          <Link href="/workshop-stuurcijfers" className="btn-outline-white">
+          <Link href="/workshop-stuurcijfers" className="btn-outline-white w-full sm:w-auto">
             BOEK DE WORKSHOP
           </Link>
         </div>

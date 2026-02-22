@@ -39,10 +39,10 @@ export default function OverOnsPage() {
       {/* ── Hero ── */}
       <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
+          <h1 className="mb-3 text-3xl font-bold text-cobiz-dark sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Wij zijn COBIZ
           </h1>
-          <p className="text-lg text-gray-600 md:text-xl">
+          <p className="text-base text-gray-600 md:text-lg lg:text-xl">
             Ondernemers die ondernemers helpen met financieel inzicht
           </p>
         </div>
@@ -51,11 +51,11 @@ export default function OverOnsPage() {
       {/* ── Story ── */}
       <section className="bg-white section-padding">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
+          <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
             {/* Photo placeholder */}
             <div className="w-full flex-1">
-              <div className="flex items-center justify-center rounded-2xl bg-gray-200 px-8 py-32">
-                <p className="text-lg font-medium text-gray-500">
+              <div className="flex items-center justify-center rounded-2xl bg-gray-200 px-8 py-24 sm:py-32">
+                <p className="text-base font-medium text-gray-500 sm:text-lg">
                   Foto Anja &amp; Dirk
                 </p>
               </div>
@@ -63,22 +63,22 @@ export default function OverOnsPage() {
 
             {/* Story text */}
             <div className="flex-1">
-              <p className="mb-6 text-lg text-gray-700">
+              <p className="mb-5 text-base text-gray-700 sm:mb-6 sm:text-lg">
                 COBIZ is opgericht door Anja Warrot en Dirk Colman. Met meer dan
                 20 jaar financi&euml;le expertise en 7 jaar ervaring als
                 KMO-zaakvoerder begrijpen we de uitdagingen van ondernemers als
                 geen ander.
               </p>
 
-              <p className="mb-6 text-lg text-gray-700">
+              <p className="mb-5 text-base text-gray-700 sm:mb-6 sm:text-lg">
                 We hebben zelf een selectiekantoor gerund. We weten hoe het voelt
                 om &apos;s nachts wakker te liggen over cashflow, om beslissingen
                 te nemen op buikgevoel, en om te veel bezig te zijn met andermans
                 rekeningen betalen.
               </p>
 
-              <blockquote className="border-l-4 border-cobiz-green py-2 pl-6">
-                <p className="text-lg italic text-cobiz-dark">
+              <blockquote className="border-l-4 border-cobiz-green py-2 pl-5 sm:pl-6">
+                <p className="text-base italic text-cobiz-dark sm:text-lg">
                   &ldquo;Die ervaring is de basis van COBIZ. We willen dat elke
                   ondernemer toegang heeft tot de financi&euml;le inzichten die
                   het verschil maken.&rdquo;
@@ -92,20 +92,20 @@ export default function OverOnsPage() {
       {/* ── Why COBIZ ── */}
       <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-5xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+          <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
             Waarom COBIZ?
           </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {values.map(({ Icon, title, description }) => (
               <div
                 key={title}
-                className="card-3d flex flex-col items-center rounded-xl bg-white p-6 text-center"
+                className="card-3d flex flex-col items-center rounded-xl bg-white p-5 text-center sm:p-6"
               >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-cobiz-green/10">
-                  <Icon className="h-7 w-7 text-cobiz-green" />
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-cobiz-green/10 sm:mb-4 sm:h-14 sm:w-14">
+                  <Icon className="h-6 w-6 text-cobiz-green sm:h-7 sm:w-7" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-cobiz-dark">
+                <h3 className="mb-1.5 text-base font-bold text-cobiz-dark sm:mb-2 sm:text-lg">
                   {title}
                 </h3>
                 <p className="text-sm text-gray-600">{description}</p>
@@ -118,15 +118,15 @@ export default function OverOnsPage() {
       {/* ── Mission ── */}
       <section className="bg-white section-padding">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-8 text-3xl font-bold text-cobiz-dark md:text-4xl">
+          <h2 className="mb-6 text-2xl font-bold text-cobiz-dark sm:mb-8 sm:text-3xl md:text-4xl">
             Onze missie
           </h2>
-          <p className="mb-6 text-lg text-gray-700">
+          <p className="mb-5 text-base text-gray-700 sm:mb-6 sm:text-lg">
             Elke KMO verdient toegang tot financi&euml;le stuurinformatie die
             &eacute;cht werkt. Niet de saaie spreadsheets van je boekhouder,
             maar heldere inzichten waarmee je gefundeerde beslissingen neemt.
           </p>
-          <p className="text-lg text-gray-700">
+          <p className="text-base text-gray-700 sm:text-lg">
             Wij zijn geen vervanging voor je boekhouder. We zijn de aanvulling
             die vooruit kijkt, terwijl je boekhouder achteruit kijkt.
           </p>
@@ -138,10 +138,10 @@ export default function OverOnsPage() {
         <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(92,201,80,0.4) 0%, transparent 70%)' }} />
         <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">
+          <h2 className="mb-6 text-2xl font-bold text-white sm:mb-8 sm:text-3xl md:text-4xl">
             Benieuwd wat we voor jou kunnen betekenen?
           </h2>
-          <Link href="/gratis-gesprek" className="btn-white">
+          <Link href="/gratis-gesprek" className="btn-white w-full sm:w-auto">
             PLAN EEN GRATIS GESPREK
           </Link>
         </div>
