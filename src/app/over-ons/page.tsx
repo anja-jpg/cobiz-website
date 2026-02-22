@@ -134,9 +134,9 @@ export default function OverOnsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#133F3E' }}>
-        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-        <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(26,86,84,0.6) 0%, transparent 70%)' }} />
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#51B848' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(92,201,80,0.4) 0%, transparent 70%)' }} />
         <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">
             Benieuwd wat we voor jou kunnen betekenen?

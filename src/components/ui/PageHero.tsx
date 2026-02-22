@@ -29,11 +29,11 @@ export default function PageHero({
   return (
     <section
       className={`relative overflow-hidden ${compact ? 'px-4 py-16 md:py-20' : 'section-padding'}`}
-      style={{ backgroundColor: '#133F3E' }}
+      style={{ backgroundColor: '#51B848' }}
     >
       {/* Subtle dot pattern */}
       <div
-        className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)',
           backgroundSize: '32px 32px',
@@ -43,7 +43,7 @@ export default function PageHero({
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(26,86,84,0.6) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(92,201,80,0.4) 0%, transparent 70%)',
         }}
       />
 
