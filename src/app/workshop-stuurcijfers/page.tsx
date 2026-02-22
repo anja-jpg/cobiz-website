@@ -12,6 +12,10 @@ import {
   Euro,
   Briefcase,
   ArrowRight,
+  TrendingUp,
+  PieChart,
+  Gauge,
+  CheckCircle,
 } from 'lucide-react';
 import WorkshopDateCard from '@/components/workshop/WorkshopDateCard';
 import BookingForm from '@/components/workshop/BookingForm';
@@ -145,6 +149,171 @@ export default function WorkshopStuurcijfersPage() {
         </div>
       </section>
 
+      {/* ── Voor / Na Cijfersalade ── */}
+      <section className="bg-white section-padding">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="mb-4 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
+            Van cijfersalade naar heldere inzichten
+          </h2>
+          <p className="mx-auto mb-12 max-w-2xl text-center text-gray-600">
+            Dit is wat de workshop voor jou doet — in 4,5 uur.
+          </p>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* VOOR */}
+            <div className="relative overflow-hidden rounded-2xl border-2 border-cobiz-coral/30 bg-gradient-to-br from-red-50 to-orange-50 p-8">
+              <div className="mb-6 flex items-center gap-3">
+                <span className="rounded-full bg-cobiz-coral/15 px-4 py-1.5 text-sm font-bold uppercase tracking-wider text-cobiz-coral">
+                  Voor de workshop
+                </span>
+              </div>
+
+              {/* Chaotische cijfers simulatie */}
+              <div className="mb-6 rounded-xl border border-gray-200 bg-white/80 p-5 font-mono text-sm">
+                <div className="mb-3 flex items-center gap-2 border-b border-gray-100 pb-2 text-xs text-gray-400">
+                  <span className="h-2 w-2 rounded-full bg-red-300"></span>
+                  <span className="h-2 w-2 rounded-full bg-yellow-300"></span>
+                  <span className="h-2 w-2 rounded-full bg-green-300"></span>
+                  <span className="ml-2">jaarrekening_2024_v3_DEFINITIEF(2).xlsx</span>
+                </div>
+                <div className="space-y-2 text-gray-500">
+                  <div className="flex justify-between">
+                    <span>Omzet Q3</span>
+                    <span className="text-gray-400">€ 847.293,41</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Kosten variabel</span>
+                    <span className="text-gray-400">€ 412.087,--</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>EBITDA (??)</span>
+                    <span className="text-gray-400">€ ???.???</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Solvabiliteit</span>
+                    <span className="text-gray-400">0,42... of 42%?</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Current ratio</span>
+                    <span className="text-gray-400">1,8 — is dit goed?</span>
+                  </div>
+                  <div className="mt-3 border-t border-dashed border-gray-200 pt-3 text-center text-xs italic text-gray-400">
+                    &quot;Wat betekent dit allemaal?&quot;
+                  </div>
+                </div>
+              </div>
+
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cobiz-coral">✗</span>
+                  Spreadsheets vol cijfers zonder context
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cobiz-coral">✗</span>
+                  Boekhouder praat in vakjargon
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cobiz-coral">✗</span>
+                  Beslissingen op buikgevoel
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-cobiz-coral">✗</span>
+                  Onzekerheid over financiële gezondheid
+                </li>
+              </ul>
+            </div>
+
+            {/* NA */}
+            <div className="relative overflow-hidden rounded-2xl border-2 border-cobiz-green/30 bg-gradient-to-br from-green-50 to-emerald-50 p-8">
+              <div className="mb-6 flex items-center gap-3">
+                <span className="rounded-full bg-cobiz-green/15 px-4 py-1.5 text-sm font-bold uppercase tracking-wider text-cobiz-green">
+                  Na de workshop
+                </span>
+              </div>
+
+              {/* Clean dashboard simulatie */}
+              <div className="mb-6 rounded-xl border border-cobiz-green/20 bg-white/80 p-5">
+                <div className="mb-4 flex items-center gap-2 border-b border-gray-100 pb-2 text-xs font-semibold text-cobiz-dark">
+                  <Gauge className="h-3.5 w-3.5 text-cobiz-green" />
+                  Jouw Scoringskaart
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <div className="mb-1 flex items-center justify-between text-sm">
+                      <span className="flex items-center gap-2 font-medium text-cobiz-dark">
+                        <TrendingUp className="h-3.5 w-3.5 text-cobiz-green" />
+                        Winstmarge
+                      </span>
+                      <span className="font-bold text-cobiz-green">18,2%</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-gray-100">
+                      <div className="h-2 w-3/4 rounded-full bg-cobiz-green"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="mb-1 flex items-center justify-between text-sm">
+                      <span className="flex items-center gap-2 font-medium text-cobiz-dark">
+                        <PieChart className="h-3.5 w-3.5 text-cobiz-green" />
+                        Cashflow score
+                      </span>
+                      <span className="font-bold text-cobiz-green">Gezond</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-gray-100">
+                      <div className="h-2 w-4/5 rounded-full bg-cobiz-green"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="mb-1 flex items-center justify-between text-sm">
+                      <span className="flex items-center gap-2 font-medium text-cobiz-dark">
+                        <BarChart3 className="h-3.5 w-3.5 text-cobiz-yellow" />
+                        Solvabiliteit
+                      </span>
+                      <span className="font-bold text-cobiz-yellow">Aandacht</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-gray-100">
+                      <div className="h-2 w-2/5 rounded-full bg-cobiz-yellow"></div>
+                    </div>
+                  </div>
+                  <div className="mt-3 border-t border-gray-100 pt-3 text-center text-xs font-semibold text-cobiz-green">
+                    → Actie: solvabiliteit verbeteren via plan X
+                  </div>
+                </div>
+              </div>
+
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />
+                  Persoonlijke scoringskaart met jouw KPI&apos;s
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />
+                  Direct zien waar actie nodig is
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />
+                  Beslissingen op basis van feiten
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />
+                  Gesprek met boekhouder op niveau
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* CTA onder de vergelijking */}
+          <div className="mt-10 text-center">
+            <a
+              href="#kies-je-datum"
+              className="btn-primary inline-flex items-center gap-2"
+            >
+              IK WIL HELDERE CIJFERS
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── Wat leer je? ── */}
       <section className="bg-white section-padding">
         <div className="mx-auto max-w-5xl">
@@ -195,7 +364,7 @@ export default function WorkshopStuurcijfersPage() {
       </section>
 
       {/* ── Kies je datum ── */}
-      <section className="bg-white section-padding">
+      <section id="kies-je-datum" className="bg-white section-padding scroll-mt-24">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
             Kies je datum
