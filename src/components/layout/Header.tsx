@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 const dienstenItems = [
@@ -70,10 +71,15 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl font-extrabold tracking-tight text-cobiz-dark">
-            CO<span className="text-cobiz-green">BIZ</span>
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-full.svg"
+            alt="COBIZ.be - samen jouw business verbeteren"
+            width={180}
+            height={42}
+            priority
+            className="h-10 w-auto sm:h-11"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -84,7 +90,7 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => setDienstenOpen(!dienstenOpen)}
-                  className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold text-cobiz-dark transition-colors hover:bg-cobiz-beige hover:text-cobiz-green"
+                  className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold text-cobiz-dark transition-colors hover:bg-cobiz-mint hover:text-cobiz-green"
                 >
                   {item.label}
                   <ChevronDown
@@ -100,7 +106,7 @@ export default function Header() {
                       <Link
                         key={subItem.href}
                         href={subItem.href}
-                        className="block px-4 py-2.5 text-sm text-cobiz-dark transition-colors hover:bg-cobiz-beige hover:text-cobiz-green"
+                        className="block px-4 py-2.5 text-sm text-cobiz-dark transition-colors hover:bg-cobiz-mint hover:text-cobiz-green"
                         onClick={() => setDienstenOpen(false)}
                       >
                         {subItem.label}
@@ -113,7 +119,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="rounded-md px-3 py-2 text-sm font-semibold text-cobiz-dark transition-colors hover:bg-cobiz-beige hover:text-cobiz-green"
+                className="rounded-md px-3 py-2 text-sm font-semibold text-cobiz-dark transition-colors hover:bg-cobiz-mint hover:text-cobiz-green"
               >
                 {item.label}
               </Link>
@@ -165,7 +171,7 @@ export default function Header() {
                   </button>
 
                   {mobileDienstenOpen && (
-                    <div className="border-b border-gray-100 bg-cobiz-beige/30 py-2">
+                    <div className="border-b border-gray-100 bg-cobiz-mint/60 py-2">
                       {dienstenItems.map((subItem) => (
                         <Link
                           key={subItem.href}

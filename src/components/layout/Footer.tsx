@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const dienstenLinks = [
   { label: 'Workshop Stuurcijfers', href: '/workshop-stuurcijfers' },
@@ -23,9 +24,13 @@ export default function Footer() {
           {/* Column 1: COBIZ Logo & Tagline */}
           <div>
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-extrabold tracking-tight text-white">
-                CO<span className="text-cobiz-green">BIZ</span>
-              </span>
+              <Image
+                src="/logo-full-white.svg"
+                alt="COBIZ.be"
+                width={160}
+                height={38}
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
               Wij helpen ondernemers groeien met heldere stuurcijfers en

@@ -1,0 +1,11 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- C shape -->
+  <path d="M85 25C70 12 52 8 38 14C24 20 14 34 14 55C14 76 24 92 38 98C52 104 70 100 85 87" stroke="#133F3E" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <!-- Bar chart bars inside the C opening -->
+  <rect x="50" y="62" width="10" height="22" rx="3" fill="#51B848"/>
+  <rect x="65" y="50" width="10" height="34" rx="3" fill="#51B848"/>
+  <rect x="80" y="38" width="10" height="46" rx="3" fill="#51B848"/>
+  <!-- Upward arrow from top bar -->
+  <path d="M85 38L85 28" stroke="#51B848" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M80 33L85 26L90 33" stroke="#51B848" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
