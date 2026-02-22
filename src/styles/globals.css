@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cobiz-dark: #133F3E;
+  --color-cobiz-green: #51B848;
+  --color-cobiz-beige: #EFECE1;
+  --color-cobiz-white: #FFFFFF;
+  --color-cobiz-yellow: #F4BD1F;
+  --color-cobiz-coral: #DB685F;
+  --color-cobiz-dark-light: #1a5654;
+  --color-cobiz-green-dark: #46a33e;
+  --color-cobiz-green-light: #5cc950;
+
+  --font-heading: 'Belkin', 'Georgia', serif;
+  --font-body: 'Aalto Sans Pro', 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #1a1a1a;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-cobiz-dark);
+}
+
+/* Custom utility classes */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+/* CTA Button animations */
+.btn-primary {
+  background-color: var(--color-cobiz-green);
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.025em;
+  border: 2px solid var(--color-cobiz-green);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-cobiz-green-dark);
+  border-color: var(--color-cobiz-green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(81, 184, 72, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-cobiz-dark);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-cobiz-dark);
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-cobiz-dark);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-white {
+  background-color: white;
+  color: var(--color-cobiz-dark);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid white;
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.btn-white:hover {
+  background-color: var(--color-cobiz-beige);
+  border-color: var(--color-cobiz-beige);
+  transform: translateY(-1px);
+}
+
+/* Urgency indicators */
+.urgency-ok {
+  color: var(--color-cobiz-green);
+}
+
+.urgency-warning {
+  color: var(--color-cobiz-yellow);
+}
+
+.urgency-critical {
+  color: var(--color-cobiz-coral);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(19, 63, 62, 0.12);
+}
+
+/* Sticky mobile CTA */
+.sticky-mobile-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 0.75rem 1rem;
+  background: white;
+  border-top: 1px solid #e5e5e5;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .sticky-mobile-cta {
+    display: none;
+  }
+}
+
+/* Form styles */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-cobiz-green);
+  box-shadow: 0 0 0 3px rgba(81, 184, 72, 0.15);
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.375rem;
+  color: var(--color-cobiz-dark);
+  font-size: 0.875rem;
+}
+
+/* Quiz progress bar */
+.quiz-progress {
+  height: 6px;
+  background: #e5e5e5;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.quiz-progress-bar {
+  height: 100%;
+  background: var(--color-cobiz-green);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* Badge styles */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-green {
+  background-color: rgba(81, 184, 72, 0.12);
+  color: var(--color-cobiz-green-dark);
+}
+
+.badge-yellow {
+  background-color: rgba(244, 189, 31, 0.15);
+  color: #b8860b;
+}
+
+.badge-coral {
+  background-color: rgba(219, 104, 95, 0.12);
+  color: var(--color-cobiz-coral);
+}

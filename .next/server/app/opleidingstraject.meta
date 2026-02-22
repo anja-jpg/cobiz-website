@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/opleidingstraject/layout,_N_T_/opleidingstraject/page,_N_T_/opleidingstraject"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/opleidingstraject/__PAGE__",
+    "/opleidingstraject",
+    "/_index",
+    "/_head"
+  ]
+}

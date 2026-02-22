@@ -1,0 +1,104 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model WorkshopDate {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  startTime String   @default("17:00")
+  endTime   String   @default("21:30")
+  capacity  Int      @default(10)
+  location  String   @default("COBIZ-center")
+  status    String   @default("open")
+  price     Int      @default(12500)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings        WorkshopBooking[]
+  waitlistEntries WaitlistEntry[]
+}
+
+model WorkshopBooking {
+  id             Int      @id @default(autoincrement())
+  workshopDateId Int
+  firstName      String
+  lastName       String
+  email          String
+  phone          String
+  company        String
+  vatNumber      String?
+  paymentStatus  String   @default("pending")
+  paymentId      String?
+  createdAt      DateTime @default(now())
+
+  workshopDate WorkshopDate @relation(fields: [workshopDateId], references: [id])
+}
+
+model WaitlistEntry {
+  id             Int      @id @default(autoincrement())
+  workshopDateId Int
+  firstName      String
+  lastName       String
+  email          String
+  phone          String
+  company        String
+  createdAt      DateTime @default(now())
+
+  workshopDate WorkshopDate @relation(fields: [workshopDateId], references: [id])
+}
+
+model GroeirapportOrder {
+  id            Int      @id @default(autoincrement())
+  firstName     String
+  lastName      String
+  email         String
+  phone         String
+  company       String
+  vatNumber     String?
+  revenue       String?
+  employees     String?
+  situation     String?
+  paymentStatus String   @default("pending")
+  paymentId     String?
+  amount        Int      @default(150000)
+  createdAt     DateTime @default(now())
+}
+
+model HealthCheckResult {
+  id          Int      @id @default(autoincrement())
+  email       String
+  firstName   String
+  companyName String?
+  score       Int
+  category    String
+  answers     String
+  createdAt   DateTime @default(now())
+}
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String
+  phone     String?
+  company   String?
+  message   String
+  type      String   @default("contact")
+  createdAt DateTime @default(now())
+}
+
+model EmailSubscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  firstName String
+  source    String
+  tags      String   @default("")
+  createdAt DateTime @default(now())
+}

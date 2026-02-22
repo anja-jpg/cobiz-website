@@ -1,0 +1,182 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/stuurcijfers",
+      "destination": "/workshop-stuurcijfers",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/stuurcijfers(?:/)?$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/boekingen",
+      "regex": "^/admin/boekingen(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/boekingen(?:/)?$"
+    },
+    {
+      "page": "/admin/contacten",
+      "regex": "^/admin/contacten(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/contacten(?:/)?$"
+    },
+    {
+      "page": "/admin/gezondheidscheck",
+      "regex": "^/admin/gezondheidscheck(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/gezondheidscheck(?:/)?$"
+    },
+    {
+      "page": "/admin/groeirapporten",
+      "regex": "^/admin/groeirapporten(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/groeirapporten(?:/)?$"
+    },
+    {
+      "page": "/admin/workshops",
+      "regex": "^/admin/workshops(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/workshops(?:/)?$"
+    },
+    {
+      "page": "/api/contact",
+      "regex": "^/api/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/contact(?:/)?$"
+    },
+    {
+      "page": "/api/gezondheidscheck",
+      "regex": "^/api/gezondheidscheck(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/gezondheidscheck(?:/)?$"
+    },
+    {
+      "page": "/api/payments/groeirapport",
+      "regex": "^/api/payments/groeirapport(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/payments/groeirapport(?:/)?$"
+    },
+    {
+      "page": "/api/workshop/book",
+      "regex": "^/api/workshop/book(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/workshop/book(?:/)?$"
+    },
+    {
+      "page": "/api/workshop/waitlist",
+      "regex": "^/api/workshop/waitlist(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/workshop/waitlist(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/diensten",
+      "regex": "^/diensten(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/diensten(?:/)?$"
+    },
+    {
+      "page": "/gezondheidscheck",
+      "regex": "^/gezondheidscheck(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/gezondheidscheck(?:/)?$"
+    },
+    {
+      "page": "/gratis-gesprek",
+      "regex": "^/gratis\\-gesprek(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/gratis\\-gesprek(?:/)?$"
+    },
+    {
+      "page": "/groeirapport",
+      "regex": "^/groeirapport(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/groeirapport(?:/)?$"
+    },
+    {
+      "page": "/opleidingstraject",
+      "regex": "^/opleidingstraject(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/opleidingstraject(?:/)?$"
+    },
+    {
+      "page": "/over-ons",
+      "regex": "^/over\\-ons(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/over\\-ons(?:/)?$"
+    },
+    {
+      "page": "/workshop-stuurcijfers",
+      "regex": "^/workshop\\-stuurcijfers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/workshop\\-stuurcijfers(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}
