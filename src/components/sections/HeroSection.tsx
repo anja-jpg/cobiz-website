@@ -9,7 +9,7 @@ export default function HeroSection() {
           {/* Left column - Copy */}
           <div className="flex-1 text-center lg:text-left">
             <h1 className="mb-6 text-4xl font-bold leading-tight text-cobiz-dark md:text-5xl lg:text-6xl">
-              Van cijfersalade naar heldere stuurinformatie
+              Van cijferchaos naar grip op je cijfers en rust in je hoofd
             </h1>
             <p className="mb-8 text-lg text-gray-600 md:text-xl">
               Flexibele CFO-expertise voor KMO&apos;s die vooruit willen kijken,

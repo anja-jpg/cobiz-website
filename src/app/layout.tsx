@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     default: 'COBIZ - Flexibele CFO-expertise voor KMO\'s',
     template: '%s | COBIZ',
   },
-  description: 'Van cijfersalade naar heldere stuurinformatie. COBIZ biedt flexibele CFO-expertise voor KMO\'s die vooruit willen kijken. Workshop Stuurcijfers, Groeirapport en strategische begeleiding.',
+  description: 'Van cijferchaos naar grip op je cijfers en rust in je hoofd. COBIZ biedt flexibele CFO-expertise voor KMO\'s die vooruit willen kijken. Workshop Stuurcijfers, Groeirapport en strategische begeleiding.',
   keywords: [
     'CFO diensten KMO',
     'stuurcijfers onderneming',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: 'https://cobiz.be',
     siteName: 'COBIZ',
     title: 'COBIZ - Flexibele CFO-expertise voor KMO\'s',
-    description: 'Van cijfersalade naar heldere stuurinformatie. Flexibele CFO-expertise voor KMO\'s.',
+    description: 'Van cijferchaos naar grip op je cijfers en rust in je hoofd. Flexibele CFO-expertise voor KMO\'s.',
   },
   robots: {
     index: true,

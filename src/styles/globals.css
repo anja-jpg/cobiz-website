@@ -10,6 +10,7 @@
   --color-cobiz-dark-light: #1a5654;
   --color-cobiz-green-dark: #46a33e;
   --color-cobiz-green-light: #5cc950;
+  --color-cobiz-mint: #F0F9F4;
 
   --font-heading: 'Belkin', 'Georgia', serif;
   --font-body: 'Aalto Sans Pro', 'Inter', 'Segoe UI', sans-serif;
@@ -46,26 +47,45 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* CTA Button animations */
+/* ── Buttons ── */
 .btn-primary {
-  background-color: var(--color-cobiz-green);
+  background: linear-gradient(135deg, var(--color-cobiz-green), var(--color-cobiz-green-light));
   color: white;
   font-weight: 600;
   padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-block;
   text-align: center;
   font-size: 1rem;
   letter-spacing: 0.025em;
-  border: 2px solid var(--color-cobiz-green);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(81, 184, 72, 0.25);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-primary:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-cobiz-green-dark);
-  border-color: var(--color-cobiz-green-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(81, 184, 72, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(81, 184, 72, 0.4);
 }
 
 .btn-secondary {
@@ -73,9 +93,9 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-cobiz-dark);
   font-weight: 600;
   padding: 1rem 2rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   border: 2px solid var(--color-cobiz-dark);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-block;
   text-align: center;
   font-size: 1rem;
@@ -84,7 +104,8 @@ h1, h2, h3, h4, h5, h6 {
 .btn-secondary:hover {
   background-color: var(--color-cobiz-dark);
   color: white;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(19, 63, 62, 0.3);
 }
 
 .btn-white {
@@ -92,18 +113,80 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-cobiz-dark);
   font-weight: 600;
   padding: 1rem 2rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   border: 2px solid white;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-white:hover {
+  background-color: var(--color-cobiz-mint);
+  border-color: var(--color-cobiz-mint);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-block;
   text-align: center;
   font-size: 1rem;
 }
 
-.btn-white:hover {
-  background-color: var(--color-cobiz-beige);
-  border-color: var(--color-cobiz-beige);
-  transform: translateY(-1px);
+.btn-outline-white:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+}
+
+/* Gradient button for date cards */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--color-cobiz-dark), var(--color-cobiz-green));
+  color: white;
+  font-weight: 700;
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(19, 63, 62, 0.3);
+}
+
+.btn-gradient::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-gradient:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(19, 63, 62, 0.4);
 }
 
 /* Urgency indicators */
@@ -119,14 +202,43 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-cobiz-coral);
 }
 
-/* Card hover effects */
+/* ── Card effects ── */
 .card-hover {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(19, 63, 62, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(19, 63, 62, 0.15);
+}
+
+/* 3D card with green sweep on hover */
+.card-3d {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(19, 63, 62, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(81, 184, 72, 0.05), transparent);
+  transition: left 0.5s ease;
+  z-index: 0;
+}
+
+.card-3d:hover::before {
+  left: 100%;
+}
+
+.card-3d:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(19, 63, 62, 0.18);
 }
 
 /* Sticky mobile CTA */
@@ -137,9 +249,9 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   z-index: 40;
   padding: 0.75rem 1rem;
-  background: white;
-  border-top: 1px solid #e5e5e5;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--color-cobiz-green), var(--color-cobiz-green-light));
+  border-top: none;
+  box-shadow: 0 -4px 20px rgba(81, 184, 72, 0.3);
 }
 
 @media (min-width: 768px) {
@@ -148,21 +260,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Form styles */
+/* ── Form styles ── */
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: white;
 }
 
 .form-input:focus {
   outline: none;
   border-color: var(--color-cobiz-green);
-  box-shadow: 0 0 0 3px rgba(81, 184, 72, 0.15);
+  box-shadow: 0 0 0 4px rgba(81, 184, 72, 0.12);
+  transform: translateY(-1px);
 }
 
 .form-label {
@@ -183,12 +296,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .quiz-progress-bar {
   height: 100%;
-  background: var(--color-cobiz-green);
+  background: linear-gradient(90deg, var(--color-cobiz-green), var(--color-cobiz-green-light));
   border-radius: 3px;
   transition: width 0.4s ease;
 }
 
-/* Badge styles */
+/* ── Badge styles ── */
 .badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
@@ -212,4 +325,66 @@ h1, h2, h3, h4, h5, h6 {
 .badge-coral {
   background-color: rgba(219, 104, 95, 0.12);
   color: var(--color-cobiz-coral);
+}
+
+/* ── Animations ── */
+
+/* Scroll fade-in */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating / bobbing animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(244, 189, 31, 0.4); }
+  50% { box-shadow: 0 0 20px 6px rgba(244, 189, 31, 0.2); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Pulse green glow */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(81, 184, 72, 0.4); }
+  50% { box-shadow: 0 0 25px 8px rgba(81, 184, 72, 0.2); }
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2.5s ease-in-out infinite;
+}
+
+/* Subtle background pattern animation */
+@keyframes pattern-drift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.animate-pattern {
+  animation: pattern-drift 20s linear infinite;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
