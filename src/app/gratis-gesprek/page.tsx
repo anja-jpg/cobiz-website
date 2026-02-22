@@ -42,7 +42,7 @@ export default function GratisGesprekPage() {
   return (
     <SiteLayout>
       {/* ── Hero ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
             Gratis Kennismakingsgesprek

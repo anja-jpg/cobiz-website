@@ -27,7 +27,7 @@ const services: ServiceCard[] = [
     badgeClass: 'badge badge-green',
     title: 'Workshop Stuurcijfers',
     description:
-      'In 4,5 uur van cijfersalade naar heldere stuurinformatie',
+      'In 4,5 uur van cijferchaos naar grip op je cijfers',
     price: '\u20AC125 incl. BTW',
     ctaLabel: 'MEER INFO',
     ctaHref: '/workshop-stuurcijfers',
@@ -71,7 +71,7 @@ export default function DienstenPage() {
   return (
     <SiteLayout>
       {/* ── Hero ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
             Onze Diensten
@@ -90,7 +90,7 @@ export default function DienstenPage() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="card-hover flex flex-col rounded-2xl border border-gray-200 bg-white p-8"
+                className="card-3d flex flex-col rounded-2xl border border-gray-200 bg-white p-8"
               >
                 {/* Badge */}
                 <div className="mb-4 min-h-[1.5rem]">
@@ -133,7 +133,7 @@ export default function DienstenPage() {
       </section>
 
       {/* ── Approach ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-8 text-3xl font-bold text-cobiz-dark md:text-4xl">
             Onze aanpak
@@ -147,8 +147,10 @@ export default function DienstenPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-cobiz-dark section-padding">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#133F3E' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(26,86,84,0.6) 0%, transparent 70%)' }} />
+        <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">
             Niet zeker welke dienst bij jou past?
           </h2>

@@ -37,7 +37,7 @@ export default function OverOnsPage() {
   return (
     <SiteLayout>
       {/* ── Hero ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
             Wij zijn COBIZ
@@ -90,7 +90,7 @@ export default function OverOnsPage() {
       </section>
 
       {/* ── Why COBIZ ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
             Waarom COBIZ?
@@ -100,7 +100,7 @@ export default function OverOnsPage() {
             {values.map(({ Icon, title, description }) => (
               <div
                 key={title}
-                className="card-hover flex flex-col items-center rounded-xl bg-white p-6 text-center shadow-sm"
+                className="card-3d flex flex-col items-center rounded-xl bg-white p-6 text-center"
               >
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-cobiz-green/10">
                   <Icon className="h-7 w-7 text-cobiz-green" />
@@ -134,8 +134,10 @@ export default function OverOnsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-cobiz-dark section-padding">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#133F3E' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(26,86,84,0.6) 0%, transparent 70%)' }} />
+        <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">
             Benieuwd wat we voor jou kunnen betekenen?
           </h2>

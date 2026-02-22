@@ -59,7 +59,7 @@ export default function OpleidingstrajectPage() {
   return (
     <SiteLayout>
       {/* ── Hero ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
           <span className="badge badge-coral mb-4">START SEPTEMBER 2025</span>
           <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
@@ -83,7 +83,7 @@ export default function OpleidingstrajectPage() {
             {practicalDetails.map(({ Icon, label, value }) => (
               <div
                 key={label}
-                className="flex items-start gap-4 rounded-xl bg-cobiz-beige/40 p-5"
+                className="flex items-start gap-4 rounded-xl bg-cobiz-mint p-5"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cobiz-green/10">
                   <Icon className="h-5 w-5 text-cobiz-green" />
@@ -106,7 +106,7 @@ export default function OpleidingstrajectPage() {
       </section>
 
       {/* ── What You Learn ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
             Wat leer je?
@@ -116,7 +116,7 @@ export default function OpleidingstrajectPage() {
             {learnings.map(({ Icon, text }) => (
               <div
                 key={text}
-                className="card-hover flex flex-col items-center rounded-xl bg-white p-6 text-center shadow-sm"
+                className="card-3d flex flex-col items-center rounded-xl bg-white p-6 text-center"
               >
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-cobiz-green/10">
                   <Icon className="h-7 w-7 text-cobiz-green" />
@@ -129,8 +129,10 @@ export default function OpleidingstrajectPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-cobiz-dark section-padding">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#133F3E' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(26,86,84,0.6) 0%, transparent 70%)' }} />
+        <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="mb-8 text-3xl font-bold text-white md:text-4xl">
             Interesse in het opleidingstraject?
           </h2>
@@ -142,10 +144,7 @@ export default function OpleidingstrajectPage() {
               NEEM CONTACT OP
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link
-              href="/gratis-gesprek"
-              className="inline-block rounded-lg border-2 border-white px-8 py-4 text-center font-semibold text-white transition-all hover:-translate-y-px hover:bg-white hover:text-cobiz-dark"
-            >
+            <Link href="/gratis-gesprek" className="btn-outline-white">
               OF PLAN EEN GRATIS GESPREK
             </Link>
           </div>

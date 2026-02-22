@@ -40,7 +40,7 @@ export default function ContactPage() {
   return (
     <SiteLayout>
       {/* ── Hero ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-4xl font-bold text-cobiz-dark md:text-5xl lg:text-6xl">
             Neem contact op
@@ -99,7 +99,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Map Placeholder ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center justify-center rounded-2xl bg-gray-200 px-8 py-24">
             <p className="text-lg font-medium text-gray-500">

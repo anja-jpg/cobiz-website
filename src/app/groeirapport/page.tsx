@@ -119,7 +119,7 @@ export default function GroeirapportPage() {
   return (
     <SiteLayout>
       {/* ── 1. Hero (beige bg) ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl text-center">
           <span className="badge badge-yellow mb-4">
             FINANCI&Euml;LE DOORLICHTING
@@ -183,7 +183,7 @@ export default function GroeirapportPage() {
       </section>
 
       {/* ── 3. Voor jou als je... (beige bg) ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
             Voor jou als je&hellip;
@@ -228,9 +228,11 @@ export default function GroeirapportPage() {
         </div>
       </section>
 
-      {/* ── 5. De investering (cobiz-dark bg) ── */}
-      <section className="bg-cobiz-dark section-padding">
-        <div className="mx-auto max-w-3xl text-center">
+      {/* ── 5. De investering ── */}
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#133F3E' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(26,86,84,0.6) 0%, transparent 70%)' }} />
+        <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
             De investering
           </h2>
@@ -279,7 +281,7 @@ export default function GroeirapportPage() {
       </section>
 
       {/* ── 7. FAQ (beige bg) ── */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
             Veelgestelde vragen

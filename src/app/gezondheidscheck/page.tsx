@@ -39,7 +39,7 @@ export default function GezondheidsCheckPage() {
       </section>
 
       {/* Quiz */}
-      <section className="bg-cobiz-beige section-padding">
+      <section className="bg-cobiz-mint section-padding">
         <HealthCheckQuiz />
       </section>
     </SiteLayout>

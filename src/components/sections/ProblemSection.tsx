@@ -12,7 +12,7 @@ const problems = [
 
 export default function ProblemSection() {
   return (
-    <section className="bg-cobiz-beige section-padding">
+    <section className="bg-cobiz-mint section-padding">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-12 text-center text-3xl font-bold text-cobiz-dark md:text-4xl">
           Herken je dit?
