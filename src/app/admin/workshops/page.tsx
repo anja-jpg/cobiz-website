@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Plus, Pencil, Trash2, CalendarDays } from 'lucide-react';
+import { prisma } from '@/lib/db';
 
 export const metadata: Metadata = {
   title: 'Workshops Beheren',
@@ -47,6 +48,10 @@ function StatusBadge({ status, geboekt, capaciteit }: { status: string; geboekt:
 }
 
 export default function WorkshopsAdminPage() {
+  if (!prisma) {
+    return <div className="p-8 text-center"><h1 className="text-2xl font-bold mb-4">Database niet geconfigureerd</h1><p>Stel DATABASE_URL in om het admin dashboard te gebruiken.</p></div>
+  }
+
   return (
     <div>
       <div className="mb-8 flex items-center justify-between">

@@ -1,21 +1,25 @@
 import { PrismaClient } from '@prisma/client'
-import { PrismaLibSql } from '@prisma/adapter-libsql'
-import { createClient } from '@libsql/client'
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-function createPrismaClient() {
-  const client = createClient({
-    url: 'file:./prisma/dev.db',
-  })
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const adapter = new PrismaLibSql(client as any)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return new PrismaClient({ adapter } as any)
+function createPrismaClient(): PrismaClient | null {
+  try {
+    if (!process.env.DATABASE_URL) {
+      console.warn('DATABASE_URL not set — database features disabled')
+      return null
+    }
+    return new PrismaClient()
+  } catch {
+    console.warn('Failed to create Prisma client — database features disabled')
+    return null
+  }
 }
 
-export const prisma = globalForPrisma.prisma ?? createPrismaClient()
+const client = globalForPrisma.prisma ?? createPrismaClient()
+export const prisma = client
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+if (process.env.NODE_ENV !== 'production' && client) {
+  globalForPrisma.prisma = client
+}

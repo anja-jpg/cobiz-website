@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 
 export async function POST(request: NextRequest) {
+  if (!prisma) {
+    return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+  }
+
   try {
     const body = await request.json()
     const { email, firstName, companyName, answers, score, category } = body
