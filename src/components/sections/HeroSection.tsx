@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { BarChart3, FileText, GraduationCap, MessageCircle } from "lucide-react";
+import type { HeroContent } from "@/lib/content";
 
-export default function HeroSection() {
+export default function HeroSection({ content }: { content: HeroContent }) {
   return (
     <section className="bg-white section-padding">
       <div className="mx-auto max-w-7xl">
         {/* Hero headline + CTA */}
         <div className="mx-auto max-w-4xl text-center mb-10 sm:mb-16">
           <h1 className="mb-4 text-3xl font-bold leading-tight text-cobiz-dark sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
-            Van cijferchaos naar grip op je cijfers en rust in je hoofd
+            {content.title}
           </h1>
           <p className="mb-6 text-base text-gray-600 sm:mb-8 md:text-lg lg:text-xl">
-            Flexibele CFO-expertise voor KMO&apos;s die vooruit willen kijken,
-            niet achteruit
+            {content.subtitle}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link href="/gezondheidscheck" className="btn-primary">
@@ -27,11 +27,7 @@ export default function HeroSection() {
         {/* SEO intro text */}
         <div className="mx-auto max-w-3xl text-center mb-10 sm:mb-16">
           <p className="text-base text-gray-600 sm:text-lg">
-            COBIZ is jouw externe CFO in de regio Dendermonde. We helpen
-            KMO-zaakvoerders met 5 tot 30 medewerkers om hun financi&euml;le
-            stuurinformatie te begrijpen en benutten. Van een hands-on workshop
-            tot een volledige financi&euml;le doorlichting &mdash; altijd
-            praktisch, altijd op maat.
+            {content.seoText}
           </p>
         </div>
 

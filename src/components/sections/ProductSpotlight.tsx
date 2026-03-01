@@ -1,71 +1,32 @@
 import Link from "next/link";
+import type { ProductsContent } from "@/lib/content";
 
-interface ProductCard {
-  badge: string;
-  badgeClass: string;
-  title: string;
-  description: string;
-  price: string;
-  details: string;
-  ctaLabel: string;
-  ctaHref: string;
-  ctaClass: string;
+const ctaClasses: Record<string, string> = {
+  '/workshop-stuurcijfers': 'btn-primary',
+  '/groeirapport': 'btn-secondary',
+  '/gratis-gesprek': 'btn-secondary',
 }
 
-const products: ProductCard[] = [
-  {
-    badge: "BOEKBAAR",
-    badgeClass: "badge badge-green",
-    title: "Workshop Stuurcijfers",
-    description:
-      "In 4,5 uur leer je jouw cijfers omzetten naar heldere stuurinformatie. Kleine groep, hands-on.",
-    price: "\u20AC125 incl. BTW",
-    details: "Inclusief broodjes & materiaal",
-    ctaLabel: "BOEK JE PLEK",
-    ctaHref: "/workshop-stuurcijfers",
-    ctaClass: "btn-primary",
-  },
-  {
-    badge: "POPULAIR",
-    badgeClass: "badge badge-yellow",
-    title: "Groeirapport",
-    description:
-      "Volledige financi\u00eble doorlichting met risicoscore op 5 valkuilen. Helder rapport met actieplan en quick wins.",
-    price: "\u20AC1.500 excl. BTW",
-    details: "50% aanbetaling, 50% bij oplevering",
-    ctaLabel: "MEER INFO",
-    ctaHref: "/groeirapport",
-    ctaClass: "btn-secondary",
-  },
-  {
-    badge: "",
-    badgeClass: "",
-    title: "Gratis Kennismakingsgesprek",
-    description:
-      "1 uur vrijblijvend sparren over jouw financi\u00eble uitdagingen. Online of fysiek.",
-    price: "Gratis",
-    details: "Geen verplichtingen",
-    ctaLabel: "PLAN GESPREK",
-    ctaHref: "/gratis-gesprek",
-    ctaClass: "btn-secondary",
-  },
-];
+const badgeClasses: Record<string, string> = {
+  'BOEKBAAR': 'badge badge-green',
+  'POPULAIR': 'badge badge-yellow',
+}
 
-export default function ProductSpotlight() {
+export default function ProductSpotlight({ content }: { content: ProductsContent }) {
   return (
     <section className="bg-white section-padding">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 text-center sm:mb-12">
           <h2 className="mb-2 text-2xl font-bold text-cobiz-dark sm:mb-3 sm:text-3xl md:text-4xl">
-            Onze Diensten
+            {content.title}
           </h2>
           <p className="text-base text-gray-600 sm:text-lg">
-            Van quick scan tot diepgaande begeleiding
+            {content.subtitle}
           </p>
         </div>
 
         <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
+          {content.items.map((product) => (
             <div
               key={product.title}
               className="card-hover flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8"
@@ -73,7 +34,7 @@ export default function ProductSpotlight() {
               {/* Badge */}
               <div className="mb-3 min-h-[1.5rem] sm:mb-4">
                 {product.badge && (
-                  <span className={product.badgeClass}>{product.badge}</span>
+                  <span className={badgeClasses[product.badge] || 'badge'}>{product.badge}</span>
                 )}
               </div>
 
@@ -96,7 +57,7 @@ export default function ProductSpotlight() {
               {/* CTA */}
               <Link
                 href={product.ctaHref}
-                className={`${product.ctaClass} w-full`}
+                className={`${ctaClasses[product.ctaHref] || 'btn-secondary'} w-full`}
               >
                 {product.ctaLabel}
               </Link>

@@ -2,54 +2,27 @@
 
 import { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import type { FAQContent } from '@/lib/content';
 
-const faqItems = [
-  {
-    question: 'Wat is een externe CFO en wat doet COBIZ precies?',
-    answer:
-      'Een externe CFO biedt dezelfde financiële expertise als een interne CFO, maar dan flexibel en op maat. COBIZ helpt KMO-zaakvoerders met stuurcijfers, cashflow-analyse, winstoptimalisatie en strategische financiële planning — zonder de kost van een voltijdse medewerker.',
-  },
-  {
-    question: 'Voor welke bedrijven is COBIZ geschikt?',
-    answer:
-      'COBIZ richt zich op KMO\'s met 5 tot 30 medewerkers in de regio Dendermonde en heel Vlaanderen. Of je nu een dienstenbedrijf, handelsbedrijf of productiebedrijf runt — als je meer grip wilt op je financiële cijfers, kunnen wij helpen.',
-  },
-  {
-    question: 'Wat is het verschil tussen een boekhouder en COBIZ?',
-    answer:
-      'Je boekhouder kijkt achteruit: hij verwerkt wat er is gebeurd. COBIZ kijkt vooruit: we vertalen je cijfers naar stuurinformatie waarmee je betere beslissingen neemt. We zijn geen vervanging voor je boekhouder, maar de strategische aanvulling die vooruit kijkt.',
-  },
-  {
-    question: 'Welke dienst past het best bij mij?',
-    answer:
-      'Dat hangt af van je situatie. De Workshop Stuurcijfers (€125) is ideaal als snelle kennismaking. Het Groeirapport (€1.500) geeft je een volledige financiële doorlichting met actieplan. Twijfel je? Plan een gratis kennismakingsgesprek en we adviseren je vrijblijvend.',
-  },
-  {
-    question: 'In welke regio is COBIZ actief?',
-    answer:
-      'COBIZ is gevestigd in Dendermonde en bedient KMO\'s in de regio: Lebbeke, Buggenhout, Hamme, Zele, Berlare, Wetteren, Aalst, Lokeren en Temse. We werken ook met ondernemers in Antwerpen, Gent en Brussel.',
-  },
-];
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqItems.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
-  })),
-};
-
-export default function HomeFAQ() {
+export default function HomeFAQ({ content }: { content: FAQContent }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   function toggle(index: number) {
     setOpenIndex(openIndex === index ? null : index);
   }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
 
   return (
     <section className="bg-cobiz-mint section-padding">
@@ -59,11 +32,11 @@ export default function HomeFAQ() {
       />
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
-          Veelgestelde vragen
+          {content.title}
         </h2>
 
         <div className="space-y-3">
-          {faqItems.map((item, index) => {
+          {content.items.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <div

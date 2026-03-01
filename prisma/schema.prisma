@@ -102,3 +102,13 @@ model EmailSubscriber {
   tags      String   @default("")
   createdAt DateTime @default(now())
 }
+
+model ContentBlock {
+  id        Int      @id @default(autoincrement())
+  page      String
+  section   String
+  content   String
+  updatedAt DateTime @updatedAt
+
+  @@unique([page, section])
+}

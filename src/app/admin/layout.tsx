@@ -10,6 +10,7 @@ import {
   MessageSquare,
   HeartPulse,
   Settings,
+  PenLine,
 } from 'lucide-react';
 import LogoutButton from './LogoutButton';
 
@@ -29,6 +30,7 @@ const sidebarLinks = [
   { href: '/admin/groeirapporten', label: 'Groeirapporten', Icon: FileText },
   { href: '/admin/contacten', label: 'Contacten', Icon: MessageSquare },
   { href: '/admin/gezondheidscheck', label: 'Groei-Check', Icon: HeartPulse },
+  { href: '/admin/teksten', label: 'Teksten', Icon: PenLine },
   { href: '/admin/instellingen', label: 'Instellingen', Icon: Settings },
 ];
 

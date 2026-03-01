@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { AboutContent } from "@/lib/content";
 
-export default function AboutPreview() {
+export default function AboutPreview({ content }: { content: AboutContent }) {
   return (
     <section className="bg-cobiz-mint section-padding">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
-          Ondernemers voor ondernemers
+          {content.title}
         </h2>
 
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
@@ -24,23 +25,17 @@ export default function AboutPreview() {
           {/* Right column - Story */}
           <div className="flex-1">
             <p className="mb-5 text-base text-gray-700 sm:mb-6 sm:text-lg">
-              Wij zijn Anja en Dirk. Met 20 jaar financi&euml;le expertise
-              &eacute;n 7 jaar ervaring als KMO-zaakvoerder weten we precies
-              waar het schoentje wringt.
+              {content.paragraph1}
             </p>
 
             <blockquote className="mb-5 border-l-4 border-cobiz-green py-2 pl-5 sm:mb-6 sm:pl-6">
               <p className="text-base italic text-cobiz-dark sm:text-lg">
-                &ldquo;We waren te veel bezig met andermans rekeningen betalen,
-                en te weinig met onze eigen cijfers. Die wake-up call werd de
-                basis van COBIZ.&rdquo;
+                &ldquo;{content.quote}&rdquo;
               </p>
             </blockquote>
 
             <p className="mb-6 text-base text-gray-700 sm:mb-8 sm:text-lg">
-              Vandaag helpen we ondernemers om niet dezelfde fouten te maken.
-              Niet met dure rapporten die in een lade verdwijnen, maar met
-              praktische tools en begeleiding die &eacute;cht werken.
+              {content.paragraph2}
             </p>
 
             <Link

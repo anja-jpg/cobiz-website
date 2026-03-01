@@ -1,25 +1,17 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
+import type { ProblemContent } from "@/lib/content";
 
-const problems = [
-  "Je hebt veel cijfers, maar weinig bruikbare informatie",
-  "Cashflow stress: geld binnen, geld buiten, maar waar sta je echt?",
-  "Je boekhouder spreekt 'Chinees' - cijfers zonder context",
-  "Je weet niet precies waarom je zo weinig overhoudt",
-  "Beslissingen neem je op buikgevoel, niet op data",
-  "Je bent meer bezig met overleven dan met groeien",
-];
-
-export default function ProblemSection() {
+export default function ProblemSection({ content }: { content: ProblemContent }) {
   return (
     <section className="bg-cobiz-mint section-padding">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
-          Herken je dit?
+          {content.title}
         </h2>
 
         <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 sm:gap-4">
-          {problems.map((problem, index) => (
+          {content.problems.map((problem, index) => (
             <div
               key={index}
               className="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm sm:gap-4 sm:p-5"
@@ -34,11 +26,7 @@ export default function ProblemSection() {
 
         <div className="mt-8 text-center sm:mt-12">
           <p className="mb-5 text-base text-gray-600 sm:mb-6 sm:text-lg">
-            Je bent niet alleen.{" "}
-            <span className="font-semibold text-cobiz-dark">
-              De meeste KMO-zaakvoerders
-            </span>{" "}
-            herkennen minstens 3 van deze punten.
+            {content.ctaDescription}
           </p>
           <Link
             href="/gezondheidscheck"
