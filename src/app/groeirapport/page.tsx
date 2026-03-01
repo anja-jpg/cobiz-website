@@ -12,9 +12,14 @@ import FAQAccordion from './FAQAccordion';
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Groeirapport - Financiële Doorlichting | COBIZ',
+  title: 'Groeirapport | Financiële doorlichting voor KMO\'s | COBIZ',
   description:
-    'Volledige financiële doorlichting met risicoscore op 5 valkuilen. Helder rapport met actieplan en quick wins. €1.500 excl. BTW.',
+    'Volledige financiële doorlichting van je KMO met risicoscore op 5 valkuilen, actieplan en quick wins. €1.500 excl. BTW. Ontvang helder inzicht in 2-3 weken.',
+  alternates: { canonical: '/groeirapport' },
+  openGraph: {
+    title: 'Groeirapport - Financiële Doorlichting | COBIZ',
+    description: 'Volledige financiële doorlichting met risicoscore, actieplan en quick wins. €1.500 excl. BTW.',
+  },
 };
 
 /* ── Section 2: "Wat krijg je?" data ── */
@@ -115,9 +120,26 @@ const faqItems = [
   },
 ];
 
+const groeirapportFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
 export default function GroeirapportPage() {
   return (
     <SiteLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(groeirapportFaqSchema) }}
+      />
       {/* ── 1. Hero ── */}
       <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#51B848' }}>
         <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />

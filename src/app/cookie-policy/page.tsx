@@ -4,6 +4,7 @@ import SiteLayout from '@/components/layout/SiteLayout';
 export const metadata: Metadata = {
   title: 'Cookie Policy | COBIZ',
   description: 'Lees hoe COBIZ cookies gebruikt op deze website.',
+  alternates: { canonical: '/cookie-policy' },
 };
 
 export default function CookiePolicyPage() {

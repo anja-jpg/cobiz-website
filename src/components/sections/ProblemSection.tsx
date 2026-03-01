@@ -36,9 +36,9 @@ export default function ProblemSection() {
           <p className="mb-5 text-base text-gray-600 sm:mb-6 sm:text-lg">
             Je bent niet alleen.{" "}
             <span className="font-semibold text-cobiz-dark">
-              80% van de KMO-zaakvoerders
+              De meeste KMO-zaakvoerders
             </span>{" "}
-            herkent minstens 3 van deze punten.
+            herkennen minstens 3 van deze punten.
           </p>
           <Link
             href="/gezondheidscheck"

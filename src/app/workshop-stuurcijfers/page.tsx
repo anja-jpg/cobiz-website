@@ -25,9 +25,14 @@ import SectionBlock from '@/components/ui/SectionBlock';
 import ScrollFadeIn from '@/components/ui/ScrollFadeIn';
 
 export const metadata: Metadata = {
-  title: 'Workshop Stuurcijfers | COBIZ',
+  title: 'Workshop Stuurcijfers Dendermonde | In 4,5 uur grip op je KMO-cijfers | COBIZ',
   description:
-    'In 4,5 uur van cijferchaos naar grip op je cijfers en rust in je hoofd. Workshop voor KMO-zaakvoerders die hun cijfers willen begrijpen en benutten.',
+    'Leer in 4,5 uur jouw stuurcijfers lezen en benutten. Kleine groep (max 10), inclusief broodjes en persoonlijke scoringskaart. €125 incl. BTW. Boek nu je plek!',
+  alternates: { canonical: '/workshop-stuurcijfers' },
+  openGraph: {
+    title: 'Workshop Stuurcijfers | COBIZ',
+    description: 'In 4,5 uur van cijferchaos naar grip op je cijfers. €125 incl. BTW, max 10 deelnemers.',
+  },
 };
 
 const workshopDates = [
@@ -106,9 +111,62 @@ const faqItems = [
   },
 ];
 
+const workshopFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const workshopEventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationEvent',
+  name: 'Workshop Stuurcijfers',
+  description: 'In 4,5 uur van cijferchaos naar grip op je cijfers en rust in je hoofd. Leer jouw stuurcijfers lezen en benutten.',
+  organizer: {
+    '@type': 'Organization',
+    name: 'COBIZ',
+    url: 'https://cobiz.be',
+  },
+  location: {
+    '@type': 'Place',
+    name: 'COBIZ-center',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Hoogveld 105',
+      postalCode: '9200',
+      addressLocality: 'Dendermonde',
+      addressCountry: 'BE',
+    },
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '125',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://cobiz.be/workshop-stuurcijfers',
+  },
+  maximumAttendeeCapacity: 10,
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+};
+
 export default function WorkshopStuurcijfersPage() {
   return (
     <SiteLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workshopFaqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workshopEventSchema) }}
+      />
       {/* ── Hero ── */}
       <PageHero
         title="Workshop Stuurcijfers"
@@ -136,6 +194,27 @@ export default function WorkshopStuurcijfersPage() {
           { label: 'MEER INFO', href: '#wat-leer-je', variant: 'outline' },
         ]}
       />
+
+      {/* ── Wat zijn stuurcijfers? ── */}
+      <SectionBlock theme="white">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="mb-6 text-2xl font-bold text-cobiz-dark sm:mb-8 sm:text-3xl md:text-4xl">
+            Wat zijn stuurcijfers?
+          </h2>
+          <p className="text-base text-gray-700 sm:text-lg">
+            Stuurcijfers &mdash; ook wel KPI&apos;s, stuurinformatie of
+            financi&euml;le kengetallen genoemd &mdash; zijn de essenti&euml;le
+            cijfers die je nodig hebt om je bedrijf te sturen. Denk aan je
+            winstmarge, cashflow-positie, solvabiliteit en debiteurenomlooptijd.
+            In tegenstelling tot je jaarrekening geven stuurcijfers je{' '}
+            <span className="font-semibold text-cobiz-dark">
+              real-time inzicht
+            </span>{' '}
+            in de gezondheid van je onderneming, zodat je proactief kunt
+            bijsturen in plaats van reactief te reageren.
+          </p>
+        </div>
+      </SectionBlock>
 
       {/* ── Wat leer je? ── */}
       <SectionBlock theme="mint" id="wat-leer-je">

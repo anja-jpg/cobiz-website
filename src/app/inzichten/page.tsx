@@ -4,9 +4,14 @@ import { Clock, ArrowRight, Lightbulb, TrendingUp, PiggyBank, BarChart3, Calcula
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Inzichten | COBIZ',
+  title: 'Inzichten | Financiële tips voor KMO\'s | COBIZ',
   description:
-    'Praktische inzichten over financieel management voor KMO\'s. Tips over stuurcijfers, cashflow, winstgevendheid en financiële sturing.',
+    'Praktische inzichten over financieel management voor KMO\'s. Lees artikelen over stuurcijfers, cashflow, winstgevendheid en financiële sturing.',
+  alternates: { canonical: '/inzichten' },
+  openGraph: {
+    title: 'Inzichten over financieel management | COBIZ',
+    description: 'Praktische tips en kennis over stuurcijfers, cashflow en winstgevendheid voor KMO\'s.',
+  },
 };
 
 interface Article {

@@ -3,7 +3,8 @@ import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | COBIZ',
-  description: 'Lees hoe COBIZ je persoonsgegevens beschermt conform de GDPR.',
+  description: 'Lees hoe COBIZ je persoonsgegevens beschermt conform de GDPR/AVG.',
+  alternates: { canonical: '/privacy-policy' },
 };
 
 export default function PrivacyPolicyPage() {

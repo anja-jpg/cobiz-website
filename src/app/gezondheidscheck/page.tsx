@@ -4,9 +4,14 @@ import HealthCheckQuiz from '@/components/quiz/HealthCheckQuiz';
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Gratis Groei-Check | COBIZ',
+  title: 'Gratis Groei-Check voor KMO\'s | Test je financiële gezondheid | COBIZ',
   description:
-    'Ontdek in 2 minuten hoe groeiklaar jouw bedrijf is. Beantwoord 12 vragen en ontvang direct je persoonlijke groei-score met concrete aanbevelingen per categorie.',
+    'Ontdek in 2 minuten hoe groeiklaar jouw bedrijf is. Beantwoord 12 vragen over financieel inzicht, efficiëntie, strategie en groei. Direct je persoonlijke score met concrete tips.',
+  alternates: { canonical: '/gezondheidscheck' },
+  openGraph: {
+    title: 'Gratis Groei-Check | COBIZ',
+    description: 'Test in 2 minuten hoe groeiklaar jouw KMO is. 12 vragen, directe score en concrete aanbevelingen.',
+  },
 };
 
 export default function GezondheidsCheckPage() {

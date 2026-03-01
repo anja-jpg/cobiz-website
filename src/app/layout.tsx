@@ -4,33 +4,46 @@ import CookieConsentBanner from '@/components/layout/CookieConsent'
 import AnalyticsLoader from '@/components/layout/AnalyticsLoader'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cobiz.be'),
   title: {
-    default: 'COBIZ - Flexibele CFO-expertise voor KMO\'s',
-    template: '%s | COBIZ',
+    default: 'Externe CFO voor KMO\'s | Flexibele financiële begeleiding | COBIZ',
+    template: '%s',
   },
-  description: 'Van cijferchaos naar grip op je cijfers en rust in je hoofd. COBIZ biedt flexibele CFO-expertise voor KMO\'s die vooruit willen kijken. Workshop Stuurcijfers, Groeirapport en strategische begeleiding.',
+  description: 'COBIZ biedt flexibele CFO-expertise en financiële stuurinformatie voor KMO\'s in Dendermonde, Antwerpen, Brussel en Gent. Workshop Stuurcijfers, Groeirapport en strategische begeleiding op maat.',
   keywords: [
+    'externe CFO KMO',
     'CFO diensten KMO',
     'stuurcijfers onderneming',
     'stuurinformatie KMO',
+    'financiële sturing KMO',
     'cashflow problemen oplossen',
     'winstgevendheid verbeteren KMO',
-    'financiële rechterhand',
+    'financiële rechterhand ondernemer',
+    'business controller Dendermonde',
     'business controller Antwerpen',
     'business controller Gent',
     'business controller Brussel',
-    'business controller Dendermonde',
     'CFO Dendermonde',
+    'financieel advies Dendermonde',
+    'KMO begeleiding Oost-Vlaanderen',
+    'financieel management KMO',
+    'boekhouder vs CFO',
   ],
   authors: [{ name: 'COBIZ' }],
   creator: 'COBIZ',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'nl_BE',
     url: 'https://cobiz.be',
     siteName: 'COBIZ',
-    title: 'COBIZ - Flexibele CFO-expertise voor KMO\'s',
-    description: 'Van cijferchaos naar grip op je cijfers en rust in je hoofd. Flexibele CFO-expertise voor KMO\'s.',
+    title: 'Externe CFO voor KMO\'s | COBIZ',
+    description: 'Flexibele CFO-expertise en financiële stuurinformatie voor KMO\'s. Workshop Stuurcijfers, Groeirapport en strategische begeleiding.',
+  },
+  twitter: {
+    card: 'summary_large_image',
   },
   robots: {
     index: true,
@@ -42,21 +55,53 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'COBIZ',
-  description: 'Flexibele CFO-expertise voor KMO\'s. Van cijferchaos naar grip op je cijfers.',
+  description: 'Flexibele CFO-expertise en financiële stuurinformatie voor KMO\'s in de regio Dendermonde. Workshop Stuurcijfers, Groeirapport en strategische begeleiding.',
   url: 'https://cobiz.be',
   logo: 'https://cobiz.be/logo-full.svg',
+  telephone: '+32475544952',
+  email: 'info@cobiz.be',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Hoogveld 105',
     postalCode: '9200',
     addressLocality: 'Dendermonde',
+    addressRegion: 'Oost-Vlaanderen',
     addressCountry: 'BE',
   },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Belgium',
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.0286,
+    longitude: 4.1003,
   },
-  serviceType: ['CFO diensten', 'Financieel advies', 'Business controlling', 'Stuurcijfers'],
+  areaServed: [
+    { '@type': 'City', name: 'Dendermonde' },
+    { '@type': 'City', name: 'Lebbeke' },
+    { '@type': 'City', name: 'Buggenhout' },
+    { '@type': 'City', name: 'Hamme' },
+    { '@type': 'City', name: 'Zele' },
+    { '@type': 'City', name: 'Berlare' },
+    { '@type': 'City', name: 'Wetteren' },
+    { '@type': 'City', name: 'Aalst' },
+    { '@type': 'City', name: 'Lokeren' },
+    { '@type': 'City', name: 'Temse' },
+    { '@type': 'City', name: 'Antwerpen' },
+    { '@type': 'City', name: 'Brussel' },
+    { '@type': 'City', name: 'Gent' },
+  ],
+  founder: [
+    { '@type': 'Person', name: 'Anja Warrot' },
+    { '@type': 'Person', name: 'Dirk Colman' },
+  ],
+  knowsAbout: [
+    'CFO diensten',
+    'Financiële stuurinformatie',
+    'Stuurcijfers',
+    'Cashflow management',
+    'Winstgevendheid KMO',
+    'Financiële planning',
+    'Business controlling',
+  ],
+  serviceType: ['CFO diensten', 'Financieel advies', 'Business controlling', 'Stuurcijfers', 'Workshop financieel management'],
   priceRange: '€€',
   knowsLanguage: ['nl'],
   sameAs: [
@@ -75,7 +120,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#51B848" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <link rel="canonical" href="https://cobiz.be" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

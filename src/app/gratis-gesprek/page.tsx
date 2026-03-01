@@ -10,9 +10,14 @@ import BookingFormGesprek from './BookingFormGesprek';
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Gratis Kennismakingsgesprek | COBIZ',
+  title: 'Gratis Kennismakingsgesprek | Vrijblijvend sparren | COBIZ',
   description:
-    '1 uur vrijblijvend sparren over jouw financiële uitdagingen. Online of fysiek in het COBIZ-center.',
+    '1 uur vrijblijvend sparren over jouw financiële uitdagingen. Online of fysiek in Dendermonde. Eerlijk advies, geen verplichtingen.',
+  alternates: { canonical: '/gratis-gesprek' },
+  openGraph: {
+    title: 'Gratis Kennismakingsgesprek | COBIZ',
+    description: '1 uur vrijblijvend sparren over jouw financiële situatie. Online of fysiek.',
+  },
 };
 
 const benefits = [

@@ -4,9 +4,14 @@ import { BarChart3, FileText, GraduationCap, MessageCircle } from 'lucide-react'
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Diensten | COBIZ',
+  title: 'Diensten voor KMO\'s | Workshop, Groeirapport & CFO-begeleiding | COBIZ',
   description:
-    'Van quick scan tot strategische begeleiding. Ontdek de diensten van COBIZ: Workshop Stuurcijfers, Groeirapport, Opleidingstraject en gratis kennismakingsgesprek.',
+    'Ontdek de diensten van COBIZ: Workshop Stuurcijfers (€125), Groeirapport (€1.500), Opleidingstraject en gratis kennismakingsgesprek. Financiële begeleiding op maat van jouw KMO.',
+  alternates: { canonical: '/diensten' },
+  openGraph: {
+    title: 'Diensten voor KMO\'s | COBIZ',
+    description: 'Van quick scan tot strategische begeleiding. Workshop Stuurcijfers, Groeirapport en meer.',
+  },
 };
 
 interface ServiceCard {

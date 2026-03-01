@@ -13,9 +13,14 @@ import {
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Opleidingstraject | COBIZ',
+  title: 'Opleidingstraject Financiële Sturing | 4-daags KMO-programma | COBIZ',
   description:
-    'Opleidingstraject Financiële Sturing: 4 dagen intensieve begeleiding voor KMO-zaakvoerders die grip willen op hun cijfers.',
+    'In 4 intensieve dagen leer je financiële analyse, KPI-dashboards, cashflow management en strategische planning. Voor KMO-zaakvoerders met 5-30 medewerkers. Start september 2025.',
+  alternates: { canonical: '/opleidingstraject' },
+  openGraph: {
+    title: 'Opleidingstraject Financiële Sturing | COBIZ',
+    description: '4-daags intensief traject voor KMO-zaakvoerders. Financiële analyse, dashboards en strategische planning.',
+  },
 };
 
 const practicalDetails = [
@@ -123,6 +128,83 @@ export default function OpleidingstrajectPage() {
                   <Icon className="h-6 w-6 text-cobiz-green sm:h-7 sm:w-7" />
                 </div>
                 <p className="text-sm font-semibold text-cobiz-dark sm:text-base">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Programma per dag ── */}
+      <section className="bg-white section-padding">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
+            Programma per dag
+          </h2>
+
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
+            {[
+              {
+                day: 'Dag 1',
+                title: 'Financi\u00eble basis & analyse',
+                items: [
+                  'Jaarrekening lezen en begrijpen',
+                  'Balans, resultatenrekening en cashflow',
+                  'De 5 belangrijkste financi\u00eble ratio\u2019s',
+                  'Praktijkoefening met eigen cijfers',
+                ],
+              },
+              {
+                day: 'Dag 2',
+                title: 'KPI\u2019s & dashboard',
+                items: [
+                  'De juiste KPI\u2019s voor jouw sector',
+                  'Je eigen dashboard opbouwen',
+                  'Benchmarking: hoe presteer je tegenover de sector?',
+                  'Van data naar stuurinformatie',
+                ],
+              },
+              {
+                day: 'Dag 3',
+                title: 'Cashflow & werkkapitaal',
+                items: [
+                  'Cashflow-prognose opstellen',
+                  'Werkkapitaal optimaliseren',
+                  'Debiteurenbeheer en betalingsbeleid',
+                  'Scenario-planning: wat als...?',
+                ],
+              },
+              {
+                day: 'Dag 4',
+                title: 'Strategie & actieplan',
+                items: [
+                  'Financi\u00eble doelen formuleren',
+                  'Groeistrategie\u00ebn evalueren',
+                  'Persoonlijk actieplan opstellen',
+                  'Presentatie en groepsfeedback',
+                ],
+              },
+            ].map(({ day, title, items }) => (
+              <div
+                key={day}
+                className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8"
+              >
+                <div className="mb-3 sm:mb-4">
+                  <span className="badge badge-green">{day}</span>
+                </div>
+                <h3 className="mb-3 text-lg font-bold text-cobiz-dark sm:mb-4 sm:text-xl">
+                  {title}
+                </h3>
+                <ul className="space-y-2">
+                  {items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-gray-600 sm:text-base"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cobiz-green" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

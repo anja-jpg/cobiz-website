@@ -4,9 +4,14 @@ import ContactForm from './ContactForm';
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Contact | COBIZ',
+  title: 'Contact | COBIZ Dendermonde | Financieel advies voor KMO\'s',
   description:
-    'Neem contact op met COBIZ. Stuur ons een bericht of plan een gratis kennismakingsgesprek.',
+    'Neem contact op met COBIZ in Dendermonde. Bel +32 475 54 49 52, mail info@cobiz.be of plan een gratis kennismakingsgesprek.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact | COBIZ',
+    description: 'Neem contact op met COBIZ. Hoogveld 105, 9200 Dendermonde.',
+  },
 };
 
 const contactInfo = [

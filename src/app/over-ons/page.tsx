@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Briefcase, GraduationCap, Building2, Target } from 'lucide-react';
+import { Briefcase, GraduationCap, Building2, Target, MapPin } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
 
 export const metadata: Metadata = {
-  title: 'Over Ons | COBIZ',
+  title: 'Over Ons | Anja Warrot & Dirk Colman | COBIZ Dendermonde',
   description:
-    'Leer Anja Warrot en Dirk Colman kennen, de oprichters van COBIZ. 20 jaar financiële expertise en 7 jaar KMO-ervaring.',
+    'Maak kennis met Anja Warrot en Dirk Colman, oprichters van COBIZ in Dendermonde. 20+ jaar financiële expertise en 7 jaar ervaring als KMO-zaakvoerder.',
+  alternates: { canonical: '/over-ons' },
+  openGraph: {
+    title: 'Over Ons | COBIZ',
+    description: 'Leer Anja Warrot en Dirk Colman kennen. 20+ jaar financiële expertise, nu ten dienste van KMO\'s.',
+  },
 };
 
 const values = [
@@ -45,6 +50,10 @@ export default function OverOnsPage() {
           </h1>
           <p className="text-base text-cobiz-dark md:text-lg lg:text-xl">
             Ondernemers die ondernemers helpen met financieel inzicht
+          </p>
+          <p className="mt-3 flex items-center justify-center gap-2 text-sm text-white/80 sm:text-base">
+            <MapPin className="h-4 w-4" />
+            Gevestigd in Dendermonde &mdash; actief in heel Vlaanderen
           </p>
         </div>
       </section>
@@ -86,6 +95,30 @@ export default function OverOnsPage() {
                 </p>
               </blockquote>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Expertise ── */}
+      <section className="bg-white section-padding">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-8 text-center text-2xl font-bold text-cobiz-dark sm:mb-12 sm:text-3xl md:text-4xl">
+            Onze expertise
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            {[
+              { title: 'Financi\u00eble analyse', text: 'Jaarrekeningen, cashflow, winstgevendheid en solvabiliteit doorgelicht' },
+              { title: 'Stuurcijfers & KPI\u2019s', text: 'De juiste cijfers identificeren om gefundeerde beslissingen te nemen' },
+              { title: 'Cashflow management', text: 'Cashflow optimaliseren en voorspelbaar maken' },
+              { title: 'Strategische planning', text: 'Financi\u00eble doelen vertalen naar concrete actieplannen' },
+              { title: 'Business controlling', text: 'Maandelijkse opvolging en bijsturing van je financi\u00eble koers' },
+              { title: 'Groei & waardering', text: 'Je bedrijf klaarmaken voor groei, overname of exit' },
+            ].map(({ title, text }) => (
+              <div key={title} className="rounded-xl border border-gray-200 bg-white p-5 sm:p-6">
+                <h3 className="mb-2 text-base font-bold text-cobiz-dark sm:text-lg">{title}</h3>
+                <p className="text-sm text-gray-600">{text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

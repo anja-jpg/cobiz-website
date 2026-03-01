@@ -14,7 +14,7 @@ interface ProductCard {
 
 const products: ProductCard[] = [
   {
-    badge: "START MEI",
+    badge: "BOEKBAAR",
     badgeClass: "badge badge-green",
     title: "Workshop Stuurcijfers",
     description:
