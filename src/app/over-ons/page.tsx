@@ -5,6 +5,8 @@ import { Briefcase, GraduationCap, Building2, Target, MapPin } from 'lucide-reac
 import SiteLayout from '@/components/layout/SiteLayout';
 import { getAboutPhotoUrl } from '@/lib/content';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Over Ons | Anja Warrot & Dirk Colman | COBIZ Dendermonde',
   description:
