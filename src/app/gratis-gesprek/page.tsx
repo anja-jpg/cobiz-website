@@ -8,6 +8,9 @@ import {
 } from 'lucide-react';
 import BookingFormGesprek from './BookingFormGesprek';
 import SiteLayout from '@/components/layout/SiteLayout';
+import { getContent, type BannerContent } from '@/lib/content';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Gratis Kennismakingsgesprek | Vrijblijvend sparren | COBIZ',
@@ -43,7 +46,9 @@ const benefits = [
   },
 ];
 
-export default function GratisGesprekPage() {
+export default async function GratisGesprekPage() {
+  const banner = await getContent<BannerContent>('banners', 'gratis-gesprek');
+
   return (
     <SiteLayout>
       {/* ── Hero ── */}
@@ -51,10 +56,10 @@ export default function GratisGesprekPage() {
         <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
-            Gratis Kennismakingsgesprek
+            {banner.title}
           </h1>
           <p className="text-base text-white/80 md:text-lg lg:text-xl">
-            1 uur vrijblijvend sparren over jouw financi&euml;le uitdagingen
+            {banner.subtitle}
           </p>
         </div>
       </section>

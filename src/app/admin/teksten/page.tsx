@@ -7,8 +7,10 @@ import { sectionLabels, pageLabels } from '@/lib/content-config'
 type SectionData = Record<string, unknown>
 type PageData = Record<string, SectionData>
 
+const pages = ['home', 'banners', 'overons'] as const
+
 export default function TekstenPage() {
-  const [activePage] = useState('home')
+  const [activePage, setActivePage] = useState<string>('home')
   const [data, setData] = useState<PageData | null>(null)
   const [openSections, setOpenSections] = useState<Set<string>>(new Set())
   const [saving, setSaving] = useState<string | null>(null)
@@ -146,8 +148,26 @@ export default function TekstenPage() {
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-cobiz-dark">Teksten bewerken</h2>
         <p className="mt-1 text-sm text-gray-500">
-          {pageLabels[activePage] || activePage} — klik op een sectie om te bewerken
+          Klik op een sectie om te bewerken
         </p>
+      </div>
+
+      {/* Page selector tabs */}
+      <div className="mb-6 flex gap-2 border-b border-gray-200 pb-3">
+        {pages.map(page => (
+          <button
+            key={page}
+            type="button"
+            onClick={() => { setActivePage(page); setOpenSections(new Set()) }}
+            className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+              activePage === page
+                ? 'bg-cobiz-green text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            {pageLabels[page] || page}
+          </button>
+        ))}
       </div>
 
       <div className="space-y-3">
@@ -204,6 +224,21 @@ export default function TekstenPage() {
   // ── Render helpers ─────────────────────────────────────────
 
   function renderSection(section: string, content: Record<string, unknown>) {
+    // Banner sections (all have title + subtitle)
+    if (activePage === 'banners') {
+      return renderBanner(section, content)
+    }
+    // Over Ons sections
+    if (activePage === 'overons') {
+      switch (section) {
+        case 'story': return renderOverOnsStory(content)
+        case 'expertise': return renderOverOnsExpertise(content)
+        case 'values': return renderOverOnsValues(content)
+        case 'mission': return renderOverOnsMission(content)
+        default: return null
+      }
+    }
+    // Home sections
     switch (section) {
       case 'hero': return renderHero(content)
       case 'problem': return renderProblem(content)
@@ -388,6 +423,93 @@ export default function TekstenPage() {
       <>
         <Field label="Titel" value={c.title as string} onChange={v => updateField('finalcta', 'title', v)} />
         <Field label="Ondertitel" value={c.subtitle as string} onChange={v => updateField('finalcta', 'subtitle', v)} />
+      </>
+    )
+  }
+
+  // ── Banner renderers ─────────────────────────────────────────
+
+  function renderBanner(section: string, c: Record<string, unknown>) {
+    return (
+      <>
+        <Field label="Titel" value={c.title as string} onChange={v => updateField(section, 'title', v)} />
+        <Field label="Ondertitel" value={c.subtitle as string} onChange={v => updateField(section, 'subtitle', v)} />
+      </>
+    )
+  }
+
+  // ── Over Ons renderers ───────────────────────────────────────
+
+  function renderOverOnsStory(c: Record<string, unknown>) {
+    return (
+      <>
+        <TextArea label="Paragraaf 1" value={c.paragraph1 as string} onChange={v => updateField('story', 'paragraph1', v)} />
+        <TextArea label="Paragraaf 2" value={c.paragraph2 as string} onChange={v => updateField('story', 'paragraph2', v)} />
+        <TextArea label="Citaat" value={c.quote as string} onChange={v => updateField('story', 'quote', v)} />
+      </>
+    )
+  }
+
+  function renderOverOnsExpertise(c: Record<string, unknown>) {
+    const items = c.items as Record<string, string>[]
+    return (
+      <>
+        <Field label="Titel" value={c.title as string} onChange={v => updateField('expertise', 'title', v)} />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Expertises</label>
+          {items.map((item, i) => (
+            <div key={i} className="mb-3 rounded-lg border border-gray-200 p-4 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-medium text-gray-500">Expertise {i + 1}</span>
+                <button onClick={() => removeArrayItem('expertise', 'items', i)}
+                  className="text-red-400 hover:text-red-600"><Trash2 className="h-4 w-4" /></button>
+              </div>
+              <SmallField label="Titel" value={item.title} onChange={v => updateArrayItem('expertise', 'items', i, 'title', v)} />
+              <SmallField label="Tekst" value={item.text} onChange={v => updateArrayItem('expertise', 'items', i, 'text', v)} />
+            </div>
+          ))}
+          <button onClick={() => addArrayItem('expertise', 'items', { title: '', text: '' })}
+            className="flex items-center gap-1 text-sm text-cobiz-green hover:underline mt-1">
+            <Plus className="h-4 w-4" /> Expertise toevoegen
+          </button>
+        </div>
+      </>
+    )
+  }
+
+  function renderOverOnsValues(c: Record<string, unknown>) {
+    const items = c.items as Record<string, string>[]
+    return (
+      <>
+        <Field label="Titel" value={c.title as string} onChange={v => updateField('values', 'title', v)} />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Waarden</label>
+          {items.map((item, i) => (
+            <div key={i} className="mb-3 rounded-lg border border-gray-200 p-4 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-medium text-gray-500">Waarde {i + 1}</span>
+                <button onClick={() => removeArrayItem('values', 'items', i)}
+                  className="text-red-400 hover:text-red-600"><Trash2 className="h-4 w-4" /></button>
+              </div>
+              <SmallField label="Titel" value={item.title} onChange={v => updateArrayItem('values', 'items', i, 'title', v)} />
+              <SmallField label="Beschrijving" value={item.description} onChange={v => updateArrayItem('values', 'items', i, 'description', v)} />
+            </div>
+          ))}
+          <button onClick={() => addArrayItem('values', 'items', { title: '', description: '' })}
+            className="flex items-center gap-1 text-sm text-cobiz-green hover:underline mt-1">
+            <Plus className="h-4 w-4" /> Waarde toevoegen
+          </button>
+        </div>
+      </>
+    )
+  }
+
+  function renderOverOnsMission(c: Record<string, unknown>) {
+    return (
+      <>
+        <Field label="Titel" value={c.title as string} onChange={v => updateField('mission', 'title', v)} />
+        <TextArea label="Paragraaf 1" value={c.paragraph1 as string} onChange={v => updateField('mission', 'paragraph1', v)} />
+        <TextArea label="Paragraaf 2" value={c.paragraph2 as string} onChange={v => updateField('mission', 'paragraph2', v)} />
       </>
     )
   }

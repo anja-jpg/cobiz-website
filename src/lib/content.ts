@@ -8,6 +8,11 @@ import type {
   TestimonialsContent,
   FAQContent,
   FinalCTAContent,
+  BannerContent,
+  OverOnsStoryContent,
+  OverOnsExpertiseContent,
+  OverOnsValuesContent,
+  OverOnsMissionContent,
 } from './content-config'
 
 // Re-export types and labels for server components
@@ -20,6 +25,11 @@ export type {
   TestimonialsContent,
   FAQContent,
   FinalCTAContent,
+  BannerContent,
+  OverOnsStoryContent,
+  OverOnsExpertiseContent,
+  OverOnsValuesContent,
+  OverOnsMissionContent,
 }
 export { sectionLabels, pageLabels } from './content-config'
 
@@ -149,8 +159,78 @@ export const homeDefaults: Record<string, unknown> = {
   } satisfies FinalCTAContent,
 }
 
+export const bannersDefaults: Record<string, unknown> = {
+  'over-ons': {
+    title: 'Wij zijn COBIZ',
+    subtitle: 'Ondernemers die ondernemers helpen met financieel inzicht',
+  } satisfies BannerContent,
+  diensten: {
+    title: 'Onze Diensten',
+    subtitle: 'Van quick scan tot strategische begeleiding — altijd op maat van jouw KMO',
+  } satisfies BannerContent,
+  contact: {
+    title: 'Neem contact op',
+    subtitle: 'We horen graag van je',
+  } satisfies BannerContent,
+  'gratis-gesprek': {
+    title: 'Gratis Kennismakingsgesprek',
+    subtitle: '1 uur vrijblijvend sparren over jouw financiële uitdagingen',
+  } satisfies BannerContent,
+  groeirapport: {
+    title: 'COBIZ Groeirapport',
+    subtitle: 'Hard werken, maar wat blijft er over? Tijd voor helder inzicht én optimalisatie.',
+  } satisfies BannerContent,
+  'workshop-stuurcijfers': {
+    title: 'Workshop Stuurcijfers',
+    subtitle: 'In 4,5 uur van cijferchaos naar grip op je cijfers en rust in je hoofd',
+  } satisfies BannerContent,
+  opleidingstraject: {
+    title: 'Opleidingstraject Financiële Sturing',
+    subtitle: '4 dagen intensieve begeleiding voor KMO-zaakvoerders die écht grip willen op hun cijfers',
+  } satisfies BannerContent,
+  inzichten: {
+    title: 'Inzichten',
+    subtitle: 'Praktische tips en kennis over financieel management voor KMO\'s',
+  } satisfies BannerContent,
+}
+
+export const overonsDefaults: Record<string, unknown> = {
+  story: {
+    paragraph1: 'COBIZ is opgericht door Anja Warrot en Dirk Colman. Met meer dan 20 jaar financiële expertise en 7 jaar ervaring als KMO-zaakvoerder begrijpen we de uitdagingen van ondernemers als geen ander.',
+    paragraph2: 'We hebben zelf een selectiekantoor gerund. We weten hoe het voelt om \'s nachts wakker te liggen over cashflow, om beslissingen te nemen op buikgevoel, en om te veel bezig te zijn met andermans rekeningen betalen.',
+    quote: 'Die ervaring is de basis van COBIZ. We willen dat elke ondernemer toegang heeft tot de financiële inzichten die het verschil maken.',
+  } satisfies OverOnsStoryContent,
+  expertise: {
+    title: 'Onze expertise',
+    items: [
+      { title: 'Financiële analyse', text: 'Jaarrekeningen, cashflow, winstgevendheid en solvabiliteit doorgelicht' },
+      { title: 'Stuurcijfers & KPI\u2019s', text: 'De juiste cijfers identificeren om gefundeerde beslissingen te nemen' },
+      { title: 'Cashflow management', text: 'Cashflow optimaliseren en voorspelbaar maken' },
+      { title: 'Strategische planning', text: 'Financiële doelen vertalen naar concrete actieplannen' },
+      { title: 'Business controlling', text: 'Maandelijkse opvolging en bijsturing van je financiële koers' },
+      { title: 'Groei & waardering', text: 'Je bedrijf klaarmaken voor groei, overname of exit' },
+    ],
+  } satisfies OverOnsExpertiseContent,
+  values: {
+    title: 'Waarom COBIZ?',
+    items: [
+      { title: 'Praktijkervaring', description: 'Niet alleen theorie, maar bewezen in de praktijk als ondernemer' },
+      { title: 'Financiële expertise', description: 'Master Handelswetenschappen en 20+ jaar finance ervaring' },
+      { title: 'KMO-focus', description: 'We begrijpen de specifieke uitdagingen van KMO\u2019s met 5-30 medewerkers' },
+      { title: 'Resultaatgericht', description: 'Geen rapporten voor de lade, maar actieplannen die werken' },
+    ],
+  } satisfies OverOnsValuesContent,
+  mission: {
+    title: 'Onze missie',
+    paragraph1: 'Elke KMO verdient toegang tot financiële stuurinformatie die écht werkt. Niet de saaie spreadsheets van je boekhouder, maar heldere inzichten waarmee je gefundeerde beslissingen neemt.',
+    paragraph2: 'Wij zijn geen vervanging voor je boekhouder. We zijn de aanvulling die vooruit kijkt, terwijl je boekhouder achteruit kijkt.',
+  } satisfies OverOnsMissionContent,
+}
+
 const allDefaults: Record<string, Record<string, unknown>> = {
   home: homeDefaults,
+  banners: bannersDefaults,
+  overons: overonsDefaults,
 }
 
 // ── Database functies ──────────────────────────────────────────

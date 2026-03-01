@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Clock, ArrowRight, Lightbulb, TrendingUp, PiggyBank, BarChart3, Calculator, Users } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
+import { getContent, type BannerContent } from '@/lib/content';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Inzichten | Financiële tips voor KMO\'s | COBIZ',
@@ -100,7 +103,9 @@ const articles: Article[] = [
   },
 ];
 
-export default function InzichtenPage() {
+export default async function InzichtenPage() {
+  const banner = await getContent<BannerContent>('banners', 'inzichten');
+
   return (
     <SiteLayout>
       {/* ── Hero ── */}
@@ -108,10 +113,10 @@ export default function InzichtenPage() {
         <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
-            Inzichten
+            {banner.title}
           </h1>
           <p className="text-base text-white/80 md:text-lg lg:text-xl">
-            Praktische tips en kennis over financieel management voor KMO&apos;s
+            {banner.subtitle}
           </p>
         </div>
       </section>

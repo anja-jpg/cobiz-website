@@ -23,6 +23,9 @@ import SiteLayout from '@/components/layout/SiteLayout';
 import PageHero from '@/components/ui/PageHero';
 import SectionBlock from '@/components/ui/SectionBlock';
 import ScrollFadeIn from '@/components/ui/ScrollFadeIn';
+import { getContent, type BannerContent } from '@/lib/content';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Workshop Stuurcijfers Dendermonde | In 4,5 uur grip op je KMO-cijfers | COBIZ',
@@ -156,7 +159,9 @@ const workshopEventSchema = {
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
 };
 
-export default function WorkshopStuurcijfersPage() {
+export default async function WorkshopStuurcijfersPage() {
+  const banner = await getContent<BannerContent>('banners', 'workshop-stuurcijfers');
+
   return (
     <SiteLayout>
       <script
@@ -169,8 +174,8 @@ export default function WorkshopStuurcijfersPage() {
       />
       {/* ── Hero ── */}
       <PageHero
-        title="Workshop Stuurcijfers"
-        subtitle="In 4,5 uur van cijferchaos naar grip op je cijfers en rust in je hoofd"
+        title={banner.title}
+        subtitle={banner.subtitle}
         details={
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-cobiz-dark sm:gap-3 sm:text-sm md:gap-6 md:text-base">
             <span className="flex items-center gap-1.5 sm:gap-2">

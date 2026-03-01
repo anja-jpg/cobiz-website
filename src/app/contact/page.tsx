@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import ContactForm from './ContactForm';
 import SiteLayout from '@/components/layout/SiteLayout';
+import { getContent, type BannerContent } from '@/lib/content';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Contact | COBIZ Dendermonde | Financieel advies voor KMO\'s',
@@ -41,7 +44,9 @@ const contactInfo = [
   },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const banner = await getContent<BannerContent>('banners', 'contact');
+
   return (
     <SiteLayout>
       {/* ── Hero ── */}
@@ -49,10 +54,10 @@ export default function ContactPage() {
         <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
-            Neem contact op
+            {banner.title}
           </h1>
           <p className="text-base text-white/80 md:text-lg lg:text-xl">
-            We horen graag van je
+            {banner.subtitle}
           </p>
         </div>
       </section>

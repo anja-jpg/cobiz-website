@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BarChart3, FileText, GraduationCap, MessageCircle } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
+import { getContent, type BannerContent } from '@/lib/content';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Diensten voor KMO\'s | Workshop, Groeirapport & CFO-begeleiding | COBIZ',
@@ -72,7 +75,9 @@ const services: ServiceCard[] = [
   },
 ];
 
-export default function DienstenPage() {
+export default async function DienstenPage() {
+  const banner = await getContent<BannerContent>('banners', 'diensten');
+
   return (
     <SiteLayout>
       {/* ── Hero ── */}
@@ -80,11 +85,10 @@ export default function DienstenPage() {
         <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
-            Onze Diensten
+            {banner.title}
           </h1>
           <p className="text-base text-white/80 md:text-lg lg:text-xl">
-            Van quick scan tot strategische begeleiding &mdash; altijd op maat
-            van jouw KMO
+            {banner.subtitle}
           </p>
         </div>
       </section>

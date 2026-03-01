@@ -10,6 +10,9 @@ import {
 import GroeirapportOrderForm from './GroeirapportOrderForm';
 import FAQAccordion from './FAQAccordion';
 import SiteLayout from '@/components/layout/SiteLayout';
+import { getContent, type BannerContent } from '@/lib/content';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Groeirapport | Financiële doorlichting voor KMO\'s | COBIZ',
@@ -133,7 +136,9 @@ const groeirapportFaqSchema = {
   })),
 };
 
-export default function GroeirapportPage() {
+export default async function GroeirapportPage() {
+  const banner = await getContent<BannerContent>('banners', 'groeirapport');
+
   return (
     <SiteLayout>
       <script
@@ -148,11 +153,10 @@ export default function GroeirapportPage() {
             FINANCI&Euml;LE DOORLICHTING
           </span>
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
-            COBIZ Groeirapport
+            {banner.title}
           </h1>
           <p className="mb-6 text-base text-white/80 sm:mb-8 md:text-lg lg:text-xl">
-            Hard werken, maar wat blijft er over? Tijd voor helder inzicht
-            &eacute;n optimalisatie.
+            {banner.subtitle}
           </p>
           <p className="mb-8 text-sm font-semibold text-white sm:mb-10 md:text-base">
             &euro;1.500 excl. BTW | Terugverdientijd = 1 goed inzicht

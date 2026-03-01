@@ -56,6 +56,33 @@ export interface FinalCTAContent {
   subtitle: string
 }
 
+export interface BannerContent {
+  title: string
+  subtitle: string
+}
+
+export interface OverOnsStoryContent {
+  paragraph1: string
+  paragraph2: string
+  quote: string
+}
+
+export interface OverOnsExpertiseContent {
+  title: string
+  items: Array<{ title: string; text: string }>
+}
+
+export interface OverOnsValuesContent {
+  title: string
+  items: Array<{ title: string; description: string }>
+}
+
+export interface OverOnsMissionContent {
+  title: string
+  paragraph1: string
+  paragraph2: string
+}
+
 // ── Sectie-labels voor de admin ────────────────────────────────
 
 export const sectionLabels: Record<string, Record<string, string>> = {
@@ -69,8 +96,26 @@ export const sectionLabels: Record<string, Record<string, string>> = {
     faq: 'Veelgestelde vragen',
     finalcta: 'Call-to-action (onderaan)',
   },
+  banners: {
+    'over-ons': 'Over Ons',
+    diensten: 'Diensten',
+    contact: 'Contact',
+    'gratis-gesprek': 'Gratis Gesprek',
+    groeirapport: 'Groeirapport',
+    'workshop-stuurcijfers': 'Workshop Stuurcijfers',
+    opleidingstraject: 'Opleidingstraject',
+    inzichten: 'Inzichten',
+  },
+  overons: {
+    story: 'Ons verhaal',
+    expertise: 'Expertise',
+    values: 'Waarom COBIZ',
+    mission: 'Missie',
+  },
 }
 
 export const pageLabels: Record<string, string> = {
   home: 'Homepage',
+  banners: 'Pagina-banners',
+  overons: 'Over Ons pagina',
 }

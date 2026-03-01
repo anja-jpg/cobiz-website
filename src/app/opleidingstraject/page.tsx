@@ -11,6 +11,9 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
+import { getContent, type BannerContent } from '@/lib/content';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Opleidingstraject Financiële Sturing | 4-daags KMO-programma | COBIZ',
@@ -60,7 +63,9 @@ const learnings = [
   },
 ];
 
-export default function OpleidingstrajectPage() {
+export default async function OpleidingstrajectPage() {
+  const banner = await getContent<BannerContent>('banners', 'opleidingstraject');
+
   return (
     <SiteLayout>
       {/* ── Hero ── */}
@@ -69,11 +74,10 @@ export default function OpleidingstrajectPage() {
         <div className="relative mx-auto max-w-4xl text-center">
           <span className="badge badge-coral mb-3 sm:mb-4">START SEPTEMBER 2025</span>
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
-            Opleidingstraject Financi&euml;le Sturing
+            {banner.title}
           </h1>
           <p className="text-base text-white/80 md:text-lg lg:text-xl">
-            4 dagen intensieve begeleiding voor KMO-zaakvoerders die &eacute;cht
-            grip willen op hun cijfers
+            {banner.subtitle}
           </p>
         </div>
       </section>
