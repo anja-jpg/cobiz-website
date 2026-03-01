@@ -60,6 +60,7 @@ export async function POST(request: NextRequest) {
     const blob = await put(fileName, file, {
       access: 'public',
       addRandomSuffix: false,
+      allowOverwrite: true,
     })
 
     // Save URL to database so public pages can use it
