@@ -10,7 +10,9 @@ function createPrismaClient(): PrismaClient | null {
       console.warn('DATABASE_URL not set — database features disabled')
       return null
     }
-    return new PrismaClient()
+    return new PrismaClient({
+      datasourceUrl: process.env.DATABASE_URL,
+    })
   } catch {
     console.warn('Failed to create Prisma client — database features disabled')
     return null
