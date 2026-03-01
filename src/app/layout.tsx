@@ -34,6 +34,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'COBIZ',
+  description: 'Flexibele CFO-expertise voor KMO\'s. Van cijferchaos naar grip op je cijfers.',
+  url: 'https://cobiz.be',
+  logo: 'https://cobiz.be/logo-full.svg',
+  areaServed: {
+    '@type': 'Country',
+    name: 'Belgium',
+  },
+  serviceType: ['CFO diensten', 'Financieel advies', 'Business controlling', 'Stuurcijfers'],
+  priceRange: '€€',
+  knowsLanguage: ['nl'],
+  sameAs: [],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -45,6 +62,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#51B848" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link rel="canonical" href="https://cobiz.be" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="min-h-screen bg-white">
         {children}

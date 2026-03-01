@@ -4,6 +4,7 @@ import ProblemSection from '@/components/sections/ProblemSection'
 import ProductSpotlight from '@/components/sections/ProductSpotlight'
 import AboutPreview from '@/components/sections/AboutPreview'
 import DifferenceSection from '@/components/sections/DifferenceSection'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import FinalCTA from '@/components/sections/FinalCTA'
 
 export default function HomePage() {
@@ -14,7 +15,7 @@ export default function HomePage() {
       <ProductSpotlight />
       <AboutPreview />
       <DifferenceSection />
-      {/* Social Proof section - Phase 2, after first clients */}
+      <TestimonialsSection />
       <FinalCTA />
     </SiteLayout>
   )
