@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate score and category
-    const validCategories = ['fit', 'zwalkend', 'blind']
+    const validCategories = ['green', 'orange', 'red', 'fit', 'zwalkend', 'blind']
     if (typeof score !== 'number' || !validCategories.includes(category)) {
       return NextResponse.json(
         { error: 'Ongeldige score data' },

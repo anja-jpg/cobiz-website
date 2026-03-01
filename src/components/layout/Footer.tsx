@@ -6,7 +6,7 @@ const dienstenLinks = [
   { label: 'Groeirapport', href: '/groeirapport' },
   { label: 'Opleidingstraject', href: '/opleidingstraject' },
   { label: 'Gratis Kennismakingsgesprek', href: '/gratis-gesprek' },
-  { label: 'Gezondheidscheck', href: '/gezondheidscheck' },
+  { label: 'Groei-Check', href: '/gezondheidscheck' },
 ];
 
 const socialLinks = [

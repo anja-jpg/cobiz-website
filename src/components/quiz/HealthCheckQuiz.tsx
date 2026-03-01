@@ -1,234 +1,262 @@
 'use client';
 
-import { useState, useCallback, type FormEvent } from 'react';
+import { useState, useCallback, useEffect, type FormEvent } from 'react';
 import Link from 'next/link';
 import {
-  ThumbsUp,
-  AlertTriangle,
-  AlertOctagon,
-  Loader2,
+  Star,
   ChevronLeft,
-  Lock,
+  Loader2,
+  ArrowRight,
 } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
-interface QuizQuestion {
-  category: string;
-  question: string;
-  options: { label: string; score: number }[];
+interface CategoryData {
+  name: string;
+  icon: string;
+  questions: string[];
+  tips: { low: string; mid: string; high: string };
 }
 
-type Category = 'fit' | 'zwalkend' | 'blind';
-
-interface QuizResult {
+interface CategoryScore {
+  name: string;
+  icon: string;
   score: number;
-  category: Category;
-  percentage: number;
+  tips: { low: string; mid: string; high: string };
 }
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
 /* ------------------------------------------------------------------ */
 
-const questions: QuizQuestion[] = [
-  // ---------- Inzicht (0-3) ----------
+const categories: CategoryData[] = [
   {
-    category: 'Inzicht',
-    question: 'Hoe vaak bekijk je je financiële cijfers?',
-    options: [
-      { label: 'Dagelijks', score: 3 },
-      { label: 'Wekelijks', score: 2 },
-      { label: 'Maandelijks', score: 1 },
-      { label: 'Zelden of nooit', score: 0 },
+    name: 'Financieel inzicht',
+    icon: '📊',
+    questions: [
+      'Heb je minstens op kwartaalbasis een duidelijk inzicht in je financiële cijfers?',
+      'Heb je een duidelijk beeld van je marges per klant én per product of dienst?',
+      'Kun je voorspellen hoeveel geld er de komende maanden binnenkomt en uitgaat?',
     ],
+    tips: {
+      low: 'Je financieel inzicht heeft aandacht nodig. Zonder helder zicht op je cijfers neem je beslissingen in het donker. Een maandelijkse financiële rapportering is de eerste stap naar grip op je bedrijf.',
+      mid: 'Je hebt een basis, maar er zijn blinde vlekken. Meer inzicht in je marges en cashflow kan je helpen om gerichtere beslissingen te nemen en margelekken te dichten.',
+      high: 'Sterk! Je hebt goed zicht op je cijfers. De volgende stap is om deze inzichten nog beter te vertalen naar strategische beslissingen.',
+    },
   },
   {
-    category: 'Inzicht',
-    question: 'Weet je welke producten of diensten het meeste opleveren?',
-    options: [
-      { label: 'Ja, tot op detail', score: 3 },
-      { label: 'Globaal wel', score: 2 },
-      { label: 'Niet echt', score: 1 },
-      { label: 'Geen idee', score: 0 },
+    name: 'Operationele efficiëntie',
+    icon: '⚙️',
+    questions: [
+      'Zijn je processen gedocumenteerd? Weet iedereen in je bedrijf wat ze moeten doen en hoe?',
+      'Heb je zicht op de hoeveelheid geld die \u2018vastzit\u2019 in je voorraden en openstaande facturen?',
+      'Helpt je bedrijfssoftware je vooruit bij de dagelijkse werking en bij het nemen van beslissingen?',
     ],
+    tips: {
+      low: 'Je operationele basis kan een stuk sterker. Onduidelijke processen en slecht afgestemde systemen kosten je dagelijks tijd en geld. Hier liggen vaak de snelste winstpunten.',
+      mid: 'Je werking draait, maar er zijn optimalisatiekansen. Denk aan werkkapitaaloptimalisatie en betere systeembenutting \u2014 dat zijn hefbomen met direct financieel rendement.',
+      high: 'Je bedrijfsvoering zit goed in elkaar. Kijk of je systemen en processen ook klaar zijn om mee te schalen bij groei.',
+    },
   },
   {
-    category: 'Inzicht',
-    question: 'Kun je op elk moment zeggen hoeveel winst je maakt?',
-    options: [
-      { label: 'Ja, realtime', score: 3 },
-      { label: 'Ongeveer', score: 2 },
-      { label: 'Pas na de boekhouder', score: 1 },
-      { label: 'Nee', score: 0 },
+    name: 'Strategische planning',
+    icon: '🧭',
+    questions: [
+      'Heb je zicht op hoe je markt evolueert en wat dit betekent voor jouw bedrijf?',
+      'Heb je een concreet plan voor waar je bedrijf over 3 jaar moet staan?',
+      'Heb je in beeld welke middelen je nodig hebt om je groeiambities waar te maken?',
     ],
+    tips: {
+      low: 'Zonder strategisch kompas vaar je op onderbuikgevoel. Een meerjarenplan met duidelijke doelen en middelen maakt het verschil tussen \u2018druk zijn\u2019 en \u2018echt vooruitgaan\u2019.',
+      mid: 'Je denkt na over de toekomst, maar het vertalen naar een concreet plan met duidelijke middelen kan scherper. Dat geeft richting aan elke dagelijkse beslissing.',
+      high: 'Je hebt een duidelijke strategische visie. Zorg dat je plan regelmatig getoetst wordt aan de realiteit en bijgestuurd waar nodig.',
+    },
   },
   {
-    category: 'Inzicht',
-    question: 'Begrijp je de cijfers die je boekhouder aanlevert?',
-    options: [
-      { label: 'Volledig', score: 3 },
-      { label: 'Grotendeels', score: 2 },
-      { label: 'Deels', score: 1 },
-      { label: 'Het is Chinees', score: 0 },
+    name: 'Groei & Waardering',
+    icon: '🚀',
+    questions: [
+      'Weet je wat je bedrijf vandaag waard is als je het zou willen verkopen?',
+      'Ken je de mogelijkheden om te groeien door andere bedrijven over te nemen?',
+      'Als je morgen door omstandigheden 6 maanden out bent, kan je bedrijf dan verder zonder jou?',
     ],
-  },
-  // ---------- Cashflow (4-7) ----------
-  {
-    category: 'Cashflow',
-    question: 'Hoe vaak word je verrast door cashflow problemen?',
-    options: [
-      { label: 'Nooit', score: 3 },
-      { label: 'Zelden', score: 2 },
-      { label: 'Regelmatig', score: 1 },
-      { label: 'Vaak', score: 0 },
-    ],
-  },
-  {
-    category: 'Cashflow',
-    question: 'Weet je hoeveel cash je nodig hebt voor de komende 3 maanden?',
-    options: [
-      { label: 'Ja, exact', score: 3 },
-      { label: 'Ongeveer', score: 2 },
-      { label: 'Niet echt', score: 1 },
-      { label: 'Geen idee', score: 0 },
-    ],
-  },
-  {
-    category: 'Cashflow',
-    question: 'Hoe snel betalen jouw klanten gemiddeld?',
-    options: [
-      { label: 'Binnen 14 dagen', score: 3 },
-      { label: 'Binnen 30 dagen', score: 2 },
-      { label: 'Binnen 60 dagen', score: 1 },
-      { label: 'Ik volg dit niet op', score: 0 },
-    ],
-  },
-  {
-    category: 'Cashflow',
-    question: 'Heb je een financiële buffer voor onverwachte kosten?',
-    options: [
-      { label: 'Ja, ruim voldoende', score: 3 },
-      { label: 'Ja, maar krap', score: 2 },
-      { label: 'Nauwelijks', score: 1 },
-      { label: 'Nee', score: 0 },
-    ],
-  },
-  // ---------- Sturing (8-11) ----------
-  {
-    category: 'Sturing',
-    question: 'Neem je belangrijke beslissingen op basis van data?',
-    options: [
-      { label: 'Altijd', score: 3 },
-      { label: 'Meestal', score: 2 },
-      { label: 'Soms', score: 1 },
-      { label: 'Vooral op buikgevoel', score: 0 },
-    ],
-  },
-  {
-    category: 'Sturing',
-    question: 'Heb je duidelijke financiële doelen voor dit jaar?',
-    options: [
-      { label: 'Ja, SMART doelen', score: 3 },
-      { label: 'Ja, globaal', score: 2 },
-      { label: 'Vaag', score: 1 },
-      { label: 'Nee', score: 0 },
-    ],
-  },
-  {
-    category: 'Sturing',
-    question: 'Hoe vaak evalueer je of je op koers zit?',
-    options: [
-      { label: 'Maandelijks', score: 3 },
-      { label: 'Per kwartaal', score: 2 },
-      { label: 'Jaarlijks', score: 1 },
-      { label: 'Nooit', score: 0 },
-    ],
-  },
-  {
-    category: 'Sturing',
-    question:
-      'Heb je een dashboard of rapportage die je regelmatig gebruikt?',
-    options: [
-      { label: 'Ja, automatisch', score: 3 },
-      { label: 'Ja, manueel', score: 2 },
-      { label: 'Beperkt', score: 1 },
-      { label: 'Nee', score: 0 },
-    ],
+    tips: {
+      low: 'Je bedrijf is kwetsbaar op vlak van waardeopbouw en continuïteit. Kennis van je bedrijfswaarde en minder afhankelijkheid van jou als ondernemer zijn cruciaal voor duurzame groei.',
+      mid: 'Je bent op weg, maar er zijn nog belangrijke stappen te zetten rond waardering, groeistrategie en bedrijfscontinuïteit. Dit zijn thema\u2019s die je beter nu dan later aanpakt.',
+      high: 'Je scoort sterk op groeivoorbereiding. Je bedrijf staat er goed voor om de volgende stap te zetten, of dat nu schaalvergroting, overname of exit is.',
+    },
   },
 ];
 
-const TOTAL_QUESTIONS = questions.length; // 12
-const MAX_SCORE = TOTAL_QUESTIONS * 3; // 36
+// Build flat question list
+const allQuestions = categories.flatMap((cat, ci) =>
+  cat.questions.map((text, qi) => ({
+    text,
+    categoryIndex: ci,
+    questionInCat: qi,
+  })),
+);
+
+const TOTAL_QUESTIONS = allQuestions.length; // 12
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-function calculateResult(answers: number[]): QuizResult {
-  const score = answers.reduce((sum, v) => sum + v, 0);
-  const percentage = Math.round((score / MAX_SCORE) * 100);
+function calculateScores(answers: number[]) {
+  const catScores: CategoryScore[] = categories.map((cat, ci) => {
+    const catAnswers = answers.filter(
+      (_, i) => allQuestions[i].categoryIndex === ci,
+    );
+    const total = catAnswers.reduce((a, b) => a + b, 0);
+    const max = cat.questions.length * 2;
+    const pct = Math.round((total / max) * 100);
+    return { name: cat.name, icon: cat.icon, score: pct, tips: cat.tips };
+  });
 
-  let category: Category;
-  if (score >= 29) {
-    category = 'fit';
-  } else if (score >= 18) {
-    category = 'zwalkend';
-  } else {
-    category = 'blind';
-  }
-
-  return { score, category, percentage };
+  const overall = Math.round(
+    catScores.reduce((a, c) => a + c.score, 0) / catScores.length,
+  );
+  return { catScores, overall };
 }
 
-function categoryScore(answers: number[], start: number): number {
-  return answers.slice(start, start + 4).reduce((s, v) => s + v, 0);
+function getScoreColor(pct: number): 'green' | 'orange' | 'red' {
+  if (pct >= 80) return 'green';
+  if (pct >= 50) return 'orange';
+  return 'red';
 }
 
+function getVerdict(pct: number) {
+  if (pct >= 80) return 'Sterk';
+  if (pct >= 50) return 'Aandachtspunt';
+  return 'Actie nodig';
+}
+
+function getOverallVerdict(pct: number) {
+  if (pct >= 80) return 'Jouw bedrijf staat sterk. Tijd om te versnellen.';
+  if (pct >= 50)
+    return 'Er zit groeipotentieel in jouw bedrijf. Laten we dat ontgrendelen.';
+  return 'Er liggen belangrijke kansen om je bedrijf sterker te maken.';
+}
+
+function getTipLevel(pct: number): 'low' | 'mid' | 'high' {
+  if (pct >= 80) return 'high';
+  if (pct >= 50) return 'mid';
+  return 'low';
+}
+
+const scoreColorMap = {
+  green: {
+    text: 'text-cobiz-green',
+    bg: 'bg-cobiz-green',
+    stroke: '#51B848',
+    borderL: 'border-l-cobiz-green',
+  },
+  orange: {
+    text: 'text-cobiz-yellow',
+    bg: 'bg-cobiz-yellow',
+    stroke: '#F4BD1F',
+    borderL: 'border-l-cobiz-yellow',
+  },
+  red: {
+    text: 'text-cobiz-coral',
+    bg: 'bg-cobiz-coral',
+    stroke: '#DB685F',
+    borderL: 'border-l-cobiz-coral',
+  },
+};
+
 /* ------------------------------------------------------------------ */
-/*  Sub-components                                                     */
+/*  Animated score ring                                                */
 /* ------------------------------------------------------------------ */
 
-function ProgressBar({ current, total }: { current: number; total: number }) {
-  const pct = Math.min((current / total) * 100, 100);
+function ScoreRing({
+  percentage,
+  color,
+}: {
+  percentage: number;
+  color: string;
+}) {
+  const circumference = 2 * Math.PI * 62;
+  const targetOffset = circumference - (percentage / 100) * circumference;
+  const [offset, setOffset] = useState(circumference);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setOffset(targetOffset), 100);
+    return () => clearTimeout(timer);
+  }, [targetOffset]);
+
   return (
-    <div className="quiz-progress mb-8">
-      <div className="quiz-progress-bar" style={{ width: `${pct}%` }} />
+    <div className="relative mx-auto h-40 w-40">
+      <svg viewBox="0 0 128 128" className="h-full w-full -rotate-90">
+        <circle
+          cx="64"
+          cy="64"
+          r="62"
+          fill="none"
+          stroke="rgba(255,255,255,0.1)"
+          strokeWidth="8"
+        />
+        <circle
+          cx="64"
+          cy="64"
+          r="62"
+          fill="none"
+          stroke={color}
+          strokeWidth="8"
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          className="transition-[stroke-dashoffset] duration-[1.5s] ease-out"
+        />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="text-5xl font-bold text-white">
+          {percentage}
+          <span className="text-lg opacity-60">%</span>
+        </span>
+        <span className="text-xs text-white/50">groeiklaar</span>
+      </div>
     </div>
   );
 }
 
-function CategoryBreakdown({ answers }: { answers: number[] }) {
-  const categories = [
-    { label: 'Inzicht', score: categoryScore(answers, 0) },
-    { label: 'Cashflow', score: categoryScore(answers, 4) },
-    { label: 'Sturing', score: categoryScore(answers, 8) },
-  ];
+/* ------------------------------------------------------------------ */
+/*  Category bar                                                       */
+/* ------------------------------------------------------------------ */
+
+function CategoryBar({ cat }: { cat: CategoryScore }) {
+  const color = getScoreColor(cat.score);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setWidth(cat.score), 100);
+    return () => clearTimeout(timer);
+  }, [cat.score]);
 
   return (
-    <div className="mt-8 space-y-4">
-      <h3 className="text-lg font-bold text-cobiz-dark">Score per categorie</h3>
-      {categories.map((cat) => {
-        const pct = Math.round((cat.score / 12) * 100);
-        return (
-          <div key={cat.label}>
-            <div className="mb-1 flex items-center justify-between text-sm font-medium text-gray-700">
-              <span>{cat.label}</span>
-              <span>
-                {cat.score}/12 ({pct}%)
-              </span>
-            </div>
-            <div className="h-3 w-full overflow-hidden rounded-full bg-gray-200">
-              <div
-                className="h-full rounded-full bg-cobiz-green transition-all duration-500"
-                style={{ width: `${pct}%` }}
-              />
-            </div>
-          </div>
-        );
-      })}
+    <div className="mb-6 last:mb-0">
+      <div className="mb-2 flex items-center justify-between">
+        <span className="text-sm font-bold text-cobiz-dark sm:text-base">
+          {cat.icon} {cat.name}
+        </span>
+        <span
+          className={`text-sm font-bold sm:text-base ${scoreColorMap[color].text}`}
+        >
+          {cat.score}%
+        </span>
+      </div>
+      <div className="h-2.5 overflow-hidden rounded-full bg-gray-100">
+        <div
+          className={`h-full rounded-full ${scoreColorMap[color].bg} transition-[width] duration-1000 ease-out`}
+          style={{ width: `${width}%` }}
+        />
+      </div>
+      <p className="mt-1.5 text-sm italic text-gray-500">
+        {getVerdict(cat.score)}
+      </p>
     </div>
   );
 }
@@ -238,135 +266,157 @@ function CategoryBreakdown({ answers }: { answers: number[] }) {
 /* ------------------------------------------------------------------ */
 
 export default function HealthCheckQuiz() {
-  /* --- state --- */
-  const [currentQuestion, setCurrentQuestion] = useState(0); // 0-11 questions, 12 email gate, 13 result
+  const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [showResults, setShowResults] = useState(false);
+  const [showTips, setShowTips] = useState(false);
 
-  const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
   const [companyName, setCompanyName] = useState('');
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [result, setResult] = useState<QuizResult | null>(null);
+  const [submitError, setSubmitError] = useState('');
 
   /* --- handlers --- */
-  const handleSelect = useCallback(
-    (score: number, optionIndex: number) => {
-      setSelectedOption(optionIndex);
+  const handleAnswer = useCallback(
+    (score: number) => {
+      const newAnswers = [...answers];
+      newAnswers[currentQ] = score;
+      setAnswers(newAnswers);
 
-      // Auto-advance after 500ms
-      setTimeout(() => {
-        const newAnswers = [...answers];
-        newAnswers[currentQuestion] = score;
-        setAnswers(newAnswers);
-        setSelectedOption(null);
-
-        if (currentQuestion < TOTAL_QUESTIONS - 1) {
-          setCurrentQuestion((prev) => prev + 1);
-        } else {
-          // Move to email gate
-          setCurrentQuestion(TOTAL_QUESTIONS); // 12
-        }
-      }, 500);
+      if (currentQ < TOTAL_QUESTIONS - 1) {
+        setCurrentQ((prev) => prev + 1);
+      } else {
+        setShowResults(true);
+      }
     },
-    [answers, currentQuestion],
+    [answers, currentQ],
   );
 
   const handlePrevious = useCallback(() => {
-    if (currentQuestion > 0) {
-      setSelectedOption(null);
-      setCurrentQuestion((prev) => prev - 1);
+    if (currentQ > 0) {
+      setCurrentQ((prev) => prev - 1);
     }
-  }, [currentQuestion]);
+  }, [currentQ]);
 
-  const handleEmailSubmit = useCallback(
+  const handleGateSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setIsSubmitting(true);
+      setSubmitError('');
 
-      const quizResult = calculateResult(answers);
+      if (!firstName.trim() || !email.trim() || !email.includes('@')) {
+        setSubmitError('Vul je naam en e-mailadres in');
+        return;
+      }
+
+      setIsSubmitting(true);
+      const { overall } = calculateScores(answers);
 
       try {
         await fetch('/api/gezondheidscheck', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            email,
-            firstName,
-            companyName: companyName || undefined,
+            email: email.trim(),
+            firstName: firstName.trim(),
+            companyName: companyName.trim() || undefined,
             answers,
-            score: quizResult.score,
-            category: quizResult.category,
+            score: overall,
+            category: getScoreColor(overall),
           }),
         });
       } catch {
-        // Silently continue - show result regardless
+        // Continue — show tips regardless
       }
 
-      setResult(quizResult);
       setIsSubmitting(false);
-      setCurrentQuestion(TOTAL_QUESTIONS + 1); // 13 = result
+      setShowTips(true);
     },
     [answers, email, firstName, companyName],
   );
 
   /* ================================================================ */
-  /*  Render: Question                                                 */
+  /*  Render: Questions                                                */
   /* ================================================================ */
-  if (currentQuestion < TOTAL_QUESTIONS) {
-    const q = questions[currentQuestion];
+  if (!showResults) {
+    const q = allQuestions[currentQ];
+    const cat = categories[q.categoryIndex];
+    const progressPct = (currentQ / TOTAL_QUESTIONS) * 100;
 
     return (
-      <div className="mx-auto max-w-2xl px-4 py-12">
-        {/* Progress */}
-        <ProgressBar current={currentQuestion + 1} total={TOTAL_QUESTIONS} />
-
-        {/* Meta */}
-        <p className="mb-1 text-sm font-medium text-gray-400">
-          Vraag {currentQuestion + 1} van {TOTAL_QUESTIONS}
-        </p>
-        <span className="badge badge-green mb-4 inline-block">{q.category}</span>
-
-        {/* Question */}
-        <h2 className="mb-8 text-2xl font-bold leading-snug text-cobiz-dark md:text-3xl">
-          {q.question}
-        </h2>
-
-        {/* Options */}
-        <div className="space-y-3">
-          {q.options.map((opt, idx) => {
-            const isSelected =
-              selectedOption === idx ||
-              (selectedOption === null && answers[currentQuestion] === opt.score);
-            const isAnswered = selectedOption === idx;
-
-            return (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => handleSelect(opt.score, idx)}
-                disabled={selectedOption !== null}
-                className={`w-full cursor-pointer rounded-xl border-2 px-5 py-4 text-left transition-all duration-200 ${
-                  isSelected
-                    ? 'border-cobiz-green bg-green-50 shadow-sm'
-                    : 'border-gray-200 bg-white hover:border-cobiz-green/40 hover:shadow-sm'
-                } ${isAnswered ? 'scale-[1.01]' : ''} ${selectedOption !== null && !isSelected ? 'opacity-50' : ''}`}
-              >
-                <span className="text-base font-medium text-cobiz-dark">
-                  {opt.label}
-                </span>
-              </button>
-            );
-          })}
+      <div className="mx-auto max-w-xl px-4 py-8 sm:py-12">
+        {/* Progress bar */}
+        <div className="mb-8">
+          <div className="quiz-progress">
+            <div
+              className="quiz-progress-bar"
+              style={{ width: `${progressPct}%` }}
+            />
+          </div>
+          <div className="mt-2.5 flex items-center justify-between">
+            <span className="text-xs font-medium text-gray-400 sm:text-sm">
+              Vraag {currentQ + 1} van {TOTAL_QUESTIONS}
+            </span>
+            <span className="text-xs font-bold uppercase tracking-wide text-cobiz-green sm:text-sm">
+              {cat.name}
+            </span>
+          </div>
         </div>
 
-        {/* Navigation */}
-        {currentQuestion > 0 && (
+        {/* Question card */}
+        <div
+          key={currentQ}
+          className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg sm:p-8"
+        >
+          <p className="mb-2 text-xs text-gray-400 sm:text-sm">
+            {cat.icon} {cat.name} — vraag {q.questionInCat + 1} van{' '}
+            {cat.questions.length}
+          </p>
+          <h2 className="mb-6 text-xl font-bold leading-snug text-cobiz-dark sm:mb-8 sm:text-2xl">
+            {q.text}
+          </h2>
+
+          {/* Answers */}
+          <div className="space-y-3">
+            <button
+              type="button"
+              onClick={() => handleAnswer(2)}
+              className="flex w-full items-center gap-3 rounded-xl bg-cobiz-mint/50 px-5 py-4 text-left text-base font-medium text-cobiz-dark transition-all hover:translate-x-1 hover:bg-cobiz-mint sm:gap-4"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cobiz-green/10 text-lg">
+                ✓
+              </span>
+              Ja, volledig
+            </button>
+            <button
+              type="button"
+              onClick={() => handleAnswer(1)}
+              className="flex w-full items-center gap-3 rounded-xl bg-cobiz-yellow/5 px-5 py-4 text-left text-base font-medium text-cobiz-dark transition-all hover:translate-x-1 hover:bg-cobiz-yellow/10 sm:gap-4"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cobiz-yellow/15 text-lg">
+                ~
+              </span>
+              Gedeeltelijk
+            </button>
+            <button
+              type="button"
+              onClick={() => handleAnswer(0)}
+              className="flex w-full items-center gap-3 rounded-xl bg-cobiz-coral/5 px-5 py-4 text-left text-base font-medium text-cobiz-dark transition-all hover:translate-x-1 hover:bg-cobiz-coral/10 sm:gap-4"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cobiz-coral/10 text-lg">
+                ✗
+              </span>
+              Nee
+            </button>
+          </div>
+        </div>
+
+        {/* Back button */}
+        {currentQ > 0 && (
           <button
             type="button"
             onClick={handlePrevious}
-            className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-gray-500 transition-colors hover:text-cobiz-dark"
+            className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-gray-400 transition-colors hover:text-cobiz-dark"
           >
             <ChevronLeft className="h-4 w-4" />
             Vorige
@@ -377,205 +427,157 @@ export default function HealthCheckQuiz() {
   }
 
   /* ================================================================ */
-  /*  Render: Email gate                                               */
+  /*  Render: Results                                                  */
   /* ================================================================ */
-  if (currentQuestion === TOTAL_QUESTIONS) {
-    return (
-      <div className="mx-auto max-w-lg px-4 py-16">
-        <div className="rounded-2xl bg-white p-8 shadow-lg md:p-10">
-          <div className="mb-6 text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-cobiz-green/10">
-              <Lock className="h-7 w-7 text-cobiz-green" />
-            </div>
-            <h2 className="mb-2 text-2xl font-bold text-cobiz-dark md:text-3xl">
-              Je resultaat is klaar!
-            </h2>
-            <p className="text-gray-600">
-              Vul je gegevens in om je persoonlijke score te ontvangen
-            </p>
+  const { catScores, overall } = calculateScores(answers);
+  const overallColor = getScoreColor(overall);
+
+  return (
+    <div className="mx-auto max-w-xl px-4 py-8 sm:py-12">
+      <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg">
+        {/* Hero section with score ring */}
+        <div className="relative overflow-hidden bg-cobiz-dark px-6 py-10 text-center sm:px-8">
+          <div
+            className="pointer-events-none absolute -right-[30%] -top-[50%] h-[300px] w-[300px] rounded-full"
+            style={{
+              background:
+                'radial-gradient(circle, rgba(81,184,72,0.15) 0%, transparent 70%)',
+            }}
+          />
+          <h2 className="relative mb-2 text-2xl font-bold text-white sm:text-3xl">
+            Jouw Groei-Score
+          </h2>
+          <p className="relative text-sm text-white/60 sm:text-base">
+            {getOverallVerdict(overall)}
+          </p>
+          <div className="relative mt-6">
+            <ScoreRing
+              percentage={overall}
+              color={scoreColorMap[overallColor].stroke}
+            />
           </div>
+        </div>
 
-          <form onSubmit={handleEmailSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="quiz-email" className="form-label">
-                E-mailadres *
-              </label>
-              <input
-                id="quiz-email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="form-input"
-                placeholder="jan@bedrijf.be"
-              />
+        {/* Category breakdown */}
+        <div className="p-6 sm:p-8">
+          {catScores.map((cat) => (
+            <CategoryBar key={cat.name} cat={cat} />
+          ))}
+        </div>
+
+        {/* Email gate */}
+        {!showTips && (
+          <div className="border-t border-gray-100 p-6 text-center sm:p-8">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-cobiz-green/10">
+              <Star className="h-6 w-6 text-cobiz-green" />
             </div>
+            <h3 className="mb-2 text-xl font-bold text-cobiz-dark sm:text-2xl">
+              Ontgrendel jouw persoonlijke tips
+            </h3>
+            <p className="mx-auto mb-6 max-w-sm text-sm text-gray-500 sm:text-base">
+              Ontvang concrete aanbevelingen per categorie en ontdek hoe het
+              COBIZ Groeirapport je verder kan helpen.
+            </p>
 
-            <div>
-              <label htmlFor="quiz-firstname" className="form-label">
-                Voornaam *
-              </label>
+            <form
+              onSubmit={handleGateSubmit}
+              className="mx-auto max-w-sm space-y-3"
+            >
               <input
-                id="quiz-firstname"
                 type="text"
-                required
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
+                placeholder="Je voornaam"
                 className="form-input"
-                placeholder="Jan"
+                required
               />
-            </div>
-
-            <div>
-              <label htmlFor="quiz-company" className="form-label">
-                Bedrijfsnaam (optioneel)
-              </label>
               <input
-                id="quiz-company"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Je e-mailadres"
+                className="form-input"
+                required
+              />
+              <input
                 type="text"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
+                placeholder="Je bedrijfsnaam (optioneel)"
                 className="form-input"
-                placeholder="Jouw Bedrijf BV"
               />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-primary flex w-full items-center justify-center gap-2"
+              >
+                {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
+                {isSubmitting ? 'EVEN GEDULD...' : 'VERSTUUR MIJN RESULTATEN'}
+              </button>
+              {submitError && (
+                <p className="text-sm font-medium text-cobiz-coral">
+                  {submitError}
+                </p>
+              )}
+              <p className="text-xs text-gray-400">
+                We respecteren je privacy. Geen spam, enkel waardevolle
+                inzichten.
+              </p>
+            </form>
+          </div>
+        )}
+
+        {/* Unlocked tips */}
+        {showTips && (
+          <div className="border-t border-gray-100 p-6 sm:p-8">
+            <h3 className="mb-5 text-center text-xl font-bold text-cobiz-dark sm:text-2xl">
+              Jouw persoonlijke aanbevelingen
+            </h3>
+
+            <div className="space-y-4">
+              {catScores.map((cat) => {
+                const color = getScoreColor(cat.score);
+                const level = getTipLevel(cat.score);
+
+                return (
+                  <div
+                    key={cat.name}
+                    className={`rounded-xl border-l-4 bg-gray-50 p-5 ${scoreColorMap[color].borderL}`}
+                  >
+                    <p
+                      className={`mb-1 text-xs font-bold uppercase tracking-wide ${scoreColorMap[color].text}`}
+                    >
+                      {cat.icon} {cat.name} — {cat.score}%
+                    </p>
+                    <p className="text-sm leading-relaxed text-cobiz-dark sm:text-base">
+                      {cat.tips[level]}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="btn-primary flex w-full items-center justify-center gap-2"
-            >
-              {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
-              {isSubmitting ? 'EVEN GEDULD...' : 'BEKIJK MIJN RESULTAAT'}
-            </button>
-          </form>
-
-          <p className="mt-4 text-center text-xs text-gray-400">
-            We respecteren je privacy. Geen spam, beloofd.
-          </p>
-
-          {/* Back link */}
-          <button
-            type="button"
-            onClick={() => setCurrentQuestion(TOTAL_QUESTIONS - 1)}
-            className="mt-4 inline-flex w-full items-center justify-center gap-1 text-sm font-medium text-gray-500 transition-colors hover:text-cobiz-dark"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Terug naar de vragen
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  /* ================================================================ */
-  /*  Render: Result                                                   */
-  /* ================================================================ */
-  if (result) {
-    const configs: Record<
-      Category,
-      {
-        Icon: typeof ThumbsUp;
-        iconColor: string;
-        iconBg: string;
-        badgeClass: string;
-        title: string;
-        text: string;
-        primaryLabel: string;
-        primaryHref: string;
-        secondaryLabel: string;
-        secondaryHref: string;
-      }
-    > = {
-      fit: {
-        Icon: ThumbsUp,
-        iconColor: 'text-cobiz-green',
-        iconBg: 'bg-cobiz-green/10',
-        badgeClass: 'badge-green',
-        title: 'Goed bezig! Je hebt goede grip op je cijfers.',
-        text: 'Je scoort bovengemiddeld. Je hebt al een solide basis. Een gratis gesprek kan je helpen om de laatste optimalisaties te doen.',
-        primaryLabel: 'PLAN GRATIS GESPREK',
-        primaryHref: '/gratis-gesprek',
-        secondaryLabel: 'BEKIJK ONZE DIENSTEN',
-        secondaryHref: '/diensten',
-      },
-      zwalkend: {
-        Icon: AlertTriangle,
-        iconColor: 'text-cobiz-yellow',
-        iconBg: 'bg-yellow-50',
-        badgeClass: 'badge-yellow',
-        title: 'Belangrijke blinde vlekken gedetecteerd',
-        text: 'Je hebt een basis, maar er zijn duidelijke verbeterpunten. De Workshop Stuurcijfers helpt je in 4,5 uur om grip te krijgen op je cijfers.',
-        primaryLabel: 'BOEK WORKSHOP STUURCIJFERS - \u20AC125',
-        primaryHref: '/workshop-stuurcijfers',
-        secondaryLabel: 'PLAN GRATIS GESPREK',
-        secondaryHref: '/gratis-gesprek',
-      },
-      blind: {
-        Icon: AlertOctagon,
-        iconColor: 'text-cobiz-coral',
-        iconBg: 'bg-red-50',
-        badgeClass: 'badge-coral',
-        title: 'Je vaart grotendeels blind',
-        text: 'Er is werk aan de winkel, maar dat is goed nieuws - er liggen veel kansen. Het Groeirapport geeft je een complete doorlichting met een concreet actieplan.',
-        primaryLabel: 'ONTDEK HET GROEIRAPPORT - \u20AC1.500',
-        primaryHref: '/groeirapport',
-        secondaryLabel: 'START MET DE WORKSHOP - \u20AC125',
-        secondaryHref: '/workshop-stuurcijfers',
-      },
-    };
-
-    const cfg = configs[result.category];
-    const ResultIcon = cfg.Icon;
-
-    return (
-      <div className="mx-auto max-w-2xl px-4 py-12">
-        <div className="rounded-2xl bg-white p-8 shadow-lg md:p-10">
-          {/* Icon + Badge */}
-          <div className="mb-6 text-center">
-            <div
-              className={`mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full ${cfg.iconBg}`}
-            >
-              <ResultIcon className={`h-10 w-10 ${cfg.iconColor}`} />
+            {/* CTA banner */}
+            <div className="mt-8 rounded-2xl bg-cobiz-dark p-6 text-center sm:p-8">
+              <h3 className="mb-2 text-xl font-bold text-white sm:text-2xl">
+                Klaar voor de volgende stap?
+              </h3>
+              <p className="mb-5 text-sm text-white/60 sm:text-base">
+                Het COBIZ Groeirapport gaat veel dieper: een volledige
+                financiële analyse met een concreet groeiplan op maat van jouw
+                bedrijf.
+              </p>
+              <Link
+                href="/gratis-gesprek"
+                className="btn-primary inline-flex items-center gap-2"
+              >
+                Plan een vrijblijvend gesprek
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-            <span className={`badge ${cfg.badgeClass} mb-3`}>
-              {result.category === 'fit'
-                ? 'Financieel fit'
-                : result.category === 'zwalkend'
-                  ? 'Verbeterpunten'
-                  : 'Aandacht nodig'}
-            </span>
           </div>
-
-          {/* Title */}
-          <h2 className="mb-4 text-center text-2xl font-bold leading-snug text-cobiz-dark md:text-3xl">
-            {cfg.title}
-          </h2>
-
-          {/* Score */}
-          <p className="mb-6 text-center text-lg font-semibold text-gray-700">
-            {result.score}/{MAX_SCORE} punten ({result.percentage}%)
-          </p>
-
-          {/* Description */}
-          <p className="mb-8 text-center text-gray-600">{cfg.text}</p>
-
-          {/* CTAs */}
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link href={cfg.primaryHref} className="btn-primary text-center">
-              {cfg.primaryLabel}
-            </Link>
-            <Link href={cfg.secondaryHref} className="btn-secondary text-center">
-              {cfg.secondaryLabel}
-            </Link>
-          </div>
-
-          {/* Category breakdown */}
-          <CategoryBreakdown answers={answers} />
-        </div>
+        )}
       </div>
-    );
-  }
-
-  return null;
+    </div>
+  );
 }

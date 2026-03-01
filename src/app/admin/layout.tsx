@@ -24,7 +24,7 @@ const sidebarLinks = [
   { href: '/admin/boekingen', label: 'Boekingen', Icon: BookOpen },
   { href: '/admin/groeirapporten', label: 'Groeirapporten', Icon: FileText },
   { href: '/admin/contacten', label: 'Contacten', Icon: MessageSquare },
-  { href: '/admin/gezondheidscheck', label: 'Gezondheidscheck', Icon: HeartPulse },
+  { href: '/admin/gezondheidscheck', label: 'Groei-Check', Icon: HeartPulse },
 ];
 
 export default function AdminLayout({

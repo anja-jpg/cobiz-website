@@ -44,7 +44,7 @@ export default function ProblemSection() {
             href="/gezondheidscheck"
             className="inline-block text-base font-semibold text-cobiz-green transition-colors hover:text-cobiz-green-dark sm:text-lg"
           >
-            Doe de gratis gezondheidscheck &rarr;
+            Doe de gratis groei-check &rarr;
           </Link>
         </div>
       </div>

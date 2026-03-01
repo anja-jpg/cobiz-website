@@ -24,7 +24,7 @@ export default function FinalCTA() {
           Klaar om grip te krijgen op je cijfers?
         </h2>
         <p className="mb-8 text-base text-white/70 sm:mb-10 sm:text-lg">
-          Start met de gratis gezondheidscheck en ontdek waar jouw groeikansen
+          Start met de gratis groei-check en ontdek waar jouw groeikansen
           liggen.
         </p>
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">

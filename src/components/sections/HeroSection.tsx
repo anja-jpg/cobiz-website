@@ -17,7 +17,7 @@ export default function HeroSection() {
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <Link href="/gezondheidscheck" className="btn-primary">
-                DOE DE GRATIS GEZONDHEIDSCHECK
+                DOE DE GRATIS GROEI-CHECK
               </Link>
               <Link href="/workshop-stuurcijfers" className="btn-secondary">
                 SCHRIJF JE IN VOOR DE WORKSHOP

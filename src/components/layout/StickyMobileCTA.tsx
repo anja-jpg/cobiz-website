@@ -33,7 +33,7 @@ export default function StickyMobileCTA() {
           href="/gezondheidscheck"
           className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-center text-xs font-bold text-cobiz-dark transition-all hover:border-cobiz-green"
         >
-          GRATIS CHECK
+          GROEI-CHECK
         </Link>
       </div>
     </div>

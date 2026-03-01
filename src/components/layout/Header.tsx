@@ -147,7 +147,7 @@ export default function Header() {
             href="/gezondheidscheck"
             className="ml-3 inline-block rounded-lg bg-cobiz-green px-4 py-2 text-xs font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
           >
-            GRATIS CHECK
+            GRATIS GROEI-CHECK
           </Link>
         </nav>
 
@@ -262,7 +262,7 @@ export default function Header() {
               className="btn-primary block text-center text-sm"
               onClick={() => setMobileMenuOpen(false)}
             >
-              GRATIS CHECK
+              GRATIS GROEI-CHECK
             </Link>
             <Link
               href="/workshop-stuurcijfers"
