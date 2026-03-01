@@ -54,6 +54,20 @@ export default function InstellingenPage() {
         body: formData,
       })
 
+      if (!res.ok) {
+        const text = await res.text()
+        let errorMsg: string
+        try {
+          const json = JSON.parse(text)
+          errorMsg = json.error || `Server error ${res.status}`
+        } catch {
+          errorMsg = `Server error ${res.status}: ${text.slice(0, 200)}`
+        }
+        setMessage({ type: 'error', text: errorMsg })
+        setUploading(false)
+        return
+      }
+
       const data = await res.json()
 
       if (data.success) {
@@ -65,8 +79,9 @@ export default function InstellingenPage() {
       } else {
         setMessage({ type: 'error', text: data.error || 'Upload mislukt.' })
       }
-    } catch {
-      setMessage({ type: 'error', text: 'Er ging iets mis bij het uploaden.' })
+    } catch (err) {
+      const detail = err instanceof Error ? err.message : String(err)
+      setMessage({ type: 'error', text: `Fout: ${detail}` })
     }
 
     setUploading(false)
