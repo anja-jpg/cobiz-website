@@ -7,7 +7,7 @@ import DifferenceSection from '@/components/sections/DifferenceSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import HomeFAQ from '@/components/sections/HomeFAQ'
 import FinalCTA from '@/components/sections/FinalCTA'
-import { getPageContent } from '@/lib/content'
+import { getPageContent, getAboutPhotoUrl } from '@/lib/content'
 import type {
   HeroContent,
   ProblemContent,
@@ -22,14 +22,17 @@ import type {
 export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
-  const content = await getPageContent('home')
+  const [content, photoUrl] = await Promise.all([
+    getPageContent('home'),
+    getAboutPhotoUrl(),
+  ])
 
   return (
     <SiteLayout>
       <HeroSection content={content.hero as HeroContent} />
       <ProblemSection content={content.problem as ProblemContent} />
       <ProductSpotlight content={content.products as ProductsContent} />
-      <AboutPreview content={content.about as AboutContent} />
+      <AboutPreview content={content.about as AboutContent} photoUrl={photoUrl} />
       <DifferenceSection content={content.difference as DifferenceContent} />
       <TestimonialsSection content={content.testimonials as TestimonialsContent} />
       <HomeFAQ content={content.faq as FAQContent} />

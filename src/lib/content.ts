@@ -217,3 +217,20 @@ export async function getPageContent(page: string): Promise<Record<string, unkno
 export function getDefaults(page: string): Record<string, unknown> {
   return allDefaults[page] || {}
 }
+
+// ── Photo URL ─────────────────────────────────────────────────
+
+export async function getAboutPhotoUrl(): Promise<string> {
+  const prisma = getDb()
+  if (!prisma) return '/anja-dirk.jpg'
+
+  try {
+    await ensureTable()
+    const block = await prisma.contentBlock.findUnique({
+      where: { page_section: { page: 'settings', section: 'about-photo' } },
+    })
+    return block ? (JSON.parse(block.content) as string) : '/anja-dirk.jpg'
+  } catch {
+    return '/anja-dirk.jpg'
+  }
+}

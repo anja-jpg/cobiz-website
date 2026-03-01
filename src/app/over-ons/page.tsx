@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Briefcase, GraduationCap, Building2, Target, MapPin } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
+import { getAboutPhotoUrl } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Over Ons | Anja Warrot & Dirk Colman | COBIZ Dendermonde',
@@ -39,7 +40,9 @@ const values = [
   },
 ];
 
-export default function OverOnsPage() {
+export default async function OverOnsPage() {
+  const photoUrl = await getAboutPhotoUrl();
+
   return (
     <SiteLayout>
       {/* ── Hero ── */}
@@ -66,12 +69,13 @@ export default function OverOnsPage() {
             {/* Photo */}
             <div className="w-full flex-1">
               <Image
-                src="/anja-dirk.jpg"
+                src={photoUrl}
                 alt="Anja Warrot en Dirk Colman, oprichters van COBIZ"
                 width={600}
                 height={450}
                 className="rounded-2xl object-cover"
                 priority
+                unoptimized={photoUrl.startsWith('http')}
               />
             </div>
 

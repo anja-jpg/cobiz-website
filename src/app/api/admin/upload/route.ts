@@ -1,8 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { put } from '@vercel/blob'
+import { getDb } from '@/lib/db'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_SIZE = 5 * 1024 * 1024 // 5 MB
+
+export async function GET() {
+  try {
+    const prisma = getDb()
+    if (!prisma) {
+      return NextResponse.json({ url: '/anja-dirk.jpg' })
+    }
+    const block = await prisma.contentBlock.findUnique({
+      where: { page_section: { page: 'settings', section: 'about-photo' } },
+    })
+    const url = block ? JSON.parse(block.content) : '/anja-dirk.jpg'
+    return NextResponse.json({ url })
+  } catch {
+    return NextResponse.json({ url: '/anja-dirk.jpg' })
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,6 +59,16 @@ export async function POST(request: NextRequest) {
       access: 'public',
       addRandomSuffix: false,
     })
+
+    // Save URL to database so public pages can use it
+    const prisma = getDb()
+    if (prisma) {
+      await prisma.contentBlock.upsert({
+        where: { page_section: { page: 'settings', section: 'about-photo' } },
+        update: { content: JSON.stringify(blob.url) },
+        create: { page: 'settings', section: 'about-photo', content: JSON.stringify(blob.url) },
+      })
+    }
 
     return NextResponse.json({ success: true, url: blob.url, fileName })
   } catch (err) {

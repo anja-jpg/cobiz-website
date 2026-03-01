@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Upload, Check, AlertCircle, ImageIcon } from 'lucide-react'
 
@@ -8,9 +8,16 @@ export default function InstellingenPage() {
   const [preview, setPreview] = useState<string | null>(null)
   const [uploading, setUploading] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
-  const [currentPhoto, setCurrentPhoto] = useState('/anja-dirk.jpg')
+  const [currentPhoto, setCurrentPhoto] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [cacheKey, setCacheKey] = useState(Date.now())
+
+  useEffect(() => {
+    fetch('/api/admin/upload')
+      .then(res => res.json())
+      .then(data => setCurrentPhoto(data.url || '/anja-dirk.jpg'))
+      .catch(() => setCurrentPhoto('/anja-dirk.jpg'))
+  }, [])
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -90,13 +97,19 @@ export default function InstellingenPage() {
           <div>
             <p className="mb-2 text-sm font-medium text-gray-600">Huidige foto:</p>
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
-              <Image
-                src={`${currentPhoto}?v=${cacheKey}`}
-                alt="Anja Warrot en Dirk Colman"
-                fill
-                className="object-cover"
-                unoptimized
-              />
+              {currentPhoto ? (
+                <Image
+                  src={`${currentPhoto}?v=${cacheKey}`}
+                  alt="Anja Warrot en Dirk Colman"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center text-sm text-gray-400">
+                  Laden...
+                </div>
+              )}
             </div>
           </div>
 
