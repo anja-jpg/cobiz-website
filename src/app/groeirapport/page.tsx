@@ -118,27 +118,28 @@ const faqItems = [
 export default function GroeirapportPage() {
   return (
     <SiteLayout>
-      {/* ── 1. Hero (mint bg) ── */}
-      <section className="bg-cobiz-mint section-padding">
-        <div className="mx-auto max-w-4xl text-center">
+      {/* ── 1. Hero ── */}
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#51B848' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="relative mx-auto max-w-4xl text-center">
           <span className="badge badge-yellow mb-3 sm:mb-4">
             FINANCI&Euml;LE DOORLICHTING
           </span>
-          <h1 className="mb-3 text-3xl font-bold text-cobiz-dark sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             COBIZ Groeirapport
           </h1>
-          <p className="mb-6 text-base text-gray-600 sm:mb-8 md:text-lg lg:text-xl">
+          <p className="mb-6 text-base text-cobiz-dark sm:mb-8 md:text-lg lg:text-xl">
             Hard werken, maar wat blijft er over? Tijd voor helder inzicht
             &eacute;n optimalisatie.
           </p>
-          <p className="mb-8 text-sm font-semibold text-cobiz-dark sm:mb-10 md:text-base">
+          <p className="mb-8 text-sm font-semibold text-white sm:mb-10 md:text-base">
             &euro;1.500 excl. BTW | Terugverdientijd = 1 goed inzicht
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <a href="#bestel" className="btn-primary">
+            <a href="#bestel" className="btn-white">
               BESTEL DIRECT
             </a>
-            <Link href="/gratis-gesprek" className="btn-secondary">
+            <Link href="/gratis-gesprek" className="btn-outline-white">
               PLAN EERST EEN GRATIS GESPREK
             </Link>
           </div>

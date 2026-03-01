@@ -59,13 +59,14 @@ export default function OpleidingstrajectPage() {
   return (
     <SiteLayout>
       {/* ── Hero ── */}
-      <section className="bg-cobiz-mint section-padding">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#51B848' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="relative mx-auto max-w-4xl text-center">
           <span className="badge badge-coral mb-3 sm:mb-4">START SEPTEMBER 2025</span>
-          <h1 className="mb-3 text-3xl font-bold text-cobiz-dark sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Opleidingstraject Financi&euml;le Sturing
           </h1>
-          <p className="text-base text-gray-600 md:text-lg lg:text-xl">
+          <p className="text-base text-cobiz-dark md:text-lg lg:text-xl">
             4 dagen intensieve begeleiding voor KMO-zaakvoerders die &eacute;cht
             grip willen op hun cijfers
           </p>

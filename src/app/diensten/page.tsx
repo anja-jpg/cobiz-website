@@ -23,7 +23,7 @@ interface ServiceCard {
 const services: ServiceCard[] = [
   {
     Icon: BarChart3,
-    badge: 'START MEI',
+    badge: 'BOEKBAAR',
     badgeClass: 'badge badge-green',
     title: 'Workshop Stuurcijfers',
     description:
@@ -71,12 +71,13 @@ export default function DienstenPage() {
   return (
     <SiteLayout>
       {/* ── Hero ── */}
-      <section className="bg-cobiz-mint section-padding">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-3 text-3xl font-bold text-cobiz-dark sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
+      <section className="relative overflow-hidden section-padding" style={{ backgroundColor: '#51B848' }}>
+        <div className="animate-pattern pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Onze Diensten
           </h1>
-          <p className="text-base text-gray-600 md:text-lg lg:text-xl">
+          <p className="text-base text-cobiz-dark md:text-lg lg:text-xl">
             Van quick scan tot strategische begeleiding &mdash; altijd op maat
             van jouw KMO
           </p>

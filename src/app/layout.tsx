@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
+import CookieConsentBanner from '@/components/layout/CookieConsent'
+import AnalyticsLoader from '@/components/layout/AnalyticsLoader'
 
 export const metadata: Metadata = {
   title: {
@@ -81,6 +83,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-white">
         {children}
+        <CookieConsentBanner />
+        <AnalyticsLoader />
       </body>
     </html>
   )

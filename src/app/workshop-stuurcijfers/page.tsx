@@ -111,29 +111,28 @@ export default function WorkshopStuurcijfersPage() {
     <SiteLayout>
       {/* ── Hero ── */}
       <PageHero
-        badge="START MEI 2025"
         title="Workshop Stuurcijfers"
         subtitle="In 4,5 uur van cijferchaos naar grip op je cijfers en rust in je hoofd"
         details={
-          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-white/90 sm:gap-3 sm:text-sm md:gap-6 md:text-base">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-cobiz-dark sm:gap-3 sm:text-sm md:gap-6 md:text-base">
             <span className="flex items-center gap-1.5 sm:gap-2">
-              <Clock className="h-3.5 w-3.5 text-cobiz-green sm:h-4 sm:w-4" />
+              <Clock className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" />
               17:00 - 21:30u
             </span>
-            <span className="hidden text-white/30 sm:inline">|</span>
+            <span className="hidden text-cobiz-dark/30 sm:inline">|</span>
             <span className="flex items-center gap-1.5 sm:gap-2">
-              <Users className="h-3.5 w-3.5 text-cobiz-green sm:h-4 sm:w-4" />
+              <Users className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" />
               Max 10 deelnemers
             </span>
-            <span className="hidden text-white/30 sm:inline">|</span>
+            <span className="hidden text-cobiz-dark/30 sm:inline">|</span>
             <span className="flex items-center gap-1.5 sm:gap-2">
-              <Euro className="h-3.5 w-3.5 text-cobiz-green sm:h-4 sm:w-4" />
+              <Euro className="h-3.5 w-3.5 text-white sm:h-4 sm:w-4" />
               {'\u20AC'}125 incl. BTW
             </span>
           </div>
         }
         ctas={[
-          { label: 'BOEK JE PLEK', href: '#kies-je-datum' },
+          { label: 'BOEK NU JE PLEK', href: '#kies-je-datum' },
           { label: 'MEER INFO', href: '#wat-leer-je', variant: 'outline' },
         ]}
       />
