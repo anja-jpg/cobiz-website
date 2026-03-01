@@ -106,6 +106,9 @@ const jsonLd = {
   knowsLanguage: ['nl'],
   sameAs: [
     'https://share.google/HMIlC7q4j4Ud55mZB',
+    'https://www.linkedin.com/company/cobiz-consultancy/',
+    'https://www.facebook.com/COBIZConsult',
+    'https://www.instagram.com/cobizconsult/',
   ],
 }
 

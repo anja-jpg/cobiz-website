@@ -9,11 +9,10 @@ const dienstenLinks = [
   { label: 'Groei-Check', href: '/gezondheidscheck' },
 ];
 
-const quickLinks = [
-  { label: 'Over Ons', href: '/over-ons' },
-  { label: 'Inzichten', href: '/inzichten' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Groei-Check', href: '/gezondheidscheck' },
+const socialLinks = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cobiz-consultancy/' },
+  { label: 'Facebook', href: 'https://www.facebook.com/COBIZConsult' },
+  { label: 'Instagram', href: 'https://www.instagram.com/cobizconsult/' },
 ];
 
 export default function Footer() {
@@ -87,20 +86,22 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Quick Links */}
+          {/* Column 4: Volg Ons */}
           <div className="col-span-2 sm:col-span-1">
             <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-white sm:mb-4 sm:text-sm">
-              Snel naar
+              Volg Ons
             </h3>
             <ul className="flex gap-4 sm:flex-col sm:gap-0 sm:space-y-3">
-              {quickLinks.map((link) => (
+              {socialLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <a
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm text-white/70 transition-colors hover:text-cobiz-green"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

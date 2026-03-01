@@ -1,33 +1,29 @@
-import { Quote } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
 
 interface Testimonial {
   quote: string;
   name: string;
-  role: string;
-  company: string;
+  source: string;
 }
 
 const testimonials: Testimonial[] = [
   {
     quote:
-      'Dankzij COBIZ weet ik eindelijk welke cijfers ertoe doen. Ik neem nu beslissingen op basis van feiten, niet op buikgevoel. Dat geeft enorm veel rust.',
-    name: 'Placeholder',
-    role: 'Zaakvoerder',
-    company: 'KMO met 12 medewerkers',
+      'Anja & Dirk hebben ons geweldig geholpen bij een screening van ons bedrijf. Wij hebben een gezond bedrijf maar toch was hun expertise heel interessant om meer inzicht te krijgen in onze cijfers.',
+    name: 'Lenn Weckx',
+    source: 'Google Review',
   },
   {
     quote:
-      'De workshop stuurcijfers was een eye-opener. In een halve dag had ik meer inzicht in mijn bedrijf dan in de afgelopen 3 jaar met mijn boekhouder.',
-    name: 'Placeholder',
-    role: 'CEO',
-    company: 'Dienstenbedrijf, 8 medewerkers',
+      'Wij zijn zeer tevreden over de samenwerking met Anja van COBIZ. Met haar financi\u00eble kennis en ervaring in het bedrijfsleven is ze een waardevolle toevoeging aan ons team!',
+    name: 'Chiara De Vleminck',
+    source: 'Google Review',
   },
   {
     quote:
-      'Het groeirapport legde pijnlijk bloot waar het geld bleef. Drie maanden later is onze cashflow met 40% verbeterd. Beste investering ooit.',
-    name: 'Placeholder',
-    role: 'Eigenaar',
-    company: 'Productiebedrijf, 22 medewerkers',
+      'COBIZ beveel ik graag aan. Ze geven bedrijven een dieper inzicht in hun cijfers, het rendement en cashplanning. Een duidelijk beeld en sterk actieplan volgt.',
+    name: 'Randy de Mol',
+    source: 'Google Review',
   },
 ];
 
@@ -45,9 +41,11 @@ export default function TestimonialsSection() {
               key={i}
               className="card-3d flex flex-col rounded-2xl bg-white p-6 sm:p-8"
             >
-              {/* Quote icon */}
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-cobiz-green/10">
-                <Quote className="h-5 w-5 text-cobiz-green" />
+              {/* Stars */}
+              <div className="mb-4 flex gap-0.5">
+                {[...Array(5)].map((_, j) => (
+                  <Star key={j} className="h-4 w-4 fill-cobiz-yellow text-cobiz-yellow" />
+                ))}
               </div>
 
               {/* Quote text */}
@@ -58,16 +56,22 @@ export default function TestimonialsSection() {
               {/* Attribution */}
               <div className="border-t border-gray-100 pt-4">
                 <p className="font-bold text-cobiz-dark">{t.name}</p>
-                <p className="text-sm text-gray-500">
-                  {t.role} &mdash; {t.company}
-                </p>
+                <p className="text-xs text-gray-400">{t.source}</p>
               </div>
             </div>
           ))}
         </div>
 
         <p className="mt-4 text-center text-xs text-gray-400 sm:mt-6">
-          Echte namen en bedrijven worden toegevoegd na toestemming van klanten.
+          Bekijk alle reviews op{' '}
+          <a
+            href="https://share.google/HMIlC7q4j4Ud55mZB"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cobiz-green hover:underline"
+          >
+            Google
+          </a>
         </p>
       </div>
     </section>

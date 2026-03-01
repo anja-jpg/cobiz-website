@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AboutPreview() {
   return (
@@ -9,13 +10,15 @@ export default function AboutPreview() {
         </h2>
 
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
-          {/* Left column - Photo placeholder */}
+          {/* Left column - Photo */}
           <div className="w-full flex-1">
-            <div className="flex items-center justify-center rounded-2xl bg-gray-200 px-8 py-24 sm:py-32">
-              <p className="text-base font-medium text-gray-500 sm:text-lg">
-                Foto Anja &amp; Dirk
-              </p>
-            </div>
+            <Image
+              src="/anja-dirk.jpg"
+              alt="Anja Warrot en Dirk Colman, oprichters van COBIZ"
+              width={600}
+              height={450}
+              className="rounded-2xl object-cover"
+            />
           </div>
 
           {/* Right column - Story */}

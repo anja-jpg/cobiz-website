@@ -22,6 +22,7 @@ interface Article {
   title: string;
   excerpt: string;
   readTime: string;
+  published?: boolean;
 }
 
 const articles: Article[] = [
@@ -46,14 +47,15 @@ const articles: Article[] = [
     readTime: '4 min',
   },
   {
-    slug: 'verschil-boekhouder-cfo',
+    slug: 'boekhouder-controller-cfo',
     icon: Users,
     category: 'STRATEGIE',
     categoryClass: 'badge badge-coral',
-    title: 'Het verschil tussen een boekhouder en een CFO',
+    title: 'Boekhouder, controller, CFO: waarom je KMO meer nodig heeft dan alleen een boekhouder',
     excerpt:
-      'Je boekhouder kijkt achteruit. Een CFO kijkt vooruit. Waarom je allebei nodig hebt en hoe een flexibele CFO jouw groei versnelt.',
-    readTime: '3 min',
+      'Drie financi\u00eble rollen die elk groot bedrijf heeft \u2013 en waarom ook jouw klein of middelgroot bedrijf ze nodig heeft.',
+    readTime: '8 min',
+    published: true,
   },
   {
     slug: 'winstgevendheid-meten',
@@ -141,10 +143,20 @@ export default function InzichtenPage() {
                   </p>
 
                   {/* Read more */}
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-cobiz-green">
-                    Binnenkort beschikbaar
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
+                  {article.published ? (
+                    <Link
+                      href={`/inzichten/${article.slug}`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-cobiz-green transition-colors hover:text-cobiz-green-dark"
+                    >
+                      Lees meer
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-gray-400">
+                      Binnenkort beschikbaar
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  )}
                 </article>
               );
             })}
