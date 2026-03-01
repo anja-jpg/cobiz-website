@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFile } from 'fs/promises'
-import { join } from 'path'
+import { put } from '@vercel/blob'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_SIZE = 5 * 1024 * 1024 // 5 MB
@@ -32,24 +31,19 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
-
-    // Determine extension from uploaded file
     const ext = file.type === 'image/png' ? '.png'
       : file.type === 'image/webp' ? '.webp'
       : '.jpg'
 
-    // Keep the target name but ensure correct extension
     const baseName = targetName.replace(/\.[^.]+$/, '')
     const fileName = `${baseName}${ext}`
 
-    const publicDir = join(process.cwd(), 'public')
-    const filePath = join(publicDir, fileName)
+    const blob = await put(fileName, file, {
+      access: 'public',
+      addRandomSuffix: false,
+    })
 
-    await writeFile(filePath, buffer)
-
-    return NextResponse.json({ success: true, url: `/${fileName}`, fileName })
+    return NextResponse.json({ success: true, url: blob.url, fileName })
   } catch (err) {
     console.error('Upload error:', err)
     return NextResponse.json(
