@@ -27,13 +27,24 @@ interface Article {
 
 const articles: Article[] = [
   {
+    slug: 'cashflow-winst-verschil',
+    icon: PiggyBank,
+    category: 'CASHFLOW',
+    categoryClass: 'badge badge-yellow',
+    title: 'Cashflow: waarom een winstgevend bedrijf toch in de problemen kan komen',
+    excerpt:
+      'Het verschil tussen winst en cash \u2013 en waarom dat voor elke ondernemer essentieel is. Ontdek waarom je bankrekening een ander verhaal vertelt dan je resultatenrekening.',
+    readTime: '9 min',
+    published: true,
+  },
+  {
     slug: 'waarom-stuurcijfers-onmisbaar',
     icon: BarChart3,
     category: 'STUURCIJFERS',
     categoryClass: 'badge badge-green',
     title: 'Waarom stuurcijfers onmisbaar zijn voor elke KMO',
     excerpt:
-      'De meeste KMO-zaakvoerders nemen beslissingen op buikgevoel. Dat werkt — tot het niet meer werkt. Ontdek waarom stuurcijfers het verschil maken tussen overleven en groeien.',
+      'De meeste KMO-zaakvoerders nemen beslissingen op buikgevoel. Dat werkt \u2014 tot het niet meer werkt. Ontdek waarom stuurcijfers het verschil maken tussen overleven en groeien.',
     readTime: '5 min',
   },
   {
