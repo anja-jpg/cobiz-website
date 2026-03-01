@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     'business controller Antwerpen',
     'business controller Gent',
     'business controller Brussel',
+    'business controller Dendermonde',
+    'CFO Dendermonde',
   ],
   authors: [{ name: 'COBIZ' }],
   creator: 'COBIZ',
@@ -41,6 +43,13 @@ const jsonLd = {
   description: 'Flexibele CFO-expertise voor KMO\'s. Van cijferchaos naar grip op je cijfers.',
   url: 'https://cobiz.be',
   logo: 'https://cobiz.be/logo-full.svg',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Hoogveld 105',
+    postalCode: '9200',
+    addressLocality: 'Dendermonde',
+    addressCountry: 'BE',
+  },
   areaServed: {
     '@type': 'Country',
     name: 'Belgium',
@@ -48,7 +57,9 @@ const jsonLd = {
   serviceType: ['CFO diensten', 'Financieel advies', 'Business controlling', 'Stuurcijfers'],
   priceRange: '€€',
   knowsLanguage: ['nl'],
-  sameAs: [],
+  sameAs: [
+    'https://share.google/HMIlC7q4j4Ud55mZB',
+  ],
 }
 
 export default function RootLayout({

@@ -63,6 +63,10 @@ export default function Footer() {
               Contact
             </h3>
             <ul className="space-y-2.5 sm:space-y-3">
+              <li className="text-sm text-white/70">
+                Hoogveld 105<br />
+                9200 Dendermonde
+              </li>
               <li>
                 <a
                   href="mailto:info@cobiz.be"
