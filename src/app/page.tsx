@@ -19,7 +19,7 @@ import type {
   FinalCTAContent,
 } from '@/lib/content'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 export default async function HomePage() {
   const [content, photoUrl] = await Promise.all([

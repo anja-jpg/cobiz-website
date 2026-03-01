@@ -19,7 +19,6 @@ export default function AboutPreview({ content, photoUrl }: { content: AboutCont
               width={600}
               height={450}
               className="rounded-2xl object-cover"
-              unoptimized={!!photoUrl?.startsWith('http')}
             />
           </div>
 

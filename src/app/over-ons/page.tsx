@@ -5,7 +5,7 @@ import { Briefcase, GraduationCap, Building2, Target } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
 import { getAboutPhotoUrl } from '@/lib/content';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Over Ons | Anja Warrot & Dirk Colman | COBIZ Dendermonde',
@@ -73,7 +73,6 @@ export default async function OverOnsPage() {
                 height={450}
                 className="rounded-2xl object-cover"
                 priority
-                unoptimized={photoUrl.startsWith('http')}
               />
             </div>
 
