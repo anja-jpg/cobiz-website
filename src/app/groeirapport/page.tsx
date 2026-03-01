@@ -150,7 +150,7 @@ export default function GroeirapportPage() {
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             COBIZ Groeirapport
           </h1>
-          <p className="mb-6 text-base text-cobiz-dark sm:mb-8 md:text-lg lg:text-xl">
+          <p className="mb-6 text-base text-white/80 sm:mb-8 md:text-lg lg:text-xl">
             Hard werken, maar wat blijft er over? Tijd voor helder inzicht
             &eacute;n optimalisatie.
           </p>

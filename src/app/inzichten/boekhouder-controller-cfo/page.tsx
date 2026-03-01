@@ -41,7 +41,7 @@ export default function BoekhouderControllerCFOPage() {
             Boekhouder, controller, CFO: waarom je KMO meer nodig heeft dan
             alleen een boekhouder
           </h1>
-          <p className="text-base text-cobiz-dark md:text-lg">
+          <p className="text-base text-white/80 md:text-lg">
             Drie financi&euml;le rollen die elk groot bedrijf heeft &ndash; en
             waarom ook jouw klein of middelgroot bedrijf ze nodig heeft
           </p>

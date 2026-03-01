@@ -82,7 +82,7 @@ export default function DienstenPage() {
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Onze Diensten
           </h1>
-          <p className="text-base text-cobiz-dark md:text-lg lg:text-xl">
+          <p className="text-base text-white/80 md:text-lg lg:text-xl">
             Van quick scan tot strategische begeleiding &mdash; altijd op maat
             van jouw KMO
           </p>

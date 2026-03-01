@@ -53,7 +53,7 @@ export default function GratisGesprekPage() {
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Gratis Kennismakingsgesprek
           </h1>
-          <p className="text-base text-cobiz-dark md:text-lg lg:text-xl">
+          <p className="text-base text-white/80 md:text-lg lg:text-xl">
             1 uur vrijblijvend sparren over jouw financi&euml;le uitdagingen
           </p>
         </div>

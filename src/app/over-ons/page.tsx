@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Briefcase, GraduationCap, Building2, Target, MapPin } from 'lucide-react';
+import { Briefcase, GraduationCap, Building2, Target } from 'lucide-react';
 import SiteLayout from '@/components/layout/SiteLayout';
 import { getAboutPhotoUrl } from '@/lib/content';
 
@@ -54,12 +54,8 @@ export default async function OverOnsPage() {
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Wij zijn COBIZ
           </h1>
-          <p className="text-base text-cobiz-dark md:text-lg lg:text-xl">
+          <p className="text-base text-white/80 md:text-lg lg:text-xl">
             Ondernemers die ondernemers helpen met financieel inzicht
-          </p>
-          <p className="mt-3 flex items-center justify-center gap-2 text-sm text-white/80 sm:text-base">
-            <MapPin className="h-4 w-4" />
-            Gevestigd in Dendermonde &mdash; actief in heel Vlaanderen
           </p>
         </div>
       </section>

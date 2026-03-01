@@ -110,7 +110,7 @@ export default function InzichtenPage() {
           <h1 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
             Inzichten
           </h1>
-          <p className="text-base text-cobiz-dark md:text-lg lg:text-xl">
+          <p className="text-base text-white/80 md:text-lg lg:text-xl">
             Praktische tips en kennis over financieel management voor KMO&apos;s
           </p>
         </div>

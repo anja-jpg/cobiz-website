@@ -40,7 +40,7 @@ export default function CashflowWinstVerschilPage() {
           <h1 className="mb-3 text-2xl font-bold text-white sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl">
             Cashflow: waarom een winstgevend bedrijf toch in de problemen kan komen
           </h1>
-          <p className="text-base text-cobiz-dark md:text-lg">
+          <p className="text-base text-white/80 md:text-lg">
             Het verschil tussen winst en cash &ndash; en waarom dat voor elke ondernemer essentieel is
           </p>
         </div>
