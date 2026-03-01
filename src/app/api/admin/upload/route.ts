@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { put } from '@vercel/blob'
 import { getDb } from '@/lib/db'
+import { ensureTable } from '@/lib/content'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_SIZE = 5 * 1024 * 1024 // 5 MB
@@ -11,6 +12,7 @@ export async function GET() {
     if (!prisma) {
       return NextResponse.json({ url: '/anja-dirk.jpg' })
     }
+    await ensureTable()
     const block = await prisma.contentBlock.findUnique({
       where: { page_section: { page: 'settings', section: 'about-photo' } },
     })
@@ -61,13 +63,19 @@ export async function POST(request: NextRequest) {
     })
 
     // Save URL to database so public pages can use it
-    const prisma = getDb()
-    if (prisma) {
-      await prisma.contentBlock.upsert({
-        where: { page_section: { page: 'settings', section: 'about-photo' } },
-        update: { content: JSON.stringify(blob.url) },
-        create: { page: 'settings', section: 'about-photo', content: JSON.stringify(blob.url) },
-      })
+    try {
+      const prisma = getDb()
+      if (prisma) {
+        await ensureTable()
+        await prisma.contentBlock.upsert({
+          where: { page_section: { page: 'settings', section: 'about-photo' } },
+          update: { content: JSON.stringify(blob.url) },
+          create: { page: 'settings', section: 'about-photo', content: JSON.stringify(blob.url) },
+        })
+      }
+    } catch (dbErr) {
+      console.error('Failed to save photo URL to database:', dbErr)
+      // Upload still succeeded, continue
     }
 
     return NextResponse.json({ success: true, url: blob.url, fileName })

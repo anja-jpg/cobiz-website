@@ -155,7 +155,7 @@ const allDefaults: Record<string, Record<string, unknown>> = {
 
 // ── Database functies ──────────────────────────────────────────
 
-async function ensureTable() {
+export async function ensureTable() {
   const prisma = getDb()
   if (!prisma) return
   try {
