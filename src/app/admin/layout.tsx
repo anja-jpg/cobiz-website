@@ -7,7 +7,9 @@ import {
   FileText,
   MessageSquare,
   HeartPulse,
+  Settings,
 } from 'lucide-react';
+import LogoutButton from './LogoutButton';
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +27,7 @@ const sidebarLinks = [
   { href: '/admin/groeirapporten', label: 'Groeirapporten', Icon: FileText },
   { href: '/admin/contacten', label: 'Contacten', Icon: MessageSquare },
   { href: '/admin/gezondheidscheck', label: 'Groei-Check', Icon: HeartPulse },
+  { href: '/admin/instellingen', label: 'Instellingen', Icon: Settings },
 ];
 
 export default function AdminLayout({
@@ -63,12 +66,15 @@ export default function AdminLayout({
         {/* Footer */}
         <div className="border-t border-white/10 px-6 py-4">
           <p className="text-xs text-gray-400">Ingelogd als Anja</p>
-          <Link
-            href="/"
-            className="mt-1 block text-xs text-cobiz-green hover:underline"
-          >
-            Terug naar website
-          </Link>
+          <div className="mt-2 flex items-center justify-between">
+            <Link
+              href="/"
+              className="text-xs text-cobiz-green hover:underline"
+            >
+              Terug naar website
+            </Link>
+            <LogoutButton />
+          </div>
         </div>
       </aside>
 
