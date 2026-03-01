@@ -155,12 +155,32 @@ const allDefaults: Record<string, Record<string, unknown>> = {
 
 // ── Database functies ──────────────────────────────────────────
 
+async function ensureTable() {
+  const prisma = getDb()
+  if (!prisma) return
+  try {
+    await prisma.$executeRawUnsafe(`
+      CREATE TABLE IF NOT EXISTS "ContentBlock" (
+        "id" SERIAL PRIMARY KEY,
+        "page" TEXT NOT NULL,
+        "section" TEXT NOT NULL,
+        "content" TEXT NOT NULL,
+        "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        CONSTRAINT "ContentBlock_page_section_key" UNIQUE ("page", "section")
+      )
+    `)
+  } catch {
+    // table likely already exists
+  }
+}
+
 export async function getContent<T>(page: string, section: string): Promise<T> {
   const fallback = allDefaults[page]?.[section] as T
   const prisma = getDb()
   if (!prisma) return fallback
 
   try {
+    await ensureTable()
     const block = await prisma.contentBlock.findUnique({
       where: { page_section: { page, section } },
     })
@@ -176,6 +196,7 @@ export async function getPageContent(page: string): Promise<Record<string, unkno
   if (!prisma) return defaults
 
   try {
+    await ensureTable()
     const blocks = await prisma.contentBlock.findMany({
       where: { page },
     })

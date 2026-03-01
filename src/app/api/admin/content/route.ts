@@ -2,6 +2,25 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getDb } from '@/lib/db'
 import { getDefaults } from '@/lib/content'
 
+async function ensureTable() {
+  const prisma = getDb()
+  if (!prisma) return
+  try {
+    await prisma.$executeRawUnsafe(`
+      CREATE TABLE IF NOT EXISTS "ContentBlock" (
+        "id" SERIAL PRIMARY KEY,
+        "page" TEXT NOT NULL,
+        "section" TEXT NOT NULL,
+        "content" TEXT NOT NULL,
+        "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        CONSTRAINT "ContentBlock_page_section_key" UNIQUE ("page", "section")
+      )
+    `)
+  } catch {
+    // table likely already exists
+  }
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const page = searchParams.get('page')
@@ -18,6 +37,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    await ensureTable()
     const blocks = await prisma.contentBlock.findMany({ where: { page } })
     const result = { ...defaults }
     for (const block of blocks) {
