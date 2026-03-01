@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Users, Clock, FileText, MessageSquare } from 'lucide-react';
-import { prisma } from '@/lib/db';
+import { getDb } from '@/lib/db';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -34,8 +36,19 @@ const stats = [
 ];
 
 export default function AdminDashboardPage() {
+  const prisma = getDb();
+
   if (!prisma) {
-    return <div className="p-8 text-center"><h1 className="text-2xl font-bold mb-4">Database niet geconfigureerd</h1><p>Stel DATABASE_URL in om het admin dashboard te gebruiken.</p></div>
+    const hasUrl = !!process.env.DATABASE_URL;
+    return (
+      <div className="p-8 text-center">
+        <h1 className="text-2xl font-bold mb-4">Database niet geconfigureerd</h1>
+        <p className="mb-2">Stel DATABASE_URL in om het admin dashboard te gebruiken.</p>
+        <p className="text-sm text-gray-400">
+          Diagnose: DATABASE_URL is {hasUrl ? 'ingesteld maar de verbinding is mislukt' : 'niet ingesteld in de omgeving'}
+        </p>
+      </div>
+    );
   }
 
   return (

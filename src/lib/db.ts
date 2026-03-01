@@ -4,24 +4,29 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-function createPrismaClient(): PrismaClient | null {
+/**
+ * Returns a PrismaClient instance, creating one if needed.
+ * Checks process.env.DATABASE_URL on every call so it works
+ * even when the module is first loaded before env vars are available
+ * (e.g. during Next.js static analysis at build time).
+ */
+export function getDb(): PrismaClient | null {
+  if (globalForPrisma.prisma) return globalForPrisma.prisma
+
+  if (!process.env.DATABASE_URL) {
+    return null
+  }
+
   try {
-    if (!process.env.DATABASE_URL) {
-      console.warn('DATABASE_URL not set — database features disabled')
-      return null
-    }
-    return new PrismaClient({
+    const client = new PrismaClient({
       datasourceUrl: process.env.DATABASE_URL,
     })
+    globalForPrisma.prisma = client
+    return client
   } catch {
-    console.warn('Failed to create Prisma client — database features disabled')
     return null
   }
 }
 
-const client = globalForPrisma.prisma ?? createPrismaClient()
-export const prisma = client
-
-if (process.env.NODE_ENV !== 'production' && client) {
-  globalForPrisma.prisma = client
-}
+// Legacy export for existing code — prefer getDb() in server components
+export const prisma = getDb()
