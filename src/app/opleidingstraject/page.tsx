@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Calendar,
   MapPin,
@@ -204,7 +205,7 @@ export default async function OpleidingstrajectPage() {
                       key={item}
                       className="flex items-start gap-2 text-sm text-gray-600 sm:text-base"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cobiz-green" />
+                      <Image src="/logo-icon.png" alt="" width={16} height={16} className="mt-0.5 h-4 w-4 shrink-0" />
                       {item}
                     </li>
                   ))}

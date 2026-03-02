@@ -57,7 +57,7 @@ const jsonLd = {
   name: 'COBIZ',
   description: 'Flexibele CFO-expertise en financiële stuurinformatie voor KMO\'s in de regio Dendermonde. Workshop Stuurcijfers, Groeirapport en strategische begeleiding.',
   url: 'https://cobiz.be',
-  logo: 'https://cobiz.be/logo-full.svg',
+  logo: 'https://cobiz.be/logo-full.png',
   telephone: '+32475544952',
   email: 'info@cobiz.be',
   address: {

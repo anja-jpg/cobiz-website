@@ -84,10 +84,10 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo-full.svg"
+            src="/logo-full.png"
             alt="COBIZ.be - samen jouw business verbeteren"
-            width={160}
-            height={36}
+            width={1000}
+            height={1000}
             priority
             className={`w-auto transition-all duration-300 ${scrolled ? 'h-7 sm:h-8' : 'h-8 sm:h-9'}`}
           />

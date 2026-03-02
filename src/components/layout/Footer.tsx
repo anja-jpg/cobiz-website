@@ -25,11 +25,11 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block">
               <Image
-                src="/logo-full-white.svg"
+                src="/logo-full.png"
                 alt="COBIZ.be"
-                width={140}
-                height={34}
-                className="h-8 w-auto sm:h-10"
+                width={1000}
+                height={1000}
+                className="h-8 w-auto brightness-0 invert sm:h-10"
               />
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-white/70 sm:mt-4">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ClipboardCheck,
   Search,
@@ -198,7 +199,7 @@ export default async function GroeirapportPage() {
                       key={item}
                       className="flex items-start gap-2 text-sm text-gray-600 sm:text-base"
                     >
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-cobiz-green" />
+                      <Image src="/logo-icon.png" alt="" width={16} height={16} className="mt-0.5 h-4 w-4 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -276,7 +277,7 @@ export default async function GroeirapportPage() {
                 key={detail}
                 className="flex items-center justify-center gap-2 text-sm text-gray-300 sm:text-base"
               >
-                <Check className="h-4 w-4 shrink-0 text-cobiz-green" />
+                <Image src="/logo-icon.png" alt="" width={16} height={16} className="h-4 w-4 shrink-0" />
                 <span>{detail}</span>
               </li>
             ))}
