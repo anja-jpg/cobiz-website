@@ -99,7 +99,8 @@ const articles: Article[] = [
     title: 'De 3 financiële groeipijnen die elke KMO tegenkomt',
     excerpt:
       'Groei is fantastisch, maar brengt financiële uitdagingen mee die je niet verwacht. Herken de signalen voordat het te laat is.',
-    readTime: '5 min',
+    readTime: '10 min',
+    published: true,
   },
 ];
 
