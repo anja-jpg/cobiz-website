@@ -27,9 +27,9 @@ export default function Footer() {
               <Image
                 src="/logo-full.png"
                 alt="COBIZ.be"
-                width={1000}
-                height={1000}
-                className="h-8 w-auto brightness-0 invert sm:h-10"
+                width={874}
+                height={242}
+                className="h-10 w-auto brightness-0 invert sm:h-12"
               />
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-white/70 sm:mt-4">

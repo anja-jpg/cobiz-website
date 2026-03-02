@@ -86,10 +86,10 @@ export default function Header() {
           <Image
             src="/logo-full.png"
             alt="COBIZ.be - samen jouw business verbeteren"
-            width={1000}
-            height={1000}
+            width={874}
+            height={242}
             priority
-            className={`w-auto transition-all duration-300 ${scrolled ? 'h-7 sm:h-8' : 'h-8 sm:h-9'}`}
+            className={`w-auto transition-all duration-300 ${scrolled ? 'h-9 sm:h-10' : 'h-10 sm:h-12'}`}
           />
         </Link>
 
